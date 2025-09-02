@@ -1,3 +1,17 @@
+<?php 
+    // Keep your original PHP block
+    session_start();
+    ob_start();
+
+    include 'db.php';
+    include_once 'logger.php';
+
+    // Log page load + session info
+    log_event("Index page loaded. Session ID: " . session_id());
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,51 +25,11 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Font Awesome (icons) -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
-  <!-- SweetAlert2 -->
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <!-- jQuery (latest) -->
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <link rel="stylesheet" href="css/mycss.css">
 
   <style>
-    :root{
-      --brand:#0d6efd;
-      --brand-2:#7028e4;
-      --brand-3:#e5b2ca;
-    }
-    body{ background: #f7f9fc; }
-    .navbar{ box-shadow: 0 6px 16px rgba(13, 110, 253, .08); }
-    .brand-badge{
-      font-weight:700; letter-spacing:.5px; color:#0d6efd;
-    }
 
-    /* Hero */
-    .hero{
-      position: relative; overflow: hidden;
-      border-radius: 1.25rem; /* rounded-2xl */
-      background: radial-gradient(1200px 500px at 0% 0%, rgba(13,110,253,.12), transparent),
-                  linear-gradient(135deg, rgba(13,110,253,.12), rgba(112,40,228,.10));
-      backdrop-filter: blur(2px);
-    }
-    .hero .halo{
-      position:absolute; inset:auto -20% -40% -20%; height:60%;
-      background: radial-gradient(60% 60% at 50% 50%, rgba(13,110,253,.15), transparent 70%);
-      filter: blur(45px);
-    }
-    .card-hover{
-      transition: transform .2s ease, box-shadow .2s ease;
-    }
-    .card-hover:hover{
-      transform: translateY(-4px);
-      box-shadow: 0 10px 30px rgba(13,110,253,.12);
-    }
-    .chip{
-      display:inline-flex; align-items:center; gap:.5rem;
-      padding:.35rem .75rem; border-radius:999px; font-size:.87rem; font-weight:600;
-      background:#eef4ff; color:#0d6efd;
-    }
-    .stat{ border-radius:1rem; background:white; box-shadow:0 10px 24px rgba(0,0,0,.04); }
-
-    .footer{ color:#6c757d; }
   </style>
 </head>
 <body>
@@ -255,8 +229,8 @@
         <form id="formLogin" autocomplete="off">
           <div class="modal-body">
             <div class="mb-3">
-              <label class="form-label">Username or Email</label>
-              <input type="text" class="form-control" id="login_user" required>
+              <label class="form-label">Username</label>
+              <input type="text" class="form-control" id="login_user" required autocomplete="off">
             </div>
             <div class="mb-3">
               <label class="form-label">Password</label>
@@ -265,10 +239,19 @@
                 <button class="btn btn-outline-secondary" type="button" id="togglePass"><i class="fa-regular fa-eye"></i></button>
               </div>
             </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="1" id="remember_me">
-              <label class="form-check-label" for="remember_me">Remember me</label>
+            <div class="mb-3">
+              <label class="form-label">User Type</label>
+              <select id="login_user_type" class="form-select" required>
+                <?php 
+                  $getype = "SELECT * FROM `tblaccount_type` ORDER BY type_name";
+                  $rungetype = mysqli_query($conn, $getype);
+                  while($rowtype = mysqli_fetch_assoc($rungetype)){
+                    echo '<option value="'.$rowtype['type_id'].'">'.$rowtype['type_name'].'</option>';
+                  }
+                ?>
+              </select>
             </div>
+
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
@@ -281,6 +264,10 @@
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- jQuery (latest) -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
   <script>
     // YEAR
@@ -306,25 +293,25 @@
     });
 
     // Login (AJAX-ready placeholder)
-    $('#formLogin').on('submit', function(e){
+    $('#formLogin').off('submit').on('submit', function(e){
       e.preventDefault();
-      const user = $('#login_user').val().trim();
-      const pass = $('#login_pass').val().trim();
+      const user    = $('#login_user').val().trim();
+      const pass    = $('#login_pass').val().trim();
+      const type_id = $('#login_user_type').val();
 
-      if(!user || !pass){
-        return Swal.fire({ icon:'warning', title:'Missing fields', text:'Please enter your credentials.' });
+      if(!user || !pass || !type_id){
+        return Swal.fire({ icon:'warning', title:'Missing fields', text:'Please complete all fields.' });
       }
 
-      // TODO: replace with real endpoint
-      // $.post('modules/auth/login.php', { user, pass }, function(res){ ... }, 'json');
-
-      // Temporary success state for UI testing
-      Swal.fire({
-        title: 'Login successful (UI demo)',
-        text: 'Replace with real authentication and redirect to dashboard.',
-        icon: 'success'
-      }).then(()=>{
-        // location.href = 'dashboard.php';
+      $.post('modules/auth/login.php', { user, pass, type_id }, function(r){
+        if (r.ok) {
+          Swal.fire({ icon:'success', title:'Welcome!', text:`Logged in as ${r.role}`, timer: 900, showConfirmButton: false })
+          .then(()=> window.location.href = r.redirect);
+        } else {
+          Swal.fire({ icon:'error', title:'Login failed', text: r.msg || 'Invalid credentials.' });
+        }
+      }, 'json').fail(function(xhr){
+        Swal.fire({ icon:'error', title:'Server error', text: xhr.responseJSON?.msg || 'Please try again.' });
       });
     });
 

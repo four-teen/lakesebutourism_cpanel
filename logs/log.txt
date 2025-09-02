@@ -1,0 +1,150 @@
+[2025-09-02 12:10:25] [IP:::1] [URI:/bteslife/] Database connection SUCCESS.
+[2025-09-02 12:11:19] [IP:::1] [URI:/bteslife/] Database connection SUCCESS.
+[2025-09-02 12:11:19] [IP:::1] [URI:/bteslife/] Index page loaded. Session ID: 4dc30b1494b70ada2454bba4f197afed
+[2025-09-02 12:12:21] [IP:::1] [URI:/bteslife/] Database connection SUCCESS.
+[2025-09-02 12:12:21] [IP:::1] [URI:/bteslife/] Index page loaded. Session ID: 4dc30b1494b70ada2454bba4f197afed
+[2025-09-02 12:12:42] [IP:::1] [URI:/bteslife/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-02 12:12:42] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN ATTEMPT: user='admin', type_id=1
+[2025-09-02 12:12:42] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN FAIL: Wrong password.
+[2025-09-02 12:14:06] [IP:::1] [URI:/bteslife/] Database connection SUCCESS.
+[2025-09-02 12:14:06] [IP:::1] [URI:/bteslife/] Index page loaded. Session ID: 4dc30b1494b70ada2454bba4f197afed
+[2025-09-02 12:14:17] [IP:::1] [URI:/bteslife/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-02 12:14:17] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN ATTEMPT: user='admin', type_id=1
+[2025-09-02 12:14:17] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN FAIL: Wrong password.
+[2025-09-02 12:15:23] [IP:::1] [URI:/bteslife/] Database connection SUCCESS.
+[2025-09-02 12:15:23] [IP:::1] [URI:/bteslife/] Index page loaded. Session ID: 4dc30b1494b70ada2454bba4f197afed
+[2025-09-02 12:15:27] [IP:::1] [URI:/bteslife/] Database connection SUCCESS.
+[2025-09-02 12:15:27] [IP:::1] [URI:/bteslife/] Index page loaded. Session ID: 4dc30b1494b70ada2454bba4f197afed
+[2025-09-02 12:16:00] [IP:::1] [URI:/bteslife/] Database connection SUCCESS.
+[2025-09-02 12:16:00] [IP:::1] [URI:/bteslife/] Index page loaded. Session ID: 4dc30b1494b70ada2454bba4f197afed
+[2025-09-02 12:16:11] [IP:::1] [URI:/bteslife/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-02 12:16:11] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN ATTEMPT: user='admin@gmail.com', type_id=1
+[2025-09-02 12:16:11] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN FAIL: User not found.
+[2025-09-02 12:16:20] [IP:::1] [URI:/bteslife/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-02 12:16:20] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN ATTEMPT: user='admin', type_id=1
+[2025-09-02 12:16:20] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN SUCCESS: user='admin', role='Administrator'
+[2025-09-02 12:19:49] [IP:::1] [URI:/bteslife/] Database connection SUCCESS.
+[2025-09-02 12:19:49] [IP:::1] [URI:/bteslife/] Index page loaded. Session ID: 4dc30b1494b70ada2454bba4f197afed
+[2025-09-02 12:20:00] [IP:::1] [URI:/bteslife/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-02 12:20:00] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN ATTEMPT: user='admin', type_id=1
+[2025-09-02 12:20:00] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN SUCCESS: user='admin', role='Administrator'
+[2025-09-02 12:20:46] [IP:::1] [URI:/bteslife/] Database connection SUCCESS.
+[2025-09-02 12:20:46] [IP:::1] [URI:/bteslife/] Index page loaded. Session ID: 4dc30b1494b70ada2454bba4f197afed
+[2025-09-02 12:20:48] [IP:::1] [URI:/bteslife/] Database connection SUCCESS.
+[2025-09-02 12:20:48] [IP:::1] [URI:/bteslife/] Index page loaded. Session ID: 4dc30b1494b70ada2454bba4f197afed
+[2025-09-02 12:20:58] [IP:::1] [URI:/bteslife/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-02 12:20:58] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN ATTEMPT: user='admin', type_id=1
+[2025-09-02 12:20:58] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN SUCCESS: user='admin', role='Administrator'
+[2025-09-02 12:52:56] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-02 12:52:56] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-02 12:53:58] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-02 12:53:58] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-02 12:55:30] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-02 12:55:30] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-02 12:55:51] [IP:::1] [URI:/bteslife/] Database connection SUCCESS.
+[2025-09-02 12:55:51] [IP:::1] [URI:/bteslife/] Index page loaded. Session ID: b14c4d7e52b28b63a93829dde9865265
+[2025-09-02 12:56:03] [IP:::1] [URI:/bteslife/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-02 12:56:03] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN ATTEMPT: user='admin', type_id=1
+[2025-09-02 12:56:03] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN SUCCESS: user='admin', role='Administrator'
+[2025-09-02 12:56:04] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-02 12:56:04] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-02 12:56:46] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-02 12:56:46] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-02 12:56:52] [IP:::1] [URI:/bteslife/] Database connection SUCCESS.
+[2025-09-02 12:56:52] [IP:::1] [URI:/bteslife/] Index page loaded. Session ID: ed2b6aee7ff166eaba6039aa766edb4a
+[2025-09-02 12:58:23] [IP:::1] [URI:/bteslife/] Database connection SUCCESS.
+[2025-09-02 12:58:23] [IP:::1] [URI:/bteslife/] Index page loaded. Session ID: ed2b6aee7ff166eaba6039aa766edb4a
+[2025-09-02 12:58:42] [IP:::1] [URI:/bteslife/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-02 12:58:42] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN ATTEMPT: user='admin', type_id=1
+[2025-09-02 12:58:42] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN SUCCESS: user='admin', role='Administrator'
+[2025-09-02 12:58:43] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-02 12:58:43] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-02 12:58:45] [IP:::1] [URI:/bteslife/index.php] Database connection SUCCESS.
+[2025-09-02 12:58:45] [IP:::1] [URI:/bteslife/index.php] Index page loaded. Session ID: 4b1c87cea3cf0cb4da88641fbf94072c
+[2025-09-02 12:59:29] [IP:::1] [URI:/bteslife/index.php] Database connection SUCCESS.
+[2025-09-02 12:59:29] [IP:::1] [URI:/bteslife/index.php] Index page loaded. Session ID: 4b1c87cea3cf0cb4da88641fbf94072c
+[2025-09-02 12:59:42] [IP:::1] [URI:/bteslife/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-02 12:59:42] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN ATTEMPT: user='admin', type_id=1
+[2025-09-02 12:59:42] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN SUCCESS: user='admin', role='Administrator'
+[2025-09-02 12:59:43] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-02 12:59:43] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-02 13:04:07] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-02 13:04:07] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD (Pro): accessed by admin (Administrator)
+[2025-09-02 13:05:28] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-02 13:05:28] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-02 13:09:41] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-02 13:09:41] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMINLITE DASHBOARD: accessed by admin (Administrator)
+[2025-09-02 13:10:21] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-02 13:10:21] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMINLITE DASHBOARD: accessed by admin (Administrator)
+[2025-09-02 13:11:34] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-02 13:11:34] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMINLITE DASHBOARD: accessed by admin (Administrator)
+[2025-09-02 13:12:27] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-02 13:12:27] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-02 13:14:01] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-02 13:14:01] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMINLITE DASHBOARD: accessed by admin (Administrator)
+[2025-09-02 13:22:55] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-02 13:24:58] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-02 13:24:58] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMINLITE DASHBOARD: accessed by admin (Administrator)
+[2025-09-02 13:25:19] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-02 13:25:19] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-02 13:25:32] [IP:::1] [URI:/bteslife/index.php] Database connection SUCCESS.
+[2025-09-02 13:25:32] [IP:::1] [URI:/bteslife/index.php] Index page loaded. Session ID: 6035b63e8c5d10a59f9c166d1391a5ca
+[2025-09-02 13:32:45] [IP:::1] [URI:/bteslife/index.php] Database connection SUCCESS.
+[2025-09-02 13:32:45] [IP:::1] [URI:/bteslife/index.php] Index page loaded. Session ID: 6035b63e8c5d10a59f9c166d1391a5ca
+[2025-09-02 13:32:55] [IP:::1] [URI:/bteslife/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-02 13:32:55] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN ATTEMPT: user='admin', type_id=1
+[2025-09-02 13:32:55] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN SUCCESS: user='admin', role='Administrator'
+[2025-09-02 13:32:56] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-02 13:32:56] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-02 13:44:54] [IP:::1] [URI:/bteslife/index.php] Database connection SUCCESS.
+[2025-09-02 13:44:54] [IP:::1] [URI:/bteslife/index.php] Index page loaded. Session ID: 6035b63e8c5d10a59f9c166d1391a5ca
+[2025-09-02 13:44:56] [IP:::1] [URI:/bteslife/index.php] Database connection SUCCESS.
+[2025-09-02 13:44:56] [IP:::1] [URI:/bteslife/index.php] Index page loaded. Session ID: 6035b63e8c5d10a59f9c166d1391a5ca
+[2025-09-02 13:49:02] [IP:::1] [URI:/bteslife/index.php] Database connection SUCCESS.
+[2025-09-02 13:49:02] [IP:::1] [URI:/bteslife/index.php] Index page loaded. Session ID: 6035b63e8c5d10a59f9c166d1391a5ca
+[2025-09-02 13:49:09] [IP:::1] [URI:/bteslife/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-02 13:49:09] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN ATTEMPT: user='admin', type_id=1
+[2025-09-02 13:49:09] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN SUCCESS: user='admin', role='Administrator'
+[2025-09-02 13:49:10] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-02 13:49:10] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-02 13:50:07] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-02 13:50:07] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-02 13:50:21] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-02 13:50:21] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-02 13:50:48] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-02 13:50:48] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-02 13:51:14] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-02 13:51:14] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-02 13:51:28] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-02 13:51:28] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-02 13:51:30] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-02 13:51:30] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-02 13:53:52] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-02 13:53:52] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-02 13:56:02] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-02 13:56:02] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-02 13:56:40] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-02 13:56:40] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-02 13:57:22] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-02 13:57:22] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-02 13:58:13] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-02 13:58:13] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-02 13:58:44] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-02 13:58:44] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-02 13:59:18] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-02 13:59:18] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-02 13:59:50] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-02 13:59:50] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-02 14:00:34] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-02 14:00:34] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-02 14:01:37] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-02 14:01:37] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-02 14:01:49] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-02 14:01:49] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-02 14:01:50] [IP:::1] [URI:/bteslife/index.php] Database connection SUCCESS.
+[2025-09-02 14:01:50] [IP:::1] [URI:/bteslife/index.php] Index page loaded. Session ID: 45d3917f137533f3fcea2d2884a2a0d2
+[2025-09-02 14:02:02] [IP:::1] [URI:/bteslife/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-02 14:02:02] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN ATTEMPT: user='admin', type_id=1
+[2025-09-02 14:02:02] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN SUCCESS: user='admin', role='Administrator'
+[2025-09-02 14:02:03] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-02 14:02:03] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)

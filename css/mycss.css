@@ -1,0 +1,39 @@
+    :root{
+      --brand:#0d6efd;
+      --brand-2:#7028e4;
+      --brand-3:#e5b2ca;
+    }
+    body{ background: #f7f9fc; }
+    .navbar{ box-shadow: 0 6px 16px rgba(13, 110, 253, .08); }
+    .brand-badge{
+      font-weight:700; letter-spacing:.5px; color:#0d6efd;
+    }
+
+    /* Hero */
+    .hero{
+      position: relative; overflow: hidden;
+      border-radius: 1.25rem; /* rounded-2xl */
+      background: radial-gradient(1200px 500px at 0% 0%, rgba(13,110,253,.12), transparent),
+                  linear-gradient(135deg, rgba(13,110,253,.12), rgba(112,40,228,.10));
+      backdrop-filter: blur(2px);
+    }
+    .hero .halo{
+      position:absolute; inset:auto -20% -40% -20%; height:60%;
+      background: radial-gradient(60% 60% at 50% 50%, rgba(13,110,253,.15), transparent 70%);
+      filter: blur(45px);
+    }
+    .card-hover{
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .card-hover:hover{
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(13,110,253,.12);
+    }
+    .chip{
+      display:inline-flex; align-items:center; gap:.5rem;
+      padding:.35rem .75rem; border-radius:999px; font-size:.87rem; font-weight:600;
+      background:#eef4ff; color:#0d6efd;
+    }
+    .stat{ border-radius:1rem; background:white; box-shadow:0 10px 24px rgba(0,0,0,.04); }
+
+    .footer{ color:#6c757d; }
