@@ -1,11 +1,21 @@
 <?php
-session_start();
-require_once __DIR__ . '/../modules/auth/session_guard.php';
-require_role(['Administrator']); // only admins can access
+  session_start();
+  require_once __DIR__ . '/../modules/auth/session_guard.php';
+  require_role(['Administrator']); // only admins can access
 
-include_once __DIR__ . '/../db.php';
-include_once __DIR__ . '/../logger.php';
-log_event("ADMIN DASHBOARD: accessed by {$_SESSION['USERNAME']} ({$_SESSION['TYPE']})");
+  include_once __DIR__ . '/../db.php';
+  include_once __DIR__ . '/../logger.php';
+  log_event("ADMIN DASHBOARD: accessed by {$_SESSION['USERNAME']} ({$_SESSION['TYPE']})");
+
+
+  $settings = "SELECT * FROM `tblsettings`
+  INNER JOIN tblacademic_years on tblacademic_years.ayid=tblsettings.ayid LIMIT 1";
+  $runsettings = mysqli_query($conn, $settings);
+  $rowsettings = mysqli_fetch_assoc($runsettings);
+  $_SESSION['ays'] = $rowsettings['ayfrom'].'-'.$rowsettings['ayfrom'];
+  $_SESSION['ayid'] = $rowsettings['ayid'];
+
+
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +25,7 @@ log_event("ADMIN DASHBOARD: accessed by {$_SESSION['USERNAME']} ({$_SESSION['TYP
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard: <?php echo $rowconfig['systemname'] ?></title>
+  <title>Admin Dashboard</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -37,14 +47,7 @@ log_event("ADMIN DASHBOARD: accessed by {$_SESSION['USERNAME']} ({$_SESSION['TYP
   <link href="../assets/vendor/simple-datatables/style.css" rel="stylesheet">
   <link href="../assets/vendor/bootstrap/css/dataTables.bootstrap5.min.css" rel="stylesheet">
 
-    <!-- Bootstrap 5 CSS -->
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> -->
-
-    <!-- DataTables CSS (Bootstrap 5 Integration) -->
-    <!-- <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet"> -->
-
-
-  <!-- Template Main CSS File -->
+   <!-- Template Main CSS File -->
   <link href="../assets/css/style.css" rel="stylesheet">
 <style>
     .search-item.active {
@@ -59,7 +62,7 @@ log_event("ADMIN DASHBOARD: accessed by {$_SESSION['USERNAME']} ({$_SESSION['TYP
 </style>
 </head>
 
-<body onload="get_student_count();get_academic_year();load_students_reports();">
+<body onload="get_ay();">
 
 
 
@@ -89,7 +92,7 @@ log_event("ADMIN DASHBOARD: accessed by {$_SESSION['USERNAME']} ({$_SESSION['TYP
         <div class="col-lg-12">
           <div class="row g-3 align-items-stretch">
             <!-- Sales Card -->
-            <div class="col-lg-4" style="cursor: pointer;" onclick="student_management();">
+            <div class="col-lg-3" style="cursor: pointer;" onclick="student_management();">
               <div class="card info-card sales-card h-100">
 
                 <div class="filter">
@@ -106,7 +109,7 @@ log_event("ADMIN DASHBOARD: accessed by {$_SESSION['USERNAME']} ({$_SESSION['TYP
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Manage Students <span>| <button class="btn btn-info btn-sm">F7</button></span></h5>
+                  <h5 class="card-title">Student Records <span>| All</span></h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -124,7 +127,7 @@ log_event("ADMIN DASHBOARD: accessed by {$_SESSION['USERNAME']} ({$_SESSION['TYP
             </div><!-- End Sales Card -->
 
             <!-- MANAGE SETTINGS -->
-            <div class="col-lg-4">
+            <div class="col-lg-3">
               <div class="card info-card sales-card h-100">
                 <div class="filter">
                   <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
@@ -155,7 +158,7 @@ log_event("ADMIN DASHBOARD: accessed by {$_SESSION['USERNAME']} ({$_SESSION['TYP
 
             </div>
             <!-- LOAD BIO ATTENDANCE LOG -->
-            <div class="col-lg-4" onclick="loading_fees_modals();">
+            <div class="col-lg-3" onclick="loading_fees_modals();">
               <div class="card info-card sales-card h-100">
                 <div class="filter">
                   <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
@@ -193,7 +196,46 @@ log_event("ADMIN DASHBOARD: accessed by {$_SESSION['USERNAME']} ({$_SESSION['TYP
                       </div>
                     </a>
               </div>
+            </div>
 
+            <div class="col-lg-3" onclick="loading_fees_modals();">
+              <div class="card info-card sales-card h-100">
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
+                    <a href="#" style="text-decoration: none; color: inherit;">
+                      <div class="card-body">
+                        <h5 class="card-title">Manage Transaction <span>| <button class="btn btn-info btn-sm">F6</button></span></h5>
+                        <div class="d-flex align-items-center">
+                          <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                            <i class='bx bx-log-in-circle'></i>
+                          </div>
+                          <div class="ps-3">
+                            <h6 id="get_bio_logs">
+                              <?php 
+                                $get_hist = "SELECT count(studentid) as trans_count FROM `tblpayments_history`";
+                                $runget_hist = mysqli_query($conn, $get_hist);
+                                if($runget_hist){
+                                  $row_gethist = mysqli_fetch_assoc($runget_hist);
+                                  echo $row_gethist['trans_count'];
+                                }
+                              ?>
+                            </h6>
+                            <span class="text-danger small pt-1 fw-bold"></span> 
+                            <span class="text-muted small pt-2 ps-1">transactions</span>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+              </div>
             </div>
 
             <!-- Reports -->
@@ -217,6 +259,9 @@ log_event("ADMIN DASHBOARD: accessed by {$_SESSION['USERNAME']} ({$_SESSION['TYP
                 <div class="card-body">
                   <h5 class="card-title">Reports</h5>
                   <div id="main_data"></div>
+
+
+                  <?php echo $_SESSION['ays'] ?>
                           <div id="loader_students_reports" class="text-center" style="display: none;">
                             <img src="../loader.gif" alt="Loading..." width="10%">
                           </div>
@@ -249,149 +294,7 @@ log_event("ADMIN DASHBOARD: accessed by {$_SESSION['USERNAME']} ({$_SESSION['TYP
           </div>
         </div><!-- End Left side columns -->
 
-        <div class="modal fade" id="modal_class" tabindex="-1" aria-labelledby="modalLabel1" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
-          <div class="modal-dialog modal-xl">
-            <div class="modal-content shadow-lg">
-              <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title" id="modalLabel1">Add Student</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
 
-              <div class="modal-body">
-                <form id="studentForm">        
-                  <div class="row">
-
-                    <div class="col-lg-4">
-                      <label for="grade_lev">Student ID</label>
-                      <input type="text" class="form-control" id="studentid" placeholder="Enter Student ID">
-                    </div>           
-                  </div>
-                    <div class="row">
-                      <div class="col-lg-4">
-                        <label for="firstname">Firstname</label>
-                        <input type="text" class="form-control" id="firstname">
-                      </div>
-                      <div class="col-lg-4">
-                        <label for="middlename">Middle Name</label>
-                        <input type="text" class="form-control" id="middlename">
-                      </div>
-                      <div class="col-lg-4">
-                        <label for="lastname">Lastname</label>
-                        <input type="text" class="form-control" id="lastname">
-                      </div>
-                    </div>
-                    <div class="row">
-                    <div class="col-lg-2">
-                      <label for="grade_lev">Grade Level</label>
-                      <select id="grade_lev" class="form-control">
-                        <?php 
-                          $grade_level = "SELECT * FROM `tblgradelevel` ORDER BY grade_level_desc ASC";
-                          $rungrade_level = mysqli_query($conn, $grade_level);
-                          while($rowgrade_level = mysqli_fetch_assoc($rungrade_level)){
-                            echo
-                            '
-                              <option value="'.$rowgrade_level['gradeid'].'">'.$rowgrade_level['grade_level_desc'].'</option>
-                            ';
-                          }
-                        ?>
-                        
-                      </select>
-                    </div>
-                    <div class="col-lg-2">
-                      <label for="secid">Section</label>
-                      <select id="secid" class="form-control">
-                        <?php 
-                          $grade_section = "SELECT * FROM `tblsectioning` ORDER BY sec_name ASC";
-                          $rungrade_section = mysqli_query($conn, $grade_section);
-                          while($rowgrade_section = mysqli_fetch_assoc($rungrade_section)){
-                            echo
-                            '
-                              <option value="'.$rowgrade_section['secid'].'">'.$rowgrade_section['sec_name'].'</option>
-                            ';
-                          }
-                        ?>
-                        
-                      </select>
-                    </div>              
-                    </div>
-                  </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-                <button onclick="save_student();" type="button" class="btn btn-primary btn-sm">Saving Students</button>
-              </div>
-              <div class="modal-body">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div id="main_data">
-                          <div id="loader_students" class="text-center" style="display: none;">
-                            <img src="../loader.gif" alt="Loading..." width="10%">
-                          </div>
-                          <div id="loading_students">Loading students</div>
-                        </div> 
-                    </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-
-        <div class="modal fade" id="modal_academic_year" tabindex="-1" aria-labelledby="modalLabel1" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content shadow-lg">
-              <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title" id="modalLabel1">Manage Fees</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-
-              <div class="modal-body">
-                <form id="paymentForm">        
-                  <div class="row">
-                    <div class="col-lg-12">
-                      <label for="acad_year">Select Academic Year</label>
-                      <select id="acad_year" class="form-control" onchange="loading_fees();">
-                          <?php 
-                            $select_ay = "SELECT * FROM `tblacademic_years` ORDER by ay DESC";
-                            $runselect_ay = mysqli_query($conn, $select_ay);
-                            while($row_ay = mysqli_fetch_assoc($runselect_ay)){
-                              echo '<option value="'.$row_ay['acayearid'].'">'.$row_ay['ay'].'</option>';
-                            }
-                          ?>
-                      </select>
-                    </div>
-                    <div class="col-lg-8">
-                      <label for="fee_type">Fees Description</label>
-                      <input type="text" class="form-control" id="fee_type">
-                    </div>   
-                    <div class="col-lg-4">
-                      <label for="fee_amount">Fees Amount</label>
-                      <input type="text" class="form-control" id="fee_amount">
-                    </div>                 
-                  </div>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-                <button onclick="saving_fee_amount();" type="button" class="btn btn-primary btn-sm">Saving Fees</button>
-              </div>
-              <div class="modal-body">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div id="main_data">
-                          <div id="loader_students_fee" class="text-center" style="display: none;">
-                            <img src="../loader.gif" alt="Loading..." width="10%">
-                          </div>
-                          <div id="loading_students_fee">Loading fees</div>
-                        </div> 
-                    </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
 
         <div class="modal fade" id="modal_student_search" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-lg">
@@ -417,73 +320,6 @@ log_event("ADMIN DASHBOARD: accessed by {$_SESSION['USERNAME']} ({$_SESSION['TYP
         </div>
 
 
-      <div class="modal fade" id="modal_payment" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-          <div class="modal-content shadow">
-            <div class="modal-header bg-success text-white">
-              <h5 class="modal-title" id="paymentModalLabel">Process Payment</h5>
-              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-              <div class="row">
-                <!-- LEFT: Profile -->
-                <div class="col-lg-4 border-end">
-                  <div class="text-center" id="loading_student_info">
-                    <!-- student image and info here -->
-                  </div>
-                </div>
-
-                <!-- RIGHT: Payment Processing -->
-                <div class="col-lg-8">
-                  <input type="hidden" id="pay_studentid" readonly>
-                  <div id="payment_content">
-                    <!-- Payment form loads here via AJAX -->
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="modal fade" id="modal_payment_preview" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-          <div class="modal-content shadow">
-            <div class="modal-header bg-warning text-white">
-              <h5 class="modal-title" id="paymentModalLabel">Payment Preview</h5>
-              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" onclick="modal_payment_preview_close()"></button>
-            </div>
-            <div class="modal-body">
-              <div id="payment_previews"></div>
-            </div>
-            <div class="modal-footer">
-              <button class="btn btn-secondary btn-sm" onclick="modal_payment_preview_close()" data-bs-dismiss="modal">Close</button>
-
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="modal fade" id="modal_payment_browse" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-          <div class="modal-content shadow">
-            <div class="modal-header bg-info text-white">
-              <h5 class="modal-title" id="paymentModalLabel">Payment Preview</h5>
-              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-              <div id="payment_browse_details"></div>
-            </div>
-            <div class="modal-footer">
-              <button class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div class="modal fade" id="modal_manage_settings" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
           <div class="modal-content shadow">
@@ -493,9 +329,26 @@ log_event("ADMIN DASHBOARD: accessed by {$_SESSION['USERNAME']} ({$_SESSION['TYP
             </div>
             <div class="modal-body">
               <div class="row">
-                
+                <div class="col-lg-12">
+                  <label for="ayids">Select Academic Year</label>
+                  <select id="ayids" class="form-control">
+                    <?php 
+                      $settings_ay = "SELECT * FROM `tblacademic_years`";
+                      $runsettings_ay = mysqli_query($conn, $settings_ay);
+                      while($rowsettings_ay=mysqli_fetch_assoc($runsettings_ay)){
+                        echo'<option value="'.$rowsettings_ay['ayid'].'">'.$rowsettings_ay['ayfrom'].'-'.$rowsettings_ay['ayto'].'</option>';
+                      }
+                    ?>
+                    
+                  </select>
+                  
+                </div>
               </div>
-              <div id="get_aca_year_settings"></div>
+              <div class="row">
+                <div class="col-lg-12 py-2">
+                  <button onclick="update_ay()" class="btn btn-primary btn-sm">Update Academic Year</button>
+                </div>
+              </div>
             </div>
             <div class="modal-footer">
               <button class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
@@ -504,45 +357,7 @@ log_event("ADMIN DASHBOARD: accessed by {$_SESSION['USERNAME']} ({$_SESSION['TYP
         </div>
       </div>    
 
-      <div class="modal fade" id="modal_manage_history" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content shadow">
-            <div class="modal-header bg-info text-white">
-              <h5 class="modal-title" id="paymentModalLabel">Manage Academic Year</h5>
-              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" onclick="close_payment_print();"></button>
-            </div>
-            <div class="modal-body">
-              <div class="row">
-                
-              </div>
-              <div id="get_selected_print"></div>
-            </div>
-            <div class="modal-footer">
-              <button class="btn btn-secondary btn-sm" data-bs-dismiss="modal" onclick="close_payment_print();">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="modal fade" id="modal_print_preview" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content shadow">
-            <div class="modal-header bg-info text-white">
-              <h5 class="modal-title" id="paymentModalLabel">Ready to Print</h5>
-              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" onclick="close_payment_print();"></button>
-            </div>
-            <div class="modal-body">
-              <div class="row">
-                
-              </div>
-              <div id="get_selected_final_print"></div>
-            </div>
-            <div class="modal-footer">
-              <button class="btn btn-secondary btn-sm" data-bs-dismiss="modal" onclick="close_payment_print();">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
 
       </div>
     </section>
@@ -584,6 +399,53 @@ log_event("ADMIN DASHBOARD: accessed by {$_SESSION['USERNAME']} ({$_SESSION['TYP
 
   <script>
 
+    function update_ay(){
+      var ayids = $('#ayids').val();
+      Swal.fire({
+        title: "Updating Academic Year?",
+        text: "This will change the records appears in the dashboard!",
+        icon: "info",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, proceed it!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+             $.ajax({
+                type: "POST",
+                url: "query_dasboard.php",
+                data: {
+                  "updating_ay": "1",
+                  "ayids" : ayids
+                },
+                success: function () {
+                    get_ay();
+                    $('#modal_manage_settings').modal('hide');
+                }
+              }); 
+        }
+      });
+
+     
+    }
+
+    function get_ay(){
+       $.ajax({
+          type: "POST",
+          url: "query_dasboard.php",
+          data: {
+            "loading_ay": "1"
+          },
+          success: function (response) {
+              $('#curr_ay').html(response);
+          }
+        }); 
+       
+    }
+
+    function manage_ay(){
+      $('#modal_manage_settings').modal('show');
+    }
 
 
   </script>
