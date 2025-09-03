@@ -10,13 +10,50 @@
   INNER JOIN tblacademic_years on tblacademic_years.ayid=tblsettings.ayid LIMIT 1";
   $runsettings = mysqli_query($conn, $settings);
   $rowsettings = mysqli_fetch_assoc($runsettings);
-  $_SESSION['ays'] = $rowsettings['ayfrom'].'-'.$rowsettings['ayfrom'];
-  $_SESSION['ayid'] = $rowsettings['ayid'];
+  $ayid = $rowsettings['ayid'];
 
 
   // ===================================================================
+
+  if(isset($_POST['saving_curr'])){
+    $gradelevelid = $_POST['gradelevelid'];
+    $subjectids = $_POST['subjectids'];    
+    $insert = "INSERT INTO `tblcurriculum` (`levelid`, `subjectid`, `setid`) VALUES ('$gradelevelid', '$subjectids', '$ayid')";
+    $runinsert = mysqli_query($conn, $insert);
+    echo $insert;
+  }
+
   if(isset($_POST['loading_curr'])){
-    echo "string";
+    echo
+    '';?>
+      <table class="table table-sm table-striped table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php 
+            $select = "SELECT * FROM `tblcurriculum`";
+            $runselect = mysqli_query($conn, $select);
+            while($rowselect = mysqli_fetch_assoc($runselect)){
+              echo
+              '
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              ';
+            }
+
+          ?>
+
+        </tbody>
+      </table>
+    <?php echo'';
   }
 
 ?>

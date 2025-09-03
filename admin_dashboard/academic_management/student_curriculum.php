@@ -111,12 +111,47 @@
                 <div class="card-body">
                     <div class="row">
                       <div class="col-lg-12">
-<div class="btn-group py-2" role="group" aria-label="Basic mixed styles example">
-  <button type="button" class="btn btn-danger">Left</button>
-  <button type="button" class="btn btn-warning">Middle</button>
-  <button type="button" class="btn btn-success">Right</button>
-</div>
-<hr>
+<!--                         <div class="btn-group py-2" role="group" aria-label="Basic mixed styles example">
+                          <button onclick="adding_curr()" type="button" class="btn btn-danger"><i class='bx bx-plus-circle'></i></button>
+                          <button onclick="adding_curr()" type="button" class="btn btn-success">Add Curriculum</button>
+                        </div>
+                        <hr> -->
+<br><br>
+                      <div class="row">
+                        <div class="col-lg-3">
+                          <label for="gradelevelid">Select Grade Level</label>
+                          <select id="gradelevelid" class="form-control">
+                            <?php 
+                              $gradelevel = "SELECT * FROM `tblgradelevel`";
+                              $rungradelevel = mysqli_query($conn, $gradelevel);
+                              while($rowgradelevel=mysqli_fetch_assoc($rungradelevel)){
+                                echo'<option value="'.$rowgradelevel['levelid'].'">'.$rowgradelevel['level_descrition'].'</option>';
+                              }
+                            ?>
+                            
+                          </select>
+                        </div>
+                        <div class="col-lg-9">
+                          <label for="subjectids">Select Subject</label>
+                          <select id="subjectids" class="form-control">
+                            <?php 
+                              $subjects = "SELECT * FROM `tblsubjects`";
+                              $runsubjects = mysqli_query($conn, $subjects);
+                              while($rowsubjects=mysqli_fetch_assoc($runsubjects)){
+                                echo'<option value="'.$rowsubjects['subjectid'].'">'.$rowsubjects['subject_description'].'</option>';
+                              }
+                            ?>
+                            
+                          </select>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-12 py-2">
+                          <button onclick="add_new_subjects()" class="btn btn-primary btn-sm float-end">Add to list</button>
+                        </div>
+                      </div>
+                        <hr>
+                        <div id="test">test</div>
                         <div id="main_data">
                           <div id="loader" class="text-center" style="display: none;">
                             <img src="../../loader.gif" alt="Loading..." width="10%">
@@ -141,6 +176,60 @@
 
 
       </div>
+
+
+<!--       <div class="modal fade" id="modal_curr" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content shadow">
+            <div class="modal-header bg-info text-white">
+              <h5 class="modal-title" id="paymentModalLabel">Manage Academic Year</h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-lg-3">
+                  <label for="gradelevelid">Select Grade Level</label>
+                  <select id="gradelevelid" class="form-control">
+                    <?php 
+                      $gradelevel = "SELECT * FROM `tblgradelevel`";
+                      $rungradelevel = mysqli_query($conn, $gradelevel);
+                      while($rowgradelevel=mysqli_fetch_assoc($rungradelevel)){
+                        echo'<option value="'.$rowgradelevel['levelid'].'">'.$rowgradelevel['level_descrition'].'</option>';
+                      }
+                    ?>
+                    
+                  </select>
+                </div>
+                <div class="col-lg-9">
+                  <label for="gradelevelid">Select Subject</label>
+                  <select id="gradelevelid" class="form-control">
+                    <?php 
+                      $subjects = "SELECT * FROM `tblsubjects`";
+                      $runsubjects = mysqli_query($conn, $subjects);
+                      while($rowsubjects=mysqli_fetch_assoc($runsubjects)){
+                        echo'<option value="'.$rowsubjects['subjectid'].'">'.$rowsubjects['subject_description'].'</option>';
+                      }
+                    ?>
+                    
+                  </select>
+                </div>
+
+
+              </div>
+              <div class="row">
+                <div class="col-lg-12 py-2">
+                  <button onclick="add_new_subjects()" class="btn btn-primary btn-sm float-end">Add to list</button>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>   -->  
+
+
     </section>
 
   </main><!-- End #main -->
@@ -180,33 +269,55 @@
 
   <script>
 
+    function add_new_subjects(){
+      var gradelevelid = $('#gradelevelid').val();
+      var subjectids = $('#subjectids').val();
+         $.ajax({
+            type: "POST",
+            url: "query_curriculum.php",
+            data: {
+              "saving_curr": "1",
+              "gradelevelid" : gradelevelid,
+              "subjectids" : subjectids
+            },
+            success: function (response) {
+                $('#test').html(response);
+            }
+          }); 
+         alert();
+    }
 
-        function load_buildings() {
-            $('#loader').show(); // Show the loader
-            $('#content_area').hide(); // Hide the content while loading
+    function adding_curr(){
+      $('#modal_curr').modal('show');
+    }
 
-            $.ajax({
-                type: "POST",
-                url: "query_curriculum.php",
-                data: { 
-                "loading_curr": '1' 
-              },
-                success: function(response) {
-                    setTimeout(() => {
-                        $('#content_area').html(response);
-                    }, 300); // Small delay for smoother loading
-                },
-                error: function(xhr, status, error) {
-                    $('#content_area').html('<p class="text-danger">Error loading data.</p>');
-                },
-                complete: function() {
-                    setTimeout(() => {
-                        $('#loader').hide(); // Hide the loader
-                        $('#content_area').show(); // Show the main content
-                    }, 500); // Delay ensures a smooth transition
-                }
-            });
-        }
+
+    function load_buildings() {
+        $('#loader').show(); // Show the loader
+        $('#content_area').hide(); // Hide the content while loading
+
+        $.ajax({
+            type: "POST",
+            url: "query_curriculum.php",
+            data: { 
+            "loading_curr": '1' 
+          },
+            success: function(response) {
+                setTimeout(() => {
+                    $('#content_area').html(response);
+                }, 300); // Small delay for smoother loading
+            },
+            error: function(xhr, status, error) {
+                $('#content_area').html('<p class="text-danger">Error loading data.</p>');
+            },
+            complete: function() {
+                setTimeout(() => {
+                    $('#loader').hide(); // Hide the loader
+                    $('#content_area').show(); // Show the main content
+                }, 500); // Delay ensures a smooth transition
+            }
+        });
+    }
 
     function get_ay(){
 
