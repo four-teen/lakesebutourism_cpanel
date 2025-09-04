@@ -327,6 +327,9 @@
       // });
     }
     loadDashboardStats();
+    $('#loginModal').on('shown.bs.modal', function () {
+      $('#login_user').trigger('focus');
+    });    
   </script>
 </body>
 </html>

@@ -15,6 +15,11 @@
 
   // ===================================================================
 
+  if(isset($_POST['delete_curr'])){
+    $delete = "DELETE FROM `tblcurriculum` where currid='$_POST[currid]'";
+    $rundelete = mysqli_query($conn, $delete);
+  }
+
   if(isset($_POST['saving_curr'])){
     $gradelevelid = $_POST['gradelevelid'];
     $subjectids = $_POST['subjectids'];    
@@ -30,21 +35,29 @@
         <thead>
           <tr>
             <th>#</th>
-            <th></th>
-            <th></th>
+            <th>SUBJECT DESCRIPTION</th>
+            <th>ACTION</th>
           </tr>
         </thead>
         <tbody>
           <?php 
-            $select = "SELECT * FROM `tblcurriculum`";
+            $select = "SELECT * FROM `tblcurriculum`
+            INNER JOIN tblsubjects on tblsubjects.subjectid=tblcurriculum.subjectid
+            INNER JOIN tblgradelevel on tblgradelevel.levelid=tblcurriculum.levelid
+            INNER JOIN tblacademic_years on tblacademic_years.ayid=tblcurriculum.setid
+            WHERE tblgradelevel.levelid='$_POST[gradelevelid]'";
             $runselect = mysqli_query($conn, $select);
+            $count = 0;
             while($rowselect = mysqli_fetch_assoc($runselect)){
               echo
               '
               <tr>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td class="align-middle" width="1%">'.++$count.'.</td>
+                <td class="align-middle">'.strtoupper($rowselect['subject_description']).'</td>
+                <td class="align-middle text-center text-nowrap" width="1%">
+                  <button onclick="removed_curr(\''.$rowselect['currid'].'\')" type="button" class="btn btn-danger"><i class="bx bx-trash"></i>
+                  </button>
+                </td>
               </tr>
               ';
             }

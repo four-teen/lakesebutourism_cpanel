@@ -109,7 +109,7 @@
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Student Records <span>| All</span></h5>
+                  <h5 class="card-title">Manage Enrolment <span>| All</span></h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -141,7 +141,7 @@
                 </div>
                     <a href="#" style="text-decoration: none; color: inherit;">
                       <div class="card-body">
-                        <h5 class="card-title">Manage Settings <span>| All</span></h5>
+                        <h5 class="card-title">Manage Curriculum <span>| All</span></h5>
                         <div class="d-flex align-items-center">
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <i class='bx bxs-cog'></i>
