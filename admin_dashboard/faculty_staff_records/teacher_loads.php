@@ -63,10 +63,11 @@ $_SESSION['ayid'] = $rowsettings['ayid'];
     <li class="nav-item">
       <a class="nav-link collapsed" data-bs-toggle="collapse" href="#teachers-nav" role="button" aria-expanded="true" aria-controls="teachers-nav">
         <i class="bx bx-user text-primary"></i> <span>Teachers and Staff Records</span>
+
       </a>
       <ul id="teachers-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
-        <li><a class="active" href="#"><i class="bi bi-circle"></i><span>Faculty Profile</span></a></li>
-        <li><a href="teacher_loads.php"><i class="bi bi-circle"></i><span>Teaching Loads & Schedules</span></a></li>
+        <li><a href="teacher_profile.php"><i class="bi bi-circle"></i><span>Faculty Profile</span></a></li>
+        <li><a class="active" href="teacher_loads.php"><i class="bi bi-circle"></i><span>Teaching Loads & Schedules</span></a></li>
         <li><a href="#"><i class="bi bi-circle"></i><span>Performance Monitoring</span></a></li>
       </ul>
     </li>
@@ -76,7 +77,7 @@ $_SESSION['ayid'] = $rowsettings['ayid'];
 
 <main id="main" class="main">
   <div class="pagetitle">
-    <h1>Manage Teachers Profile</h1>
+    <h1>Manage Teachers Load</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="../dashboard_admin.php">Home</a></li>
@@ -195,14 +196,6 @@ $_SESSION['ayid'] = $rowsettings['ayid'];
 
 <script>
 
-    function manageTeacher(buttonElement) {
-      const teacherId = buttonElement.dataset.id;
-
-
-      window.location='teacher_loads.php?teacherId='+teacherId;
-
-    }
-
     function load_fac_profile() {
         $('#loader').show(); // Show the loader
         $('#content_area').hide(); // Hide the content while loading
@@ -213,14 +206,14 @@ $_SESSION['ayid'] = $rowsettings['ayid'];
             data: { 
             "loading_faculty_records": '1'
           },
-          success: function(response) {
-            $('#content_area').html(response);
-            // initialize here if needed
-            if ($.fn.DataTable.isDataTable('#tblTeachers')) {
-              $('#tblTeachers').DataTable().destroy();
-            }
-            $('#tblTeachers').DataTable({ pageLength: 10, lengthChange: false, order: [[2,'asc'],[3,'asc']] });
-          },
+success: function(response) {
+  $('#content_area').html(response);
+  // initialize here if needed
+  if ($.fn.DataTable.isDataTable('#tblTeachers')) {
+    $('#tblTeachers').DataTable().destroy();
+  }
+  $('#tblTeachers').DataTable({ pageLength: 10, lengthChange: false, order: [[2,'asc'],[3,'asc']] });
+},
             error: function(xhr, status, error) {
                 $('#content_area').html('<p class="text-danger">Error loading data.</p>');
             },

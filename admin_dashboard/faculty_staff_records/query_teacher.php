@@ -23,7 +23,8 @@ if (isset($_POST['loading_faculty_records'])) {
     <table id="tblTeachers" class="table table-striped table-bordered w-100">
       <thead>
         <tr>
-          <th style="width:60px">Photo</th>
+          <th></th>
+          <th style="width:1%">Photo</th>
           <th>Teacher ID</th>
           <th>Last Name</th>
           <th>First Name</th>
@@ -36,17 +37,21 @@ if (isset($_POST['loading_faculty_records'])) {
           $q = "SELECT teachersautoid, teachersid, firstname, middlename, lastname, teacher_image
                 FROM tblteachers ORDER BY lastname, firstname";
           $rs = mysqli_query($conn, $q);
+          $count = 0;
           while ($row = mysqli_fetch_assoc($rs)) {
             $img = teacher_img_src($row);
             echo '<tr>';
-            echo '  <td><img class="avatar" src="'.htmlspecialchars($img).'" onerror="this.src=\'../../assets/img/avatar-placeholder.png\'"></td>';
-            echo '  <td>'.htmlspecialchars($row['teachersid']).'</td>';
-            echo '  <td>'.htmlspecialchars($row['lastname']).'</td>';
-            echo '  <td>'.htmlspecialchars($row['firstname']).'</td>';
-            echo '  <td>'.htmlspecialchars($row['middlename']).'</td>';
-            echo '  <td class="text-center">
-                      <button class="btn btn-sm btn-primary btn-icon me-1" data-id="'.$row['teachersautoid'].'" onclick="editTeacher(this)"><i class="bi bi-pencil"></i></button>
-                      <button class="btn btn-sm btn-danger btn-icon" data-id="'.$row['teachersautoid'].'" onclick="delTeacher(this)"><i class="bi bi-trash"></i></button>
+            echo '  <td class="align-middle text-center" width="1%"><img class="avatar" src="'.htmlspecialchars($img).'" onerror="this.src=\'../../assets/img/avatar-placeholder.png\'"></td>';
+            echo '  <td class="align-middle">'.htmlspecialchars($row['teachersid']).'</td>';
+            echo '  <td class="align-middle">'.htmlspecialchars($row['lastname']).'</td>';
+            echo '  <td class="align-middle">'.htmlspecialchars($row['firstname']).'</td>';
+            echo '  <td class="align-middle">'.htmlspecialchars($row['middlename']).'</td>';
+            echo '  <td width="1%" class="text-center text-nowrap align-middle">
+                      <div class="btn-group py-2" role="group" aria-label="Basic mixed styles example">
+                          <button title="Manage Profile" class="btn btn-sm btn-warning" data-id="'.$row['teachersautoid'].'" onclick="manageTeacher(this)"><i class="bx bx-command"></i></button>
+                          <button title="Edit Profile" class="btn btn-sm btn-primary" data-id="'.$row['teachersautoid'].'" onclick="editTeacher(this)"><i class="bi bi-pencil"></i></button>
+                          <button title="Delete Profile" class="btn btn-sm btn-danger" data-id="'.$row['teachersautoid'].'" onclick="delTeacher(this)"><i class="bi bi-trash"></i></button>
+                      </div>
                     </td>';
             echo '</tr>';
           }

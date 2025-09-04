@@ -65,8 +65,34 @@
 
 <?php 
   include '../header.php';
-  include '../sidebar.php';
- ?>
+?>
+<!-- ======= Sidebar ======= -->
+<aside id="sidebar" class="sidebar">
+  <ul class="sidebar-nav" id="sidebar-nav">
+
+    <!-- Dashboard -->
+    <li class="nav-item">
+      <a class="nav-link" href="../dashboard_admin.php">
+        <i class="bi bi-grid"></i> <span>Dashboard</span>
+      </a>
+    </li>
+
+<li class="nav-item">
+  <a class="nav-link" href="#">
+    <i class="bi bi-journal-text text-primary"></i> <span>Curriculum and Academic Management</span>
+    <!-- <i class="bi bi-chevron-down ms-auto"></i> -->
+  </a>
+  <ul id="curriculum-nav" class="nav-content" data-bs-parent="#sidebar-nav">
+    <li><a href="#"><i class="bi bi-circle"></i><span>Class Scheduling</span></a></li>
+    <li><a href="student_curriculum.php"><i class="bi bi-circle"></i><span>Manage Curriculum</span></a></li>
+    <li><a href="#"><i class="bi bi-circle"></i><span>Assessment and Examination Records</span></a></li>
+  </ul>
+</li>
+
+
+  </ul>
+</aside>
+<!-- End Sidebar -->
 
   <main id="main" class="main">
 
@@ -74,7 +100,7 @@
       <h1>Manage Curriculum</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+          <li class="breadcrumb-item"><a href="../dashboard_admin.php">Home</a></li>
           <li class="breadcrumb-item active">Dashboard</li>
         </ol>
       </nav>

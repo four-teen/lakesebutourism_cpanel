@@ -259,31 +259,7 @@
                 <div class="card-body">
                   <h5 class="card-title">Reports</h5>
                   <div id="main_data"></div>
-
-
-                  <?php echo $_SESSION['ays'] ?>
-                          <div id="loader_students_reports" class="text-center" style="display: none;">
-                            <img src="../loader.gif" alt="Loading..." width="10%">
-                          </div>
-
-                        <div class="row">
-                          <div class="col-lg-6">
-                            <label for="get_acad_year">SELECT ACADEMIC YEAR</label>
-                          <select class="form-control" id="get_acad_year" onchange="load_students_reports()">
-                            <?php 
-                              $get_ay = "SELECT * FROM `tblacademic_years` ORDER BY ay DESC";
-                              $runget_ay = mysqli_query($conn, $get_ay);
-                              while($roway = mysqli_fetch_assoc($runget_ay)){
-                                echo'<option value="'.$roway['acayearid'].'">'.$roway['ay'].'</option>';
-                              }
-                            ?>
-                          </select>
-                          <hr>
-
-                            <div id="loading_students_reports"></div>
-                          </div>
-                        </div>
-                                            
+                                          
                 </div>
 
 
