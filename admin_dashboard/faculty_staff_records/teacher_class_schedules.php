@@ -6,13 +6,7 @@ require_role(['Administrator']);
 
 include_once __DIR__ . '/../../db.php';
 
-// get AY (keep your logic)
-$settings = "SELECT * FROM `tblsettings`
-  INNER JOIN tblacademic_years on tblacademic_years.ayid=tblsettings.ayid LIMIT 1";
-$runsettings = mysqli_query($conn, $settings);
-$rowsettings = mysqli_fetch_assoc($runsettings);
-$_SESSION['ays']  = $rowsettings['ayfrom'].'-'.$rowsettings['ayfrom'];
-$_SESSION['ayid'] = $rowsettings['ayid'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,7 +41,7 @@ $_SESSION['ayid'] = $rowsettings['ayid'];
   </style>
 </head>
 
-<body onload="load_fac_profile();get_ay()">
+<body onload="load_fac_workload();get_ay()">
 
 <?php include '../header.php'; ?>
 
@@ -63,10 +57,11 @@ $_SESSION['ayid'] = $rowsettings['ayid'];
     <li class="nav-item">
       <a class="nav-link collapsed" data-bs-toggle="collapse" href="#teachers-nav" role="button" aria-expanded="true" aria-controls="teachers-nav">
         <i class="bx bx-user text-primary"></i> <span>Teachers and Staff Records</span>
+
       </a>
       <ul id="teachers-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
-        <li><a class="active" href="teacher_profile.php"><i class="bi bi-circle"></i><span>Faculty Profile</span></a></li>
-        <li><a href="teacher_class_schedules.php"><i class="bi bi-circle"></i><span>Teaching Loads & Schedules</span></a></li>
+        <li><a href="teacher_profile.php"><i class="bi bi-circle"></i><span>Faculty Profile</span></a></li>
+        <li><a class="active" href="teacher_loads.php"><i class="bi bi-circle"></i><span>Teaching Loads & Schedules</span></a></li>
         <li><a href="#"><i class="bi bi-circle"></i><span>Performance Monitoring</span></a></li>
       </ul>
     </li>
@@ -76,10 +71,10 @@ $_SESSION['ayid'] = $rowsettings['ayid'];
 
 <main id="main" class="main">
   <div class="pagetitle">
-    <h1>Manage Teachers Profile</h1>
+    <h1>Manage Class Schedule</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="../dashboard_admin.php">Home</a></li>
+        <li class="breadcrumb-item"><a href="teacher_profile.php">Home</a></li>
         <li class="breadcrumb-item active">Teachers</li>
       </ol>
     </nav>
@@ -88,24 +83,74 @@ $_SESSION['ayid'] = $rowsettings['ayid'];
   <section class="section">
     <div class="card">
       <div class="card-body">
-        <div class="d-flex flex-wrap justify-content-between align-items-center pt-3 pb-2">
-          <div>
-            <h5 class="card-title mb-0">Faculty List</h5>
-           
-          </div>
-          <div>
-            <button class="btn btn-success" id="btnAdd">
-              <i class="bx bx-plus-circle me-1"></i> Add New Teacher
-            </button>
-          </div>
-        </div>
+        <div class="py-3">
 
-                        <div id="main_data">
-                          <div id="loader" class="text-center" style="display: none;">
-                            <img src="../../loader.gif" alt="Loading..." width="10%">
-                          </div>
-                          <div id="content_area"></div>
-                        </div>
+              <div class="row">
+                <div class="col-lg-2">
+                  <label for="gradelevelid">Select Grade Level</label>
+                  <select id="gradelevelid" class="form-control" onchange="load_curr()">
+                    <?php 
+                      $gradelevel = "SELECT * FROM `tblgradelevel`";
+                      $rungradelevel = mysqli_query($conn, $gradelevel);
+                      while($rowgradelevel=mysqli_fetch_assoc($rungradelevel)){
+                        echo'<option value="'.$rowgradelevel['levelid'].'">'.$rowgradelevel['level_descrition'].'</option>';
+                      }
+                    ?>
+
+                  </select>
+                </div>
+
+                <div class="col-lg-2">
+                  <label for="sectionid">Select Section</label>
+                  <select id="sectionid" class="form-control">
+                    <?php 
+                      $gradesection = "SELECT * FROM `tblsections` ORDER BY sectionsid ASC";
+                      $rungradesection = mysqli_query($conn, $gradesection);
+                      while($rowgradesection=mysqli_fetch_assoc($rungradesection)){
+                        echo'<option value="'.$rowgradesection['sectionsid'].'">'.$rowgradesection['section_desc'].'</option>';
+                      }
+                    ?>
+                  </select>
+                </div>
+
+                <div class="col-lg-4">
+                  <label for="adviserid">Select Adviser</label>
+                  <select id="adviserid" class="form-control">
+                    <?php 
+                      $gradeadviser = "SELECT * FROM `tblteachers` ORDER BY `teachersautoid` DESC";
+                      $rungradeadviser = mysqli_query($conn, $gradeadviser);
+                      while($rowgradeadviser=mysqli_fetch_assoc($rungradeadviser)){
+                        echo'<option value="'.$rowgradeadviser['teachersautoid'].'">'.$rowgradeadviser['lastname'].', '.$rowgradeadviser['firstname'].'</option>';
+                      }
+                    ?>
+                  </select>
+                </div>
+
+                <div class="col-lg-4">
+                  <label for="designationid">Select Designation</label>
+                  <select id="designationid" class="form-control">
+                    <?php 
+                      $teacher_designation = "SELECT * FROM `tbldesignation` ORDER BY `designation_desc` ASC";
+                      $runteacher_designation = mysqli_query($conn, $teacher_designation);
+                      while($rowteacher_designation=mysqli_fetch_assoc($runteacher_designation)){
+                        echo'<option value="'.$rowteacher_designation['designationid'].'">'.$rowteacher_designation['designation_desc'].'</option>';
+                      }
+                    ?>
+<!--                     <option value="10001">Break Time</option>
+                    <option value="10002">Lunch</option> -->
+                  </select>
+                </div>                
+
+
+              </div>
+
+        </div>
+        <div id="main_data">
+          <div id="loader" class="text-center" style="display: none;">
+            <img src="../../loader.gif" alt="Loading..." width="10%">
+          </div>
+          <div id="content_area"></div>
+        </div>
 
 
       </div>
@@ -130,50 +175,21 @@ $_SESSION['ayid'] = $rowsettings['ayid'];
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <form id="formTeacher" class="modal-content" enctype="multipart/form-data">
       <div class="modal-header">
-        <h5 class="modal-title" id="mTitle">Add Teacher</h5>
+        <h5 class="modal-title" id="mTitle">Add Schedule</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
       <div class="modal-body">
-        <!-- hidden fields -->
-        <input type="hidden" id="teachersautoid" name="teachersautoid">
-        <!-- carry old image when editing (if user doesn't upload a new one) -->
-        <input type="hidden" id="current_image" name="current_image">
-
-        <div class="row g-3">
-          <!-- preview -->
-          <div class="col-12 text-center">
-            <img id="previewImg" class="avatar-lg" src="../../assets/img/profile.png" alt="preview">
+        <div class="row">
+          <div class="col-lg-3">
+            <label for="timefrom">Time From</label>
+            <input type="time" class="form-control" id="timefrom">
           </div>
-
-          <!-- file input -->
-          <div class="col-12">
-            <label class="form-label">Upload Photo</label>
-            <input type="file" class="form-control" id="teacher_image" name="teacher_image" accept="image/*">
-            <div class="form-text">
-              JPG/PNG up to 2MB.</code>
-            </div>
+          <div class="col-lg-3">
+            <label for="timeto">Time To</label>
+            <input type="time" class="form-control" id="timeto">
           </div>
-
-          <div class="col-md-6">
-            <label class="form-label">Teacher ID</label>
-            <input type="text" class="form-control" id="teachersid" name="teachersid" required>
-          </div>
-          <div class="row">
-            <div class="col-md-4">
-              <label class="form-label">Last Name</label>
-              <input type="text" class="form-control text-uppercase" id="lastname" name="lastname" required>
-            </div>
-            <div class="col-md-4">
-              <label class="form-label">First Name</label>
-              <input type="text" class="form-control text-uppercase" id="firstname" name="firstname" required>
-            </div>
-            <div class="col-md-4">
-              <label class="form-label">Middle Name</label>
-              <input type="text" class="form-control text-uppercase" id="middlename" name="middlename">
-            </div>            
-          </div> 
-
+          <div class="col-lg-6"></div>
         </div>
       </div>
 
@@ -186,45 +202,6 @@ $_SESSION['ayid'] = $rowsettings['ayid'];
 </div>
 
 
-<!-- manage other info -->
-<div class="modal fade" id="teacher_details_Modal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <form id="formTeacher" class="modal-content" enctype="multipart/form-data">
-      <div class="modal-header">
-        <h5 class="modal-title" id="mTitle">Other Details</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-          <input type="hidden" id="the_teacher">
-          <div class="row">
-            <div class="col-lg-12">
-              <label for="designationid">Select Designation</label>
-              <select id="designationid" class="form-control" onchange="getting_details()">
-                <?php 
-                  $desig = "SELECT * FROM `tbldesignation`";
-                  $rundesig = mysqli_query($conn, $desig);
-                  while($rowdesig = mysqli_fetch_assoc($rundesig)){
-                    echo'<option value="'.$rowdesig['designationid'].'">'.$rowdesig['designation_desc'].'</option>';
-                  }
-                ?>
-              </select>
-            </div>
-            <div id="get_more_details"></div> 
-
-
-          </div>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-        <button onclick="saving_add_details()" type="submit" class="btn btn-primary" id="btnSave">Save</button>
-      </div>
-    </form>
-  </div>
-</div>
-
-
-
 <!-- Vendor JS -->
 <script src="../../assets/vendor/bootstrap/js/jquery-3.6.0.min.js"></script>
 <script src="../../assets/vendor/bootstrap/js/bootstrap5.bundle.min.js"></script>
@@ -234,82 +211,24 @@ $_SESSION['ayid'] = $rowsettings['ayid'];
 
 <script>
 
-    function saving_add_details(){
-      var designationid = $('#designationid').val();
-      var gradelevelid = $('#gradelevelid').val();
-      var sectionid = $('#sectionid').val();
-      var the_teacher = $('#the_teacher').val();
-      var ayid = '<?php echo $_SESSION['ayid'] ?>';
-
-       $.ajax({
-          type: "POST",
-          url: "query_teacher.php",
-          data: {
-            "saving_details": "1",
-            "designationid" : designationid,
-            "gradelevelid" : gradelevelid,
-            "sectionid" : sectionid,
-            "ayid" : ayid,
-            "the_teacher" : the_teacher
-          },
-          success: function () {
-              getting_details();
-          }
-        }); 
-
-    }
-
-
-    function getting_details(){
-      const designationid = $('#designationid').val();
-
-       $.ajax({
-          type: "POST",
-          url: "query_teacher.php",
-          data: {
-            "loading_details": "1",
-            "designationid" : designationid
-          },
-          success: function (response) {
-              $('#get_more_details').html(response);
-          }
-        }); 
-
-
-    }
-
-    function Teacherinfo(buttonElement) {
-      const teacherId = buttonElement.dataset.id;
-      $('#the_teacher').val(teacherId);
-      $('#teacher_details_Modal').modal('show');
-
-
-    }
-
-    function manageTeacher(buttonElement) {
-      const teacherId = buttonElement.dataset.id;
-      window.location='teacher_loads.php?teacherId='+teacherId;
-
-    }
-
-    function load_fac_profile() {
+    function load_fac_workload() {
         $('#loader').show(); // Show the loader
         $('#content_area').hide(); // Hide the content while loading
         
         $.ajax({
             type: "POST",
-            url: "query_teacher.php",
+            url: "query_teacher_loads.php",
             data: { 
             "loading_faculty_records": '1'
           },
-          success: function(response) {
-            $('#content_area').html(response);
-            // initialize here if needed
-            if ($.fn.DataTable.isDataTable('#tblTeachers')) {
-              $('#tblTeachers').DataTable().destroy();
-            }
-            $('#tblTeachers').DataTable({ pageLength: 10, lengthChange: false, order: [[2,'asc'],[3,'asc']] });
-          },
+            success: function(response) {
+              $('#content_area').html(response);
+              // initialize here if needed
+              if ($.fn.DataTable.isDataTable('#tblTeachers')) {
+                $('#tblTeachers').DataTable().destroy();
+              }
+              $('#tblTeachers').DataTable({ pageLength: 10, lengthChange: false, order: [[2,'asc'],[3,'asc']] });
+            },
             error: function(xhr, status, error) {
                 $('#content_area').html('<p class="text-danger">Error loading data.</p>');
             },

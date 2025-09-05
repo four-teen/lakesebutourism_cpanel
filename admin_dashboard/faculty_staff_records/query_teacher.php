@@ -7,6 +7,105 @@ require_role(['Administrator']);
 require_once __DIR__ . '/../../db.php';
 
 // ---------- HTML fragment: faculty list ----------
+
+
+if(isset($_POST['saving_details'])){
+
+    // Sanitize inputs
+    $designationid = mysqli_real_escape_string($conn, $_POST['designationid']);
+    $gradelevelid = mysqli_real_escape_string($conn, $_POST['gradelevelid']);
+    $sectionid = mysqli_real_escape_string($conn, $_POST['sectionid']);
+    $ayid = mysqli_real_escape_string($conn, $_POST['ayid']);
+    $the_teacher = mysqli_real_escape_string($conn, $_POST['the_teacher']);
+
+    // Use ON DUPLICATE KEY UPDATE
+    $insert = "INSERT INTO `tblassigned_designation` 
+               (`ass_ayid`, `ass_teachersautoid`, `ass_designationid`, `ass_gradelevelid`, `ass_sectionid`) 
+               VALUES ('$ayid', '$the_teacher', '$designationid', '$gradelevelid', '$sectionid')
+               ON DUPLICATE KEY UPDATE 
+               `ass_designationid` = VALUES(`ass_designationid`),
+               `ass_gradelevelid` = VALUES(`ass_gradelevelid`),
+               `ass_sectionid` = VALUES(`ass_sectionid`)";
+    
+    $runinsert = mysqli_query($conn, $insert);
+
+    if($runinsert) {
+        if(mysqli_affected_rows($conn) > 0) {
+            echo "Success: Operation completed successfully!";
+        } else {
+            echo "Info: No changes were made.";
+        }
+    } else {
+        echo "Error: " . mysqli_error($conn);
+    }
+}
+
+if(isset($_POST['loading_details'])){
+  $check = $_POST['designationid'];
+
+  if($check == 5 || $check == 15){
+      echo
+      ''; ?>
+        <div class="row">
+          <div class="col-lg-6">
+              <label for="gradelevelid">Grade Level</label>
+              <select id="gradelevelid" class="form-control">
+                <?php 
+                  $getgradelevel = "SELECT * FROM `tblgradelevel`";
+                  $rungetgradelevel = mysqli_query($conn, $getgradelevel);
+                  while($rowgradelevel = mysqli_fetch_assoc($rungetgradelevel)){
+                    echo'<option value="'.$rowgradelevel['levelid'].'">'.$rowgradelevel['level_descrition'].'</option>';
+                  }
+                ?>
+                
+              </select>
+          </div>
+          <div class="col-lg-6">
+              <label for="sectionid">Section</label>
+              <select id="sectionid" class="form-control">
+                <?php 
+                  $getgradesections = "SELECT * FROM `tblsections`";
+                  $rungetgradesections = mysqli_query($conn, $getgradesections);
+                  while($rowgradesections = mysqli_fetch_assoc($rungetgradesections)){
+                    echo'<option value="'.$rowgradesections['sectionsid'].'">'.$rowgradesections['section_desc'].'</option>';
+                  }
+                ?>
+                
+              </select>
+          </div>
+
+        </div>
+      <?php echo '';
+  }else{
+      echo
+      ''; ?>
+      <div class="d-none">
+        <div class="row">
+          <div class="col-lg-6">
+              <label for="gradelevelid">Grade Level</label>
+              <select id="gradelevelid" class="form-control">
+                <option value="0">None</option>
+              </select>
+          </div>
+          <div class="col-lg-6">
+              <label for="sectionid">Section</label>
+              <select id="sectionid" class="form-control">
+                <option value="0">None</option>
+              </select>
+          </div>
+
+        </div>        
+      </div>
+
+      <?php echo '';
+  }
+
+
+
+  exit;
+}
+
+
 if (isset($_POST['loading_faculty_records'])) {
   // Serve HTML, not JSON
   header('Content-Type: text/html; charset=UTF-8');
@@ -14,7 +113,7 @@ if (isset($_POST['loading_faculty_records'])) {
   // Small helper to resolve image path (relative to teacher_profile.php)
   function teacher_img_src($row){
     $p = trim($row['teacher_image'] ?? '');
-    if ($p === '') return '../../assets/img/avatar-placeholder.png';
+    if ($p === '') return '../../../assets/img/profile.png';
     // stored like 'uploads/teachers/file.jpg' => prefix for page location
     return '../../' . ltrim($p, '/');
   }
@@ -23,12 +122,10 @@ if (isset($_POST['loading_faculty_records'])) {
     <table id="tblTeachers" class="table table-striped table-bordered w-100">
       <thead>
         <tr>
-          <th></th>
           <th style="width:1%">Photo</th>
-          <th>Teacher ID</th>
-          <th>Last Name</th>
-          <th>First Name</th>
-          <th>Middle</th>
+          <th>ID</th>
+          <th>Full Name</th>
+          <th>Designation</th>
           <th style="width:110px">Actions</th>
         </tr>
       </thead>
@@ -37,18 +134,34 @@ if (isset($_POST['loading_faculty_records'])) {
           $q = "SELECT teachersautoid, teachersid, firstname, middlename, lastname, teacher_image
                 FROM tblteachers ORDER BY lastname, firstname";
           $rs = mysqli_query($conn, $q);
-          $count = 0;
           while ($row = mysqli_fetch_assoc($rs)) {
             $img = teacher_img_src($row);
             echo '<tr>';
-            echo '  <td class="align-middle text-center" width="1%"><img class="avatar" src="'.htmlspecialchars($img).'" onerror="this.src=\'../../assets/img/avatar-placeholder.png\'"></td>';
-            echo '  <td class="align-middle">'.htmlspecialchars($row['teachersid']).'</td>';
-            echo '  <td class="align-middle">'.htmlspecialchars($row['lastname']).'</td>';
-            echo '  <td class="align-middle">'.htmlspecialchars($row['firstname']).'</td>';
-            echo '  <td class="align-middle">'.htmlspecialchars($row['middlename']).'</td>';
+            echo '  <td class="align-middle text-center" width="1%"><img class="avatar" src="'.htmlspecialchars($img).'" onerror="this.src=\'../../assets/img/profile.png\'"></td>';
+            echo '  <td class="align-middle" width="1%">'.htmlspecialchars($row['teachersid']).'</td>';
+            echo '  <td class="align-middle"><b>'.htmlspecialchars($row['lastname']).'</b>, '.htmlspecialchars(ucwords(strtolower($row['firstname']))).' '.htmlspecialchars($row['middlename']).'</td>';
+            echo '  
+                  <td class="align-middle">
+                  '; ?>
+                  <?php 
+                    $getdesignations = "SELECT * FROM `tblassigned_designation`
+                    INNER JOIN tbldesignation on tbldesignation.designationid = tblassigned_designation.ass_designationid
+                    INNER JOIN tblgradelevel on tblgradelevel.levelid=tblassigned_designation.ass_gradelevelid
+                    LEFT JOIN tblsections on tblsections.sectionsid=tblassigned_designation.ass_sectionid
+                    WHERE ass_teachersautoid='$row[teachersautoid]'";
+                    $rungetdesig = mysqli_query($conn, $getdesignations);
+                    $rowgetdesignation = mysqli_fetch_assoc($rungetdesig);
+                    echo strtoupper($rowgetdesignation['designation_desc']) . 
+     (($rowgetdesignation['level_descrition'] !== 'None' && !empty($rowgetdesignation['level_descrition'])) ? ' | ' . strtoupper($rowgetdesignation['level_descrition']) : '') .
+     (($rowgetdesignation['section_desc'] !== 'None' && !empty($rowgetdesignation['section_desc'])) ? ' ' . strtoupper($rowgetdesignation['section_desc']) : '');
+                  ?>
+                  <?php echo'
+                  </td>
+                  ';
             echo '  <td width="1%" class="text-center text-nowrap align-middle">
                       <div class="btn-group py-2" role="group" aria-label="Basic mixed styles example">
-                          <button title="Manage Profile" class="btn btn-sm btn-warning" data-id="'.$row['teachersautoid'].'" onclick="manageTeacher(this)"><i class="bx bx-command"></i></button>
+                          <button title="More Information" class="btn btn-sm btn-info" data-id="'.$row['teachersautoid'].'" onclick="Teacherinfo(this)"><i class="bx bx-user"></i></button>
+                          <button title="Manage class schedule" class="btn btn-sm btn-warning" data-id="'.$row['teachersautoid'].'" onclick="manageTeacher(this)"><i class="bx bx-command"></i></button>
                           <button title="Edit Profile" class="btn btn-sm btn-primary" data-id="'.$row['teachersautoid'].'" onclick="editTeacher(this)"><i class="bi bi-pencil"></i></button>
                           <button title="Delete Profile" class="btn btn-sm btn-danger" data-id="'.$row['teachersautoid'].'" onclick="delTeacher(this)"><i class="bi bi-trash"></i></button>
                       </div>
