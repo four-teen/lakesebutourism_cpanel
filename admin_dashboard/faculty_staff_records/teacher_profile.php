@@ -286,9 +286,9 @@ $_SESSION['ayid'] = $rowsettings['ayid'];
 
     }
 
-    function manageTeacher(buttonElement) {
+    function manageTeacher(buttonElement, assignedid) {
       const teacherId = buttonElement.dataset.id;
-      window.location='teacher_loads.php?teacherId='+teacherId;
+      window.location='teacher_loads.php?teacherId='+teacherId+'&assignedid='+assignedid;
 
     }
 

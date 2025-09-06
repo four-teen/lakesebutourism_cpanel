@@ -161,7 +161,7 @@ if (isset($_POST['loading_faculty_records'])) {
             echo '  <td width="1%" class="text-center text-nowrap align-middle">
                       <div class="btn-group py-2" role="group" aria-label="Basic mixed styles example">
                           <button title="More Information" class="btn btn-sm btn-info" data-id="'.$row['teachersautoid'].'" onclick="Teacherinfo(this)"><i class="bx bx-user"></i></button>
-                          <button title="Manage class schedule" class="btn btn-sm btn-warning" data-id="'.$row['teachersautoid'].'" onclick="manageTeacher(this)"><i class="bx bx-command"></i></button>
+                          <button title="Manage class schedule" class="btn btn-sm btn-warning" data-id="'.$row['teachersautoid'].'" onclick="manageTeacher(this,\''.$rowgetdesignation['assignedid'].'\')"><i class="bx bx-command"></i></button>
                           <button title="Edit Profile" class="btn btn-sm btn-primary" data-id="'.$row['teachersautoid'].'" onclick="editTeacher(this)"><i class="bi bi-pencil"></i></button>
                           <button title="Delete Profile" class="btn btn-sm btn-danger" data-id="'.$row['teachersautoid'].'" onclick="delTeacher(this)"><i class="bi bi-trash"></i></button>
                       </div>

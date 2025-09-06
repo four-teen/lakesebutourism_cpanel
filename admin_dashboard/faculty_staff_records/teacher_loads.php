@@ -16,6 +16,9 @@ $runaccount = mysqli_query($conn, $account);
 $rowaccounts = mysqli_fetch_assoc($runaccount);
 $assigned_id = $rowaccounts['assignedid'];
 
+$levelID = $rowaccounts['levelid'];
+$sectionsID = $rowaccounts['sectionsid'];
+
 
 ?>
 <!DOCTYPE html>
@@ -62,7 +65,7 @@ $assigned_id = $rowaccounts['assignedid'];
     </style>
 </head>
 
-<body onload="load_class_schedules()">
+<body onload="load_class_schedules();get_ay()">
 
 <?php include '../header.php'; ?>
 
@@ -108,48 +111,48 @@ $assigned_id = $rowaccounts['assignedid'];
                 </div>
                 <div>
                   <!-- <div id="test">test</div> -->
-<p>
-  <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    Add New Schedule
-  </button>
-</p>
-<div class="collapse" id="collapseExample">
-  <div class="card card-body py-2 px-2">
-    <div class="row">
-        <div class="col-lg-3">
-            <label for="timefrom">Time From</label>
-            <input type="time" class="form-control" id="timefrom" required>
-        </div>
-        <div class="col-lg-3">
-            <label for="timeto">Time To</label>
-            <input type="time" class="form-control" id="timeto" required>
-        </div>
-        <div class="col-lg-6">
-            <label for="subjectid">Subject/Others</label>
-            <select id="subjectid" class="form-control" required>
-                <option value="" selected disabled>Select a subject</option>
-                <?php
-                    $getsubjects = "SELECT * FROM `tblsubjects`";
-                    $rungetsubjects = mysqli_query($conn, $getsubjects);
-                    if(mysqli_num_rows($rungetsubjects) > 0) {
-                        while($rowsubjects = mysqli_fetch_assoc($rungetsubjects)){
-                            echo '<option value="'.$rowsubjects['subjectid'].'">'.$rowsubjects['subject_description'].'</option>';
-                        }
-                    }
-                ?>
-                <option value="" disabled>----------------------------</option>
-                <option value="10001">Break Time</option>
-                <option value="10002">Lunch</option>
-            </select>
-        </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-12 py-2">
-        <button onclick="saving_new_schedule()" class="btn btn-primary btn-sm float-end">Add ti list...</button>
-      </div>
-    </div>
-  </div>
-</div>                  
+                    <p>
+                      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        Add New Schedule
+                      </button>
+                    </p>
+                    <div class="collapse" id="collapseExample">
+                      <div class="card card-body py-2 px-2">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <label for="timefrom">Time From</label>
+                                <input type="time" class="form-control" id="timefrom" required>
+                            </div>
+                            <div class="col-lg-3">
+                                <label for="timeto">Time To</label>
+                                <input type="time" class="form-control" id="timeto" required>
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="subjectid">Subject/Others</label>
+                                <select id="subjectid" class="form-control" required>
+                                    <option value="" selected disabled>Select a subject</option>
+                                    <?php
+                                        $getsubjects = "SELECT * FROM `tblsubjects`";
+                                        $rungetsubjects = mysqli_query($conn, $getsubjects);
+                                        if(mysqli_num_rows($rungetsubjects) > 0) {
+                                            while($rowsubjects = mysqli_fetch_assoc($rungetsubjects)){
+                                                echo '<option value="'.$rowsubjects['subjectid'].'">'.$rowsubjects['subject_description'].'</option>';
+                                            }
+                                        }
+                                    ?>
+                                    <option value="" disabled>----------------------------</option>
+                                    <option value="10001">Break Time</option>
+                                    <option value="10002">Lunch</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-12 py-2">
+                            <button onclick="saving_new_schedule()" class="btn btn-primary btn-sm float-end">Add ti list...</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>                  
                     <hr>
                 </div>
                 <div id="main_data">
@@ -176,6 +179,45 @@ $assigned_id = $rowaccounts['assignedid'];
 
 
 
+    <div class="modal fade" id="addingTeacherModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content shadow">
+        <div class="modal-header bg-warning text-white">
+          <h5 class="modal-title" id="paymentModalLabel">Add Teacher</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <input type="hidden" id="holder_teacher_id">
+                    <label for="teachersid">Select Teacher</label>
+                    <select id="teachersid" class="form-control">
+                        <?php 
+                           $teachers = "SELECT * FROM `tblteachers` ORDER BY `firstname` ASC";
+                           $runteachers = mysqli_query($conn, $teachers);
+                           while($rowteachers = mysqli_fetch_assoc($runteachers)){
+                              echo'<option value="'.$rowteachers['teachersautoid'].'">'.strtoupper($rowteachers['lastname']).', '.strtoupper($rowteachers['firstname']).'</option>';
+                           }
+                        ?>                        
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 py-2">
+                    <button data-bs-dismiss="modal" onclick="saving_subject_teachers()" class="btn btn-primary btn-sm float-end">Add subject teacher</button>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary btn-sm" onclick="modal_payment_preview_close()" data-bs-dismiss="modal">Close</button>
+
+        </div>
+      </div>
+    </div>
+    </div>
+
+
+
 <script src="../../assets/vendor/bootstrap/js/jquery-3.6.0.min.js"></script>
 <script src="../../assets/vendor/bootstrap/js/bootstrap5.bundle.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
@@ -183,6 +225,29 @@ $assigned_id = $rowaccounts['assignedid'];
 <script src="../../assets/sweetalert2.js"></script>
 
 <script>
+
+    function saving_subject_teachers(){
+        var teachersid = $('#teachersid').val();
+        var classid = $('#holder_teacher_id').val();
+        $.ajax({
+            type: "POST",
+            url: "query_teacher_loads.php",
+            data: {
+            "saving_subj_teachers": "1",
+            "teachersid" : teachersid,
+            "classid" : classid
+            },
+            success: function (response) {
+                // $('#test').html(response);
+            }
+        }); 
+    }
+
+    function add_teacher(classid){
+        $('#holder_teacher_id').val(classid);
+        $('#addingTeacherModal').modal('show');
+    }
+
 
     function delete_schedule(classid){
       Swal.fire({
@@ -216,6 +281,9 @@ $assigned_id = $rowaccounts['assignedid'];
         var timefrom = $('#timefrom').val();
         var timeto = $('#timeto').val();
         var subjectid = $('#subjectid').val();
+        var levelID = '<?php echo $levelID ?>';
+        var sectionsID = '<?php echo $sectionsID ?>';
+
         $.ajax({
             type: "POST",
             url: "query_teacher_loads.php",
@@ -224,7 +292,9 @@ $assigned_id = $rowaccounts['assignedid'];
               "assigned_id": assigned_id,
               "timefrom": timefrom,
               "timeto": timeto,
-              "subjectid": subjectid
+              "subjectid": subjectid,
+                "levelID" :levelID,
+                "sectionsID" :sectionsID
             },
             success: function (response) {
               // $('#test').html(response);
@@ -237,12 +307,16 @@ $assigned_id = $rowaccounts['assignedid'];
     function load_class_schedules() {
         $('#loader').show(); // Show the loader
         $('#content_area').hide(); // Hide the content while loading
+        var levelID = '<?php echo $levelID ?>';
+        var sectionsID = '<?php echo $sectionsID ?>';
         
         $.ajax({
             type: "POST",
             url: "query_teacher_loads.php",
             data: { 
-            "loading_class_schedules": '1'
+            "loading_class_schedules": '1',
+            "levelID" : levelID,
+            "sectionsID" : sectionsID
         },
             success: function(response) {
             $('#content_area').html(response);
