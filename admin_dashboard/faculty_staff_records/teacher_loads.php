@@ -38,6 +38,7 @@ $sectionsID = $rowaccounts['sectionsid'];
     <link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
     <link href="../../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
     <link href="../../assets/css/style.css" rel="stylesheet">
 
@@ -62,6 +63,21 @@ $sectionsID = $rowaccounts['sectionsid'];
         .avatar-lg{ width:120px;height:120px;border-radius:12px;object-fit:cover;border:1px solid #e7e7e7;background:#f7f7f7; }
         .table thead th{ font-weight:700; }
         .btn-icon{ padding:.35rem .55rem; }
+        #delButoon {
+          transition: transform 0.3s ease-in-out;
+        }
+
+        #delButoon:hover {
+          transform: scale(1.2);
+        }
+
+        .select2-container--default .select2-selection--single {
+            height: 45px;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            line-height: 45px; /* Apply line-height specifically to the text element */
+        }
     </style>
 </head>
 
@@ -179,7 +195,7 @@ $sectionsID = $rowaccounts['sectionsid'];
 
 
 
-    <div class="modal fade" id="addingTeacherModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+<div class="modal fade" id="addingTeacherModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content shadow">
         <div class="modal-header bg-warning text-white">
@@ -191,7 +207,8 @@ $sectionsID = $rowaccounts['sectionsid'];
                 <div class="col-lg-12">
                     <input type="hidden" id="holder_teacher_id">
                     <label for="teachersid">Select Teacher</label>
-                    <select id="teachersid" class="form-control">
+                    <select id="teachersid" class="js-example-basic-single form-control" name="state">
+
                         <?php 
                            $teachers = "SELECT * FROM `tblteachers` ORDER BY `firstname` ASC";
                            $runteachers = mysqli_query($conn, $teachers);
@@ -214,7 +231,7 @@ $sectionsID = $rowaccounts['sectionsid'];
         </div>
       </div>
     </div>
-    </div>
+</div>
 
 
 
@@ -222,9 +239,38 @@ $sectionsID = $rowaccounts['sectionsid'];
 <script src="../../assets/vendor/bootstrap/js/bootstrap5.bundle.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.8/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="../../assets/sweetalert2.js"></script>
 
 <script>
+
+    function remove(cstid){
+
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+         $.ajax({
+            type: "POST",
+            url: "query_teacher_loads.php",
+            data: {
+              "remove_subject_teacher": "1",
+              "cstid" : cstid
+            },
+            success: function (response) {
+              load_class_schedules();
+            }
+          }); 
+
+        }
+      }); 
+    }
 
     function saving_subject_teachers(){
         var teachersid = $('#teachersid').val();
@@ -238,15 +284,40 @@ $sectionsID = $rowaccounts['sectionsid'];
             "classid" : classid
             },
             success: function (response) {
-                // $('#test').html(response);
+                load_class_schedules();
             }
         }); 
     }
 
-    function add_teacher(classid){
-        $('#holder_teacher_id').val(classid);
-        $('#addingTeacherModal').modal('show');
+document.addEventListener('DOMContentLoaded', () => {
+  const modalEl = document.getElementById('addingTeacherModal');
+
+  // init Select2 only when the modal becomes visible
+  modalEl.addEventListener('shown.bs.modal', () => {
+    if (!$('#teachersid').data('select2')) {
+      $('#teachersid').select2({
+        dropdownParent: $('#addingTeacherModal'),
+        width: '100%'
+      });
     }
+  });
+
+  // optional: clean up to avoid double init if options change later
+  modalEl.addEventListener('hidden.bs.modal', () => {
+    if ($('#teachersid').data('select2')) {
+      $('#teachersid').select2('destroy');
+    }
+  });
+});
+
+// your button/function to open the modal
+function add_teacher(classid){
+  $('#holder_teacher_id').val(classid);
+  const modalEl = document.getElementById('addingTeacherModal');
+  const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
+  modal.show();
+}
+
 
 
     function delete_schedule(classid){
@@ -351,6 +422,7 @@ $sectionsID = $rowaccounts['sectionsid'];
             }
         }); 
     }
+
 </script>
 </body>
 </html>

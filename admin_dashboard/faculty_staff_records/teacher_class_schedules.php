@@ -28,17 +28,192 @@ include_once __DIR__ . '/../../db.php';
   <link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="../../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
   <!-- Template Main CSS -->
   <link href="../../assets/css/style.css" rel="stylesheet">
 
-  <style>
-    *{ font-family:'Poppins',system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; }
-    .avatar{ width:46px;height:46px;border-radius:50%;object-fit:cover;border:1px solid #e7e7e7;background:#f7f7f7; }
-    .avatar-lg{ width:120px;height:120px;border-radius:12px;object-fit:cover;border:1px solid #e7e7e7;background:#f7f7f7; }
-    .table thead th{ font-weight:700; }
-    .btn-icon{ padding:.35rem .55rem; }
-  </style>
+<style>
+        * { font-family:'Poppins',system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; }
+        .avatar { width:46px;height:46px;border-radius:50%;object-fit:cover;border:1px solid #e7e7e7;background:#f7f7f7; }
+        .avatar-lg { width:120px;height:120px;border-radius:12px;object-fit:cover;border:1px solid #e7e7e7;background:#f7f7f7; }
+        .table thead th { font-weight:700; }
+        .btn-icon { padding:.35rem .55rem; }
+
+        .select2-container--default .select2-selection--single {
+            height: 45px;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            line-height: 45px; /* Apply line-height specifically to the text element */
+        }
+
+        /* --- Updated CSS for transparency --- */
+        #header,
+        .header,
+        .header-content,
+        .card-body {
+            background-color: transparent !important;
+            box-shadow: none !important;
+            border: none !important;
+        }
+
+        .container {
+            background-color: transparent !important;
+            box-shadow: none !important;
+            box-sizing: border-box;
+            font-size: 11pt;
+            width: 8.5in;
+            padding: 0.5in;
+        }
+
+        .main {
+            background-color: #f0f0f0; /* Set a background color for the body/main content */
+        }
+        /* --- End of Updated CSS --- */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* This will vertically center all items */
+    margin-bottom: 20px;
+    background-color: transparent !important;
+    padding: 10px 0; /* Add top and bottom padding for vertical spacing */
+}
+
+.header .logo {
+    width: 100px; /* Adjust size as needed */
+    height: auto;
+    background-color: transparent !important;
+}
+
+.header .school-info {
+    text-align: center;
+    flex-grow: 1; /* Allows it to take all available space */
+    margin: 0 20px; /* Add horizontal margin for spacing */
+}
+        .header .school-info .republic {
+            font-size: 10pt;
+            margin-bottom: 2px;
+        }
+        .header .school-info .ministry {
+            font-weight: bold;
+            font-size: 10.5pt;
+            margin-bottom: 2px;
+        }
+        .header .school-info .division,
+        .header .school-info .region,
+        .header .school-info .address {
+            font-size: 9.5pt;
+            line-height: 1.3;
+        }
+        .title-section {
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        .title-section .main-title {
+            font-size: 14pt;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .title-section .sy {
+            font-size: 12pt;
+        }
+        .info-block {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        .info-block div {
+            margin-bottom: 5px;
+        }
+        .info-block .label {
+            font-weight: normal;
+        }
+        .info-block .value {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-bottom: 40px;
+        }
+        .schedule-table th,
+        .schedule-table td {
+            border: 1px solid black;
+            padding: 8px;
+
+            font-size: 10.5pt;
+        }
+        .schedule-table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .prepared-by,
+        .approved-by {
+            margin-top: 40px;
+        }
+        .signature-block {
+            margin-top: 20px;
+            text-align: left;
+            padding-left: 50px;
+        }
+        .signature-line {
+            height: 1px;
+            background-color: black;
+            width: 250px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        .name {
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-top: 20px;
+        }
+        .title {
+            font-size: 10pt;
+            margin-top: 2px;
+        }
+        .signature-image {
+            width: 150px;
+            height: auto;
+            display: block;
+            margin-bottom: -20px;
+            margin-left: -25px;
+        }
+        .approved-by .signature-block {
+            padding-left: 0;
+            margin-top: 60px;
+        }
+        .approved-by .signature-block .name {
+            margin-top: 5px;
+        }  
+@media print {
+    /* ... your existing print styles ... */
+    
+    .printable-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start; /* Align items to the top to prevent overlap */
+        width: 100%; /* Force the header to use the full available width */
+        box-sizing: border-box; /* Ensure padding is included in the width */
+    }
+
+    .printable-header .school-info {
+        flex-grow: 1;
+        text-align: center;
+        /* Add margin to prevent the school info from touching the logos */
+        margin: 0 20px; 
+    }
+}
+/*  @page {
+    size: A4;
+    margin: 1in;
+}*/
+</style>
 </head>
 
 <body onload="load_fac_workload();get_ay()">
@@ -71,7 +246,7 @@ include_once __DIR__ . '/../../db.php';
 
 <main id="main" class="main">
   <div class="pagetitle">
-    <h1>Manage Class Schedule</h1>
+    <h1>Teahing Loads and Schedules</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="teacher_profile.php">Home</a></li>
@@ -84,67 +259,27 @@ include_once __DIR__ . '/../../db.php';
     <div class="card">
       <div class="card-body">
         <div class="py-3">
-
-              <div class="row">
-                <div class="col-lg-2">
-                  <label for="gradelevelid">Select Grade Level</label>
-                  <select id="gradelevelid" class="form-control" onchange="load_curr()">
-                    <?php 
-                      $gradelevel = "SELECT * FROM `tblgradelevel`";
-                      $rungradelevel = mysqli_query($conn, $gradelevel);
-                      while($rowgradelevel=mysqli_fetch_assoc($rungradelevel)){
-                        echo'<option value="'.$rowgradelevel['levelid'].'">'.$rowgradelevel['level_descrition'].'</option>';
-                      }
-                    ?>
-
-                  </select>
-                </div>
-
-                <div class="col-lg-2">
-                  <label for="sectionid">Select Section</label>
-                  <select id="sectionid" class="form-control">
-                    <?php 
-                      $gradesection = "SELECT * FROM `tblsections` ORDER BY sectionsid ASC";
-                      $rungradesection = mysqli_query($conn, $gradesection);
-                      while($rowgradesection=mysqli_fetch_assoc($rungradesection)){
-                        echo'<option value="'.$rowgradesection['sectionsid'].'">'.$rowgradesection['section_desc'].'</option>';
-                      }
-                    ?>
-                  </select>
-                </div>
-
-                <div class="col-lg-4">
-                  <label for="adviserid">Select Adviser</label>
-                  <select id="adviserid" class="form-control">
-                    <?php 
-                      $gradeadviser = "SELECT * FROM `tblteachers` ORDER BY `teachersautoid` DESC";
-                      $rungradeadviser = mysqli_query($conn, $gradeadviser);
-                      while($rowgradeadviser=mysqli_fetch_assoc($rungradeadviser)){
-                        echo'<option value="'.$rowgradeadviser['teachersautoid'].'">'.$rowgradeadviser['lastname'].', '.$rowgradeadviser['firstname'].'</option>';
-                      }
-                    ?>
-                  </select>
-                </div>
-
-                <div class="col-lg-4">
-                  <label for="designationid">Select Designation</label>
-                  <select id="designationid" class="form-control">
-                    <?php 
-                      $teacher_designation = "SELECT * FROM `tbldesignation` ORDER BY `designation_desc` ASC";
-                      $runteacher_designation = mysqli_query($conn, $teacher_designation);
-                      while($rowteacher_designation=mysqli_fetch_assoc($runteacher_designation)){
-                        echo'<option value="'.$rowteacher_designation['designationid'].'">'.$rowteacher_designation['designation_desc'].'</option>';
-                      }
-                    ?>
-<!--                     <option value="10001">Break Time</option>
-                    <option value="10002">Lunch</option> -->
-                  </select>
-                </div>                
-
-
+            <div class="row">
+              <div class="col-lg-6">
+                <label for="teacherid">SELECT TEACHER</label>
+                <select id="teacherid" class="js-example-basic-single form-control" name="state" onchange="load_fac_workload()">
+                  <?php 
+                    $get_teacher = "SELECT * FROM `tblteachers` ORDER BY lastname ASC";
+                    $rungetteacher = mysqli_query($conn, $get_teacher);
+                    while($rowgetteacher = mysqli_fetch_assoc($rungetteacher)){
+                      echo'<option value="'.$rowgetteacher['teachersautoid'].'">'.$rowgetteacher['lastname'].', '.$rowgetteacher['firstname'].' '.$rowgetteacher['middlename'].'</option>';
+                    }
+                  ?>
+                </select>
               </div>
+           <div class="col-lg-6 text-lg-end">
+                <button class="btn btn-primary" onclick="print_content()">
+                    <i class='bx bx-printer'></i> <span class="icon-text">Print Workload</span>
+                </button>
+            </div>
 
         </div>
+        <hr>
         <div id="main_data">
           <div id="loader" class="text-center" style="display: none;">
             <img src="../../loader.gif" alt="Loading..." width="10%">
@@ -170,36 +305,7 @@ include_once __DIR__ . '/../../db.php';
   <i class="bi bi-arrow-up-short"></i>
 </a>
 
-<!-- ADD/EDIT MODAL -->
-<div class="modal fade" id="teacherModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <form id="formTeacher" class="modal-content" enctype="multipart/form-data">
-      <div class="modal-header">
-        <h5 class="modal-title" id="mTitle">Add Schedule</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
 
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-lg-3">
-            <label for="timefrom">Time From</label>
-            <input type="time" class="form-control" id="timefrom">
-          </div>
-          <div class="col-lg-3">
-            <label for="timeto">Time To</label>
-            <input type="time" class="form-control" id="timeto">
-          </div>
-          <div class="col-lg-6"></div>
-        </div>
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" id="btnSave">Save</button>
-      </div>
-    </form>
-  </div>
-</div>
 
 
 <!-- Vendor JS -->
@@ -207,19 +313,89 @@ include_once __DIR__ . '/../../db.php';
 <script src="../../assets/vendor/bootstrap/js/bootstrap5.bundle.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.8/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="../../assets/sweetalert2.js"></script>
 
 <script>
 
+function print_content() {
+    var teacherid = $('#teacherid').val();
+    
+    // Check if a teacher is selected
+    if (!teacherid) {
+        alert("Please select a teacher first.");
+        return;
+    }
+
+    // Show a loader or a message to the user
+    Swal.fire({
+        title: 'Generating document...',
+        allowOutsideClick: false,
+        didOpen: () => {
+            Swal.showLoading()
+        }
+    });
+
+    $.ajax({
+        type: "POST",
+        url: "query_teacher_loads.php",
+        data: { 
+            "loading_faculty_class_schedule": '1',
+            "teacherid" : teacherid
+        },
+success: function(response) {
+    // Open a new window
+    var printWindow = window.open('', '_blank', 'height=800,width=800');
+    
+    // Write the HTML from the response into the new window
+    printWindow.document.write('<html><head><title>Teacher\'s Workload</title>');
+    
+    // Copy all necessary CSS styles to the new window
+    var head = $('head').clone();
+    printWindow.document.write(head.html());
+    
+    // Add new print-specific CSS for A4 size and margins
+printWindow.document.write('<style>');
+printWindow.document.write('@page { size: A4; margin: 1in; }');
+printWindow.document.write('body { margin: 0; padding: 0; }');
+printWindow.document.write('.container { margin: 0 auto !important; }'); // This is the new line
+printWindow.document.write('</style>');
+    
+    printWindow.document.write('</head><body>');
+    printWindow.document.write(response);
+    printWindow.document.write('</body></html>');
+    
+    // Close the document to ensure all content is loaded
+    printWindow.document.close();
+    
+    // Wait for images to load, then print
+    setTimeout(function() {
+        printWindow.focus();
+        printWindow.print();
+        printWindow.close();
+        Swal.close();
+    }, 1000); // Wait 1 second to ensure everything is rendered
+},
+        error: function(xhr, status, error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Error loading document!'
+            });
+        }
+    });
+}
     function load_fac_workload() {
         $('#loader').show(); // Show the loader
         $('#content_area').hide(); // Hide the content while loading
+        var teacherid = $('#teacherid').val();
         
         $.ajax({
             type: "POST",
             url: "query_teacher_loads.php",
             data: { 
-            "loading_faculty_records": '1'
+            "loading_faculty_class_schedule": '1',
+            "teacherid" : teacherid
           },
             success: function(response) {
               $('#content_area').html(response);
@@ -241,128 +417,6 @@ include_once __DIR__ . '/../../db.php';
         });
     }
 
- // ===== Helpers =====
-  const placeholderImg = '../../assets/img/avatar-placeholder.png';
-
-  // Uppercase typing
-  $(document).on('input', '.text-uppercase', function(){ this.value = this.value.toUpperCase(); });
-
-  // Image preview + basic client validation
-  $('#teacher_image').on('change', function(){
-    const file = this.files[0];
-    if (!file){ $('#previewImg').attr('src', $('#current_image').val() || placeholderImg); return; }
-
-    // simple validations
-    const okTypes = ['image/jpeg','image/png','image/jpg','image/webp'];
-    if (!okTypes.includes(file.type)) {
-      Swal.fire({icon:'warning', title:'Invalid image type', text:'Use JPG/PNG/WEBP only.'});
-      this.value = '';
-      return;
-    }
-    if (file.size > 2*1024*1024) { // 2MB
-      Swal.fire({icon:'warning', title:'File too large', text:'Max 2MB allowed.'});
-      this.value = '';
-      return;
-    }
-
-    const reader = new FileReader();
-    reader.onload = e => $('#previewImg').attr('src', e.target.result);
-    reader.readAsDataURL(file);
-  });
-
-  // ===== Open ADD modal =====
-  function openAddTeacher(){
-    $('#mTitle').text('Add Teacher');
-    $('#formTeacher')[0].reset();
-    $('#teachersautoid').val('');
-    $('#current_image').val('');
-    $('#previewImg').attr('src', placeholderImg);
-    $('#teacher_image').val('');
-    const m = new bootstrap.Modal('#teacherModal');
-    m.show();
-    setTimeout(()=> $('#teachersid').trigger('focus'), 200);
-  }
-  // bind if you have a button:
-  $('#btnAdd').off('click').on('click', openAddTeacher);
-
-  // ===== Open EDIT modal =====
-  function editTeacher(btn){
-    const id = $(btn).data('id');
-    $.getJSON('query_teacher.php', { get_teacher:1, teachersautoid:id }, function(r){
-      if (!r.ok) return Swal.fire({icon:'error', title:'Teacher not found'});
-      const t = r.data;
-      $('#mTitle').text('Edit Teacher');
-      $('#teachersautoid').val(t.teachersautoid);
-      $('#teachersid').val(t.teachersid);
-      $('#lastname').val(t.lastname);
-      $('#firstname').val(t.firstname);
-      $('#middlename').val(t.middlename);
-      $('#current_image').val(t.teacher_image || '');
-      $('#previewImg').attr('src', t.teacher_image ? ('../../'+t.teacher_image) : placeholderImg);
-      $('#teacher_image').val(''); // do not auto-fill file inputs
-      const m = new bootstrap.Modal('#teacherModal');
-      m.show();
-      setTimeout(()=> $('#teachersid').trigger('focus'), 200);
-    }).fail(()=> Swal.fire({icon:'error', title:'Server Error'}));
-  }
-  // keep this function on window so your table button can call it
-  window.editTeacher = editTeacher;
-
-  // ===== Save (Add/Edit) =====
-  $('#formTeacher').off('submit').on('submit', function(e){
-    e.preventDefault();
-
-    // basic required checks (front-end)
-    if (!$('#teachersid').val().trim() || !$('#lastname').val().trim() || !$('#firstname').val().trim()){
-      return Swal.fire({icon:'warning', title:'Missing fields', text:'Teacher ID, Firstname, Lastname are required.'});
-    }
-
-    const fd = new FormData(this);
-    fd.append('save_teacher', 1);
-
-    $.ajax({
-      url: 'query_teacher.php',
-      type: 'POST',
-      data: fd,
-      processData: false,
-      contentType: false,
-      dataType: 'json',
-      success: function(r){
-        if (r.ok){
-          Swal.fire({icon:'success', title:'Saved', timer:1000, showConfirmButton:false})
-            .then(()=> location.reload());
-        } else {
-          Swal.fire({icon:'error', title:'Error', text:r.msg || 'Failed to save.'});
-        }
-      },
-      error: function(){
-        Swal.fire({icon:'error', title:'Server Error', text:'Please try again.'});
-      }
-    });
-  });
-
-function delTeacher(btn){
-  const id = $(btn).data('id');
-  Swal.fire({
-    title:'Delete this teacher?',
-    icon:'warning',
-    showCancelButton:true,
-    confirmButtonText:'Yes, delete it',
-    confirmButtonColor:'#d33'
-  }).then(res=>{
-    if(!res.isConfirmed) return;
-    $.post('query_teacher.php', { delete_teacher:1, teachersautoid:id }, function(r){
-      if (r.ok){
-        Swal.fire({icon:'success', title:'Deleted', timer:900, showConfirmButton:false});
-        load_fac_profile(); // reload table via AJAX
-      } else {
-        Swal.fire({icon:'error', title:'Error', text:r.msg||'Failed to delete'});
-      }
-    }, 'json').fail(()=> Swal.fire({icon:'error', title:'Server Error'}));
-  });
-}
-window.delTeacher = delTeacher; // expose globally for onclick
-
     function get_ay(){
 
        $.ajax({
@@ -377,6 +431,9 @@ window.delTeacher = delTeacher; // expose globally for onclick
         }); 
     }
  
+ $(document).ready(function() {
+    $('.js-example-basic-single').select2();
+});
 </script>
 </body>
 </html>
