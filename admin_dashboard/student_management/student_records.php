@@ -57,29 +57,39 @@ $ay = isset($_SESSION['ays']) ? $_SESSION['ays'] : '';
       width: 150px;
       object-fit: cover;
     }
-  /* Photo box */
-  .photo-wrap { display:flex; align-items:flex-start; gap:1rem; }
-  .photo-box {
-    width: 200px; height: 200px;
-    border-radius: 50%;
-    background: #f2f5ff;
-    border: 2px dashed #8db1ff;
-    display: grid; place-items: center;
-    cursor: pointer; position: relative;
-  }
-  .photo-box img {
-    width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
-    display:none;
-  }
-  .photo-placeholder {
-    color:#4b6bd6; text-align:center; font-weight:600; font-size:.9rem;
-    display:flex; flex-direction:column; align-items:center; gap:.35rem;
-  }
-  .photo-placeholder svg { width:36px; height:36px; opacity:.8; }
-  .field-note{ font-size:.85rem; color:#6c757d }
+/* Photo wrapper */
+.photo-box{
+  width: 200px;           /* keep your size */
+  aspect-ratio: 1 / 1;    /* always a perfect square */
+  border-radius: 50%;
+  background:#f2f5ff;
+  border: 2px dashed #8db1ff;
+  display:grid; place-items:center;
+  position: relative;
+  overflow: hidden;       /* <- ensures no gaps/overflow */
+}
 
-  /* Tighten label spacing */
-  .form-label { margin-bottom: .35rem; }
+/* When a photo exists, remove dashed frame so it looks flush */
+.photo-box.has-photo{
+  border: 0;
+  background: transparent;
+}
+
+/* The actual photo always fills the circle */
+.photo-box img{
+  display: none;          /* default hidden until we have a photo */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* edge-to-edge, no white rim */
+  border-radius: 50%;
+}
+
+/* Placeholder stays centered */
+.photo-placeholder{
+  color:#4b6bd6; text-align:center; font-weight:600; font-size:.9rem;
+  display:flex; flex-direction:column; align-items:center; gap:.35rem;
+}
+.photo-placeholder svg{ width:36px; height:36px; opacity:.8; }
 </style>
 </head>
 
@@ -209,6 +219,7 @@ $ay = isset($_SESSION['ays']) ? $_SESSION['ays'] : '';
             <div class="modal-body">
               <div class="row">
 <div class="row g-4 align-items-start">
+  <input type="hidden" id="student_id">
   <!-- LEFT: Photo -->
   <div class="col-md-3">
     <div class="photo-box" id="photo_click" title="Click to add image">
@@ -336,13 +347,51 @@ $ay = isset($_SESSION['ays']) ? $_SESSION['ays'] : '';
             </div>
             <div class="modal-footer">
               <button class="btn btn-secondary" data-bs-dismiss="modal" onclick="close_payment_print();">Close</button>
-              <button type="button" class="btn btn-primary" onclick="add_new_student();">
+<!--               <button type="button" class="btn btn-primary" onclick="add_new_student();">
                 <i class="bi bi-save"></i> Save
-              </button>              
+              </button>  -->  
+<button type="button" id="btnSaveStudent" class="btn btn-primary">
+  <i class="bi bi-save"></i> Save
+</button>
+
             </div>
           </div>
         </div>
       </div>
+
+
+<!-- View Drawer -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="drawerStudent" aria-labelledby="drawerStudentLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="drawerStudentLabel">Student Details</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div id="drawerLoading" class="text-muted">Loading…</div>
+
+    <div id="drawerContent" class="d-none">
+      <div class="d-flex gap-3 align-items-start mb-3">
+        <img id="dPhoto" src="" class="rounded-circle" width="80" height="80" style="object-fit:cover">
+        <div>
+          <div class="fw-bold" id="dFullname"></div>
+          <div><span class="badge bg-info" id="dGrade"></span></div>
+        </div>
+      </div>
+
+      <dl class="row mb-0">
+        <dt class="col-5">Sex</dt><dd class="col-7" id="dSex"></dd>
+        <dt class="col-5">Birthdate / Age</dt><dd class="col-7" id="dBirthAge"></dd>
+        <dt class="col-5">LRN</dt><dd class="col-7" id="dLRN"></dd>
+        <dt class="col-5">PSA No.</dt><dd class="col-7" id="dPSA"></dd>
+        <!-- <dt class="col-5">AY</dt><dd class="col-7" id="dAY"></dd> -->
+      </dl>
+
+      <div class="mt-3">
+        <button class="btn btn-warning btn-sm" id="dEditBtn">Edit</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
@@ -419,9 +468,133 @@ function add_new_student(){
   });
 }
 
-    function show_student_modal(){
-      $('#modal_add_new_students').modal('show');
+    // function show_student_modal(){
+    //   $('#modal_add_new_students').modal('show');
+    // }
+
+  // open fresh (ADD)
+  function show_student_modal(){
+    resetStudentForm();
+    $('#paymentModalLabel').text('New student registration');
+    $('#btnSaveStudent').off('click').on('click', add_new_student);
+    $('#modal_add_new_students').modal('show');
+  }
+
+function resetStudentForm(){
+  $('#student_id').val('');
+  $('input[name="with_lrn"][value="0"]').prop('checked', true);
+  $('input[name="is_returning"][value="0"]').prop('checked', true);
+  $('#learner_ref_no,#psa_birth_cert_no,#last_name,#first_name,#middle_name,#extension_name,#birthdate').val('');
+  $('input[name="sex"][value="Male"]').prop('checked', true);
+  $('#grade_level')[0].selectedIndex = 0;
+
+  // photo reset
+  $('#photo_file').val('');
+  $('#photo_preview').hide().attr('src','');
+  $('#photo_placeholder').show();
+}
+
+// EDIT (open modal prefilled)
+function edit_student(id){
+  $.post('query_students.php', { get_student: 1, id: id }, function(resp){
+    if(!resp || !resp.success){ return Swal.fire('Error', resp?.message || 'Cannot load record', 'error'); }
+
+    const s = resp.data;
+    $('#student_id').val(s.autoid);
+    $('input[name="with_lrn"][value="'+(s.with_lrn||0)+'"]').prop('checked', true);
+    $('input[name="is_returning"][value="'+(s.is_returning||0)+'"]').prop('checked', true);
+    $('#learner_ref_no').val(s.learner_ref_no||'');
+    $('#psa_birth_cert_no').val(s.psa_birth_cert_no||'');
+    $('#last_name').val(s.last_name||'');
+    $('#first_name').val(s.first_name||'');
+    $('#middle_name').val(s.middle_name||'');
+    $('#extension_name').val(s.extension_name||'');
+    $('#birthdate').val(s.birthdate||'');
+    $('input[name="sex"][value="'+(s.sex||'Male')+'"]').prop('checked', true);
+    $('#grade_level').val(s.grade_level);
+
+    // photo preview
+    if(s.photo_url){
+      $('#photo_placeholder').hide();
+      $('#photo_preview').attr('src', s.photo_url).show();
+    }else{
+      $('#photo_preview').hide().attr('src','');
+      $('#photo_placeholder').show();
     }
+
+    $('#paymentModalLabel').text('Edit student');
+    $('#btnSaveStudent').off('click').on('click', update_student); // switch button action
+    $('#modal_add_new_students').modal('show');
+  }, 'json');
+}
+
+// DELETE
+function delete_student(id){
+  Swal.fire({
+    title: 'Delete this student?',
+    text: 'This action cannot be undone.',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Yes, delete',
+  }).then((res)=>{
+    if(!res.isConfirmed) return;
+
+    $.post('query_students.php', { delete_student: 1, id: id }, function(resp){
+      if(resp && resp.success){
+        Swal.fire('Deleted!', 'Record removed.', 'success');
+        load_students();
+      }else{
+        Swal.fire('Error', resp?.message || 'Unable to delete.', 'error');
+      }
+    }, 'json');
+  });
+}
+
+// UPDATE (new)
+function update_student(){
+  var fd = new FormData();
+  var file = $('#photo_file')[0].files[0];
+  if (file) fd.append('photo', file);
+
+  fd.append('updating_student', '1');
+  fd.append('id', $('#student_id').val());
+  fd.append('with_lrn', $('input[name="with_lrn"]:checked').val());
+  fd.append('is_returning', $('input[name="is_returning"]:checked').val());
+  fd.append('psa_birth_cert_no', $('#psa_birth_cert_no').val());
+  fd.append('learner_ref_no', $('#learner_ref_no').val());
+  fd.append('last_name', $('#last_name').val());
+  fd.append('first_name', $('#first_name').val());
+  fd.append('middle_name', $('#middle_name').val());
+  fd.append('extension_name', $('#extension_name').val());
+  fd.append('birthdate', $('#birthdate').val());
+  fd.append('sex', $('input[name="sex"]:checked').val());
+  fd.append('grade_level', $('#grade_level').val());
+
+  $.ajax({
+    type: "POST", url: "query_students.php", data: fd,
+    processData: false, contentType: false, dataType:'json',
+    success: function (resp) {
+      if(resp && resp.success){
+        $('#modal_add_new_students').modal('hide');
+        load_students();
+        Swal.fire('Updated', 'Student information saved.', 'success');
+      }else{
+        Swal.fire('Error', resp?.message || 'Update failed.', 'error');
+      }
+    }
+  });
+}
+
+// since table is loaded via AJAX, delegate button clicks
+$(document).on('click', '.btn-edit', function(){
+  const id = $(this).data('id');
+  edit_student(id);
+});
+$(document).on('click', '.btn-delete', function(){
+  const id = $(this).data('id');
+  delete_student(id);
+});
+
 
     function load_students() {
         $('#loader').show(); // Show the loader
@@ -470,6 +643,62 @@ function add_new_student(){
         pageLength: 10
       });
     });
+
+// open drawer + load details
+$(document).on('click', '.btn-view', function(){
+  const id = $(this).data('id');
+
+  // reset UI
+  $('#drawerLoading').removeClass('d-none').text('Loading…');
+  $('#drawerContent').addClass('d-none');
+
+  // show the drawer
+  const drawer = new bootstrap.Offcanvas('#drawerStudent');
+  drawer.show();
+
+  // fetch details
+  $.post('query_students.php', { get_student:1, id }, function(res){
+    if(!res || !res.success){
+      $('#drawerLoading').text(res?.message || 'Unable to load record.');
+      return;
+    }
+    const s = res.data;
+
+    // fill
+    const full = [s.last_name, ', ', s.first_name, ' ', s.middle_name || '', ' ', s.extension_name || ''].join('').trim();
+    $('#dFullname').text(full.toUpperCase());
+    $('#dGrade').text('Grade: ' + (s.level_descrition || s.grade_level));
+    $('#dSex').text(s.sex || '');
+    const age = s.birthdate ? calcAge(s.birthdate) : '';
+    $('#dBirthAge').text((s.birthdate || '-') + (age ? ` (${age})` : ''));
+    $('#dLRN').text(s.learner_ref_no || '-');
+    $('#dPSA').text(s.psa_birth_cert_no || '-');
+    // $('#dAY').text(s.ay || '-');
+
+    const photo = s.photo_url ? s.photo_url : '../../assets/img/profile.png';
+    $('#dPhoto').attr('src', photo);
+
+    // hook Edit
+    $('#dEditBtn').off('click').on('click', ()=> edit_student(s.autoid));
+
+    // swap loaders
+    $('#drawerLoading').addClass('d-none');
+    $('#drawerContent').removeClass('d-none');
+  }, 'json');
+});
+
+// small age helper
+function calcAge(b){
+  const d = new Date(b);
+  if (isNaN(d)) return '';
+  const t = new Date();
+  let age = t.getFullYear() - d.getFullYear();
+  const m = t.getMonth() - d.getMonth();
+  if (m < 0 || (m === 0 && t.getDate() < d.getDate())) age--;
+  return age + ' yrs';
+}
+
+    
   </script>
 
 </body>

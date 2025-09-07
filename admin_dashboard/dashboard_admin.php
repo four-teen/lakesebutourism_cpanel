@@ -92,7 +92,7 @@
         <div class="col-lg-12">
           <div class="row g-3 align-items-stretch">
             <!-- Sales Card -->
-            <div class="col-lg-3" style="cursor: pointer;" onclick="student_management();">
+            <div class="col-lg-3" style="cursor: pointer;" onclick="enrolment_student_records();">
               <div class="card info-card sales-card h-100">
 
                 <div class="filter">
@@ -116,8 +116,18 @@
                       <i class='bx bx-user'></i>
                     </div>
                     <div class="ps-3">
-                      <h6 id="load_student_count"></h6>
-                      <span class="text-success small pt-1 fw-bold"></span> <span class="text-muted small pt-2 ps-1">record(s)</span>
+                      <h6 id="load_student_count">
+                        <?php 
+                          $get_student_count = "SELECT count(autoid) as stud_count FROM `tblstudents`";
+                          $runget_count = mysqli_query($conn, $get_student_count);
+                          if($runget_count){
+                            $rowcount = mysqli_fetch_assoc($runget_count);
+                            echo $rowcount['stud_count'];
+                          }
+
+                        ?>
+                      </h6>
+                      <span class="text-success small pt-1 fw-bold"></span> <span class="text-muted small pt-2 ps-1">students record</span>
 
                     </div>
                   </div>
@@ -258,8 +268,15 @@
 
                 <div class="card-body">
                   <h5 class="card-title">Reports</h5>
+<div class="d-flex justify-content-end mb-2">
+  <label class="me-2">AY</label>
+  <select id="ayFilter" class="form-select form-select-sm" style="min-width:180px"></select>
+</div>
                   <div id="main_data"></div>
-                                          
+                      
+ <div id="enrolmentChart"></div>
+
+
                 </div>
 
 
@@ -372,8 +389,66 @@
   <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
   <script src="../assets/js/main.js"></script>
   <script src="../assets/sweetalert2.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
   <script>
+
+let enrolChart = null;
+
+// 1) populate AY dropdown and draw chart
+function initEnrolmentChart() {
+  // try to get current ayid from PHP session (already set in your page)
+  // const currentAy = <?= json_encode(isset($_SESSION['ayid']) ? (int)$_SESSION['ayid'] : 0) ?>;
+  const currentAy = 2;
+
+  fetchChartData(currentAy, true);
+}
+
+function fetchChartData(ay, init=false){
+   $.getJSON('chart_students_by_grade.php', { ay }, function(res){
+    // fill AY filter once
+    if(init){
+      const $sel = $('#ayFilter').empty();
+      res.ay_options.forEach(o=>{
+        const opt = $('<option>').val(o.ayid).text(o.ay_label);
+        $sel.append(opt);
+      });
+      if(ay){ $('#ayFilter').val(ay); }
+      // change handler
+      $('#ayFilter').off('change').on('change', function(){
+        fetchChartData($(this).val(), false);
+      });
+    }
+
+    const options = {
+      chart: { type: 'line', height: 320, toolbar: { show: false } },
+      stroke: { curve: 'smooth', width: 3 },
+      dataLabels: { enabled: true },
+      series: [{ name: 'Students', data: res.series }],
+      xaxis: { categories: res.labels, title: { text: 'Grade Level' } },
+      yaxis: { title: { text: 'No. of Students' }, forceNiceScale: true },
+      tooltip: { y: { formatter: (v)=> v + ' student' + (v==1?'':'s') } },
+      markers: { size: 3 }
+    };
+
+    if(enrolChart){
+      enrolChart.updateOptions({ xaxis: options.xaxis, yaxis: options.yaxis });
+      enrolChart.updateSeries(options.series);
+    }else{
+      enrolChart = new ApexCharts(document.querySelector('#enrolmentChart'), options);
+      enrolChart.render();
+    }
+  });
+}
+
+// call on page load
+$(initEnrolmentChart);
+
+
+
+    function enrolment_student_records(){
+      window.location = 'student_management/student_records.php';
+    }
 
     function update_ay(){
       var ayids = $('#ayids').val();

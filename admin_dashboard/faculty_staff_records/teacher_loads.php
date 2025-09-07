@@ -98,8 +98,8 @@ $sectionsID = $rowaccounts['sectionsid'];
                 <i class="bx bx-user text-primary"></i> <span>Teachers and Staff Records</span>
             </a>
             <ul id="teachers-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
-                <li><a href="teacher_profile.php"><i class="bi bi-circle"></i><span>Faculty Profile</span></a></li>
-                <li><a class="active" href="teacher_loads.php"><i class="bi bi-circle"></i><span>Teaching Loads & Schedules</span></a></li>
+                <li><a class="active" href="teacher_profile.php"><i class="bi bi-circle"></i><span>Faculty Profile</span></a></li>
+                <li><a href="teacher_class_schedules.php"><i class="bi bi-circle"></i><span>Teaching Loads & Schedules</span></a></li>
                 <li><a href="#"><i class="bi bi-circle"></i><span>Performance Monitoring</span></a></li>
             </ul>
         </li>
