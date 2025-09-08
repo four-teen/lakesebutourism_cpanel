@@ -39,7 +39,8 @@ if ($row['acc_status'] !== 'Active') {
   fail('Account inactive.');
 }
 if ((int)$row['acc_type_id'] !== $type_id) {
-  fail("Role mismatch. Expected={$row['acc_type_id']} Selected={$type_id}");
+  // fail("Role mismatch. Expected={$row['acc_type_id']} Selected={$type_id}");
+  fail("Invalid credentials!");
 }
 if (!password_verify($pass, $row['acc_password'])) {
   fail('Wrong password.');

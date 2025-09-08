@@ -294,11 +294,13 @@ if (isset($_POST['loading_students'])) {
           <td class="align-middle"><?= htmlspecialchars($age) ?></td>
           <td class="align-middle"><?= htmlspecialchars($row['learner_ref_no']) ?></td>
           <td width="1%" class="align-middle text-nowrap">
-            <button class="btn btn-sm btn-info btn-view" data-id="<?= (int)$row['autoid'] ?>">
-            <i class="bi bi-eye"></i>
-            </button>
-            <button class="btn btn-sm btn-warning btn-edit" data-id="<?= (int)$row['autoid'] ?>"><i class="bi bi-pencil"></i></button>
-            <button class="btn btn-sm btn-danger btn-delete" data-id="<?= (int)$row['autoid'] ?>"><i class="bi bi-trash"></i></button>
+
+<div class="btn-group" role="group" aria-label="Basic mixed styles example">
+  <button type="button" class="btn btn-danger btn-view" data-id="<?= (int)$row['autoid'] ?>"><i class="bi bi-eye"></i></button>
+  <button title="Edit this record" type="button" class="btn btn-warning btn-edit" data-id="<?= (int)$row['autoid'] ?>"><i class="bi bi-pencil"></i></button>
+  <button title="Delete this record" type="button" class="btn btn-success btn-delete" data-id="<?= (int)$row['autoid'] ?>"><i class="bi bi-trash"></i></button>
+</div>
+
           </td>
         </tr>
       <?php } ?>
