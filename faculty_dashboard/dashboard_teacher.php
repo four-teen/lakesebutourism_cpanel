@@ -1,11 +1,10 @@
 <?php
-  session_start();
-  require_once __DIR__ . '/../modules/auth/session_guard.php';
-  require_role(['Administrator']); // only admins can access
+// faculty_dashboard/dashboard_teacher.php
+session_start();
+require_once __DIR__ . '/../modules/auth/session_guard.php';
+require_role(['Teacher']); // <- important: Teacher, not Administrator
 
-  include_once __DIR__ . '/../db.php';
-  include_once __DIR__ . '/../logger.php';
-  log_event("ADMIN DASHBOARD: accessed by {$_SESSION['USERNAME']} ({$_SESSION['TYPE']})");
+include_once __DIR__ . '/../db.php';
 
 
   $settings = "SELECT * FROM `tblsettings`
@@ -25,7 +24,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Admin Dashboard</title>
+  <title>Faculty Dashboard</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -59,10 +58,169 @@
       width: 150px;
       object-fit: cover;
     }
+
+/* Keep the stretched link inside the body only */
+.subject-card .card-body { position: relative; }
+.subject-card .card-body .stretched-link {
+  z-index: 1;
+  pointer-events: none;  /* makes header items fully interactive */
+}
+
+.cta-badge{
+  background:#f5f7ff;
+  color:#4e54c8;
+  border-radius:999px;
+  padding:.35rem .8rem;
+  font-weight:600;
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  transition: transform .18s ease, background-color .18s ease, box-shadow .18s ease;
+  will-change: transform;
+  cursor: pointer;
+}
+.cta-badge:hover{
+  transform: scale(1.08);
+  background:#e8eaff;
+  box-shadow: 0 .25rem .75rem rgba(0,0,0,.08);
+}
+.cta-badge:active{
+  transform: scale(0.96);
+}
+/* Make the badge sit above and receive hover/click */
+.subject-card .card-header .cta-badge {
+  position: relative;
+  z-index: 2;
+  pointer-events: auto;
+}
+
+/* Card shell */
+.subject-card{
+  border: none;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.subject-card:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 .75rem 1.5rem rgba(0,0,0,.08);
+}
+
+/* Header + badge */
+.subject-card .card-header{
+  background: linear-gradient(135deg,#4e54c8,#8f94fb);
+  color: #fff;
+  font-weight: 600;
+  border-bottom: none;
+}
+.badge-pill {
+  background: #f5f7ff;
+  color: #4e54c8;
+  border-radius: 999px;
+  padding: .35rem .8rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.badge-pill:hover {
+  transform: scale(1.08);        /* zoom in */
+  background: #e8eaff;           /* optional: lighter background */
+}
+
+.badge-pill:active {
+  transform: scale(0.95);        /* small shrink when clicked */
+}
+
+.subject-body {
+  display: flex;
+  gap: 16px;
+  min-height: 120px;
+}
+
+/* left image */
+.subject-thumb {
+  width: 110px;
+  height: 110px;
+  border-radius: 12px;
+  object-fit: cover;
+  flex: 0 0 110px;
+  background: #f6f7fb;
+  position: relative;
+  top:25px;
+}
+
+/* right column layout */
+.subject-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* title up, metric down */
+  flex: 1;
+}
+
+/* title */
+.subject-title {
+  margin: 0;
+  font-weight: 700;
+  color: #1f3b77;
+  position: relative;
+  top:15px;
+}
+.subject-title small {
+  display: block;
+  margin-top: .125rem;
+  color: #6c7aa0;
+  font-weight: 500;
+}
+
+/* metric pinned at bottom */
+.subject-metric {
+  margin-top: auto;  /* ensures this block stays at the bottom */
+  position: relative;
+  top:20px;
+}
+.big-metric {
+  font-size: 2rem;
+  line-height: 1.2;
+  font-weight: 800;
+  color: #0d6efd;
+}
+.metric-label {
+  font-size: .85rem;
+  color: #6c757d;
+  margin-top: -2px;
+}
+
+
+/* Footer */
+.subject-card .card-footer{
+  background-color: rgba(78,84,200,.05);
+  border-top: 1px solid rgba(78,84,200,.1);
+}
+
+/* Responsive */
+@media (max-width: 575.98px){
+  .subject-body{
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 0;
+  }
+  .subject-thumb{
+    width: 100%;
+    height: 160px;
+    margin: 0;                /* reset centering for stacked layout */
+  }
+  .subject-content{
+    gap: .5rem;
+  }
+}
+
 </style>
 </head>
 
-<body onload="get_ay();">
+<body onload="get_ay();load_your_subjects()">
 
 
 
@@ -74,7 +232,7 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Dashboard</h1>
+      <h1>Your Class</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.php">Home</a></li>
@@ -90,157 +248,6 @@
 
         <!-- Left side columns -->
         <div class="col-lg-12">
-          <div class="row g-3 align-items-stretch">
-            <!-- Sales Card -->
-            <div class="col-lg-3" style="cursor: pointer;" onclick="enrolment_student_records();">
-              <div class="card info-card sales-card h-100">
-
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">Manage Enrolment <span>| All</span></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class='bx bx-user'></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6 id="load_student_count">
-                        <?php 
-                          $get_student_count = "SELECT count(autoid) as stud_count FROM `tblstudents`";
-                          $runget_count = mysqli_query($conn, $get_student_count);
-                          if($runget_count){
-                            $rowcount = mysqli_fetch_assoc($runget_count);
-                            echo $rowcount['stud_count'];
-                          }
-
-                        ?>
-                      </h6>
-                      <span class="text-success small pt-1 fw-bold"></span> <span class="text-muted small pt-2 ps-1">students record</span>
-
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div><!-- End Sales Card -->
-
-            <!-- MANAGE SETTINGS -->
-            <div class="col-lg-3">
-              <div class="card info-card sales-card h-100">
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Manage</h6>
-                    </li>
-                    <li><a class="dropdown-item" href="#" onclick="manage_settings()"><i class='bx bx-calendar' ></i> Academic Year</a></li>
-                    <li><a class="dropdown-item" href="#" onclick="manage_fees()"><i class='bx bx-dollar-circle' ></i> School Fees</a></li>
-                  </ul>
-                </div>
-                    <a href="#" style="text-decoration: none; color: inherit;">
-                      <div class="card-body">
-                        <h5 class="card-title">Manage Curriculum <span>| All</span></h5>
-                        <div class="d-flex align-items-center">
-                          <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                            <i class='bx bxs-cog'></i>
-                          </div>
-                          <div class="ps-3">
-                            <h6 id="load_settings">0</h6>
-                            <span class="text-danger small pt-1 fw-bold"></span> 
-                            <span class="text-muted small pt-2 ps-1">Current Setting</span>
-                          </div>
-                        </div>
-                      </div>
-                    </a>
-              </div>
-
-            </div>
-            <!-- LOAD BIO ATTENDANCE LOG -->
-            <div class="col-lg-3" onclick="loading_user_accounts();">
-              <div class="card info-card sales-card h-100">
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-                    <a href="#" style="text-decoration: none; color: inherit;">
-                      <div class="card-body">
-                        <h5 class="card-title">Manage Accounts <span>| All</span></h5>
-                        <div class="d-flex align-items-center">
-                          <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                            <i class='bx  bx-key'  ></i> 
-                          </div>
-                          <div class="ps-3">
-                            <h6 id="get_bio_logs">
-                              <?php 
-                                $getaccount = "SELECT count(acc_id) as acc_count FROM `tblaccounts`";
-                                $rungetacount = mysqli_query($conn, $getaccount);
-                                if($rungetacount){
-                                  $rowacount = mysqli_fetch_assoc($rungetacount);
-                                  echo $rowacount['acc_count'];
-                                }
-                              ?>
-                            </h6>
-                            <span class="text-danger small pt-1 fw-bold"></span> 
-                            <span class="text-muted small pt-2 ps-1">User Account</span>
-                          </div>
-                        </div>
-                      </div>
-                    </a>
-              </div>
-            </div>
-
-            <div class="col-lg-3" onclick="loading_fees_modals();">
-              <div class="card info-card sales-card h-100">
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-                    <a href="#" style="text-decoration: none; color: inherit;">
-                      <div class="card-body">
-                        <h5 class="card-title">Manage Transaction <span>| <button class="btn btn-info btn-sm">F6</button></span></h5>
-                        <div class="d-flex align-items-center">
-                          <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                            <i class='bx bx-log-in-circle'></i>
-                          </div>
-                          <div class="ps-3">
-                            <h6 id="get_bio_logs">0
-                            </h6>
-                            <span class="text-danger small pt-1 fw-bold"></span> 
-                            <span class="text-muted small pt-2 ps-1">transactions</span>
-                          </div>
-                        </div>
-                      </div>
-                    </a>
-              </div>
-            </div>
-
-            <!-- Reports -->
             <div class="col-12">
               <div class="card">
 
@@ -260,13 +267,13 @@
 
                 <div class="card-body">
                   <h5 class="card-title">Reports</h5>
-<div class="d-flex justify-content-end mb-2">
-  <label class="me-2">AY</label>
-  <select id="ayFilter" class="form-select form-select-sm" style="min-width:180px"></select>
-</div>
-                  <div id="main_data"></div>
-                      
- <div id="enrolmentChart"></div>
+
+                        <div id="main_data">
+                          <div id="loader" class="text-center" style="display: none;">
+                            <img src="../loader.gif" alt="Loading..." width="10%">
+                          </div>
+                          <div id="content_area"></div>
+                        </div> 
 
 
                 </div>
@@ -278,70 +285,6 @@
 
           </div>
         </div><!-- End Left side columns -->
-
-
-
-        <div class="modal fade" id="modal_student_search" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content shadow">
-              <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title" id="searchModalLabel">Search Student</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-
-              <div class="modal-body">
-                <input type="text" id="student_search_input" class="form-control" placeholder="Enter student name or ID"        autocomplete="off"
-               autocorrect="off"
-               spellcheck="false"
-               aria-autocomplete="none">
-                <div id="search_result" class="mt-3" style="max-height: 300px; overflow-y: auto;"></div>
-              </div>
-
-              <div class="modal-footer">
-                <button class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-      <div class="modal fade" id="modal_manage_settings" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content shadow">
-            <div class="modal-header bg-info text-white">
-              <h5 class="modal-title" id="paymentModalLabel">Manage Academic Year</h5>
-              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-              <div class="row">
-                <div class="col-lg-12">
-                  <label for="ayids">Select Academic Year</label>
-                  <select id="ayids" class="form-control">
-                    <?php 
-                      $settings_ay = "SELECT * FROM `tblacademic_years`";
-                      $runsettings_ay = mysqli_query($conn, $settings_ay);
-                      while($rowsettings_ay=mysqli_fetch_assoc($runsettings_ay)){
-                        echo'<option value="'.$rowsettings_ay['ayid'].'">'.$rowsettings_ay['ayfrom'].'-'.$rowsettings_ay['ayto'].'</option>';
-                      }
-                    ?>
-                    
-                  </select>
-                  
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-12 py-2">
-                  <button onclick="update_ay()" class="btn btn-primary btn-sm">Update Academic Year</button>
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>    
-
 
 
       </div>
@@ -385,122 +328,54 @@
 
   <script>
 
-    function loading_user_accounts(){
-      window.location = 'user_account/user_account.php';
+    function load_your_subjects() {
+        $('#loader').show(); // Show the loader
+        $('#content_area').hide(); // Hide the content while loading
+
+        $.ajax({
+            type: "POST",
+            url: "query_teacher.php",
+            data: { 
+            "loading_your_subject": '1' 
+          },
+            success: function(response) {
+                setTimeout(() => {
+                    $('#content_area').html(response);
+                }, 300); // Small delay for smoother loading
+            },
+            error: function(xhr, status, error) {
+                $('#content_area').html('<p class="text-danger">Error loading data.</p>');
+            },
+            complete: function() {
+                setTimeout(() => {
+                    $('#loader').hide(); // Hide the loader
+                    $('#content_area').show(); // Show the main content
+                }, 500); // Delay ensures a smooth transition
+            }
+        });
     }
 
-
-let enrolChart = null;
-
-// 1) populate AY dropdown and draw chart
-function initEnrolmentChart() {
-  // try to get current ayid from PHP session (already set in your page)
-  // const currentAy = <?= json_encode(isset($_SESSION['ayid']) ? (int)$_SESSION['ayid'] : 0) ?>;
-  const currentAy = 2;
-
-  fetchChartData(currentAy, true);
-}
-
-function fetchChartData(ay, init=false){
-   $.getJSON('chart_students_by_grade.php', { ay }, function(res){
-    // fill AY filter once
-    if(init){
-      const $sel = $('#ayFilter').empty();
-      res.ay_options.forEach(o=>{
-        const opt = $('<option>').val(o.ayid).text(o.ay_label);
-        $sel.append(opt);
-      });
-      if(ay){ $('#ayFilter').val(ay); }
-      // change handler
-      $('#ayFilter').off('change').on('change', function(){
-        fetchChartData($(this).val(), false);
-      });
-    }
-
-    const options = {
-      chart: { type: 'line', height: 320, toolbar: { show: false } },
-      stroke: { curve: 'smooth', width: 2 },
-      dataLabels: { 
-        enabled: true,
-        style: {
-          colors: ['#FFA500']
-        }
-       },
-      series: [{ name: 'Students', data: res.series }],
-      xaxis: { categories: res.labels, title: { text: 'Grade Level' } },
-      yaxis: { title: { text: 'No. of Students' }, forceNiceScale: true },
-      tooltip: { y: { formatter: (v)=> v + ' student' + (v==1?'':'s') } },
-      markers: { 
-        size: 3 
-      }
-    };
-
-    if(enrolChart){
-      enrolChart.updateOptions({ xaxis: options.xaxis, yaxis: options.yaxis });
-      enrolChart.updateSeries(options.series);
-    }else{
-      enrolChart = new ApexCharts(document.querySelector('#enrolmentChart'), options);
-      enrolChart.render();
-    }
-  });
-}
-
-// call on page load
-$(initEnrolmentChart);
-
-
-
-    function enrolment_student_records(){
-      window.location = 'student_management/student_records.php';
-    }
-
-    function update_ay(){
-      var ayids = $('#ayids').val();
-      Swal.fire({
-        title: "Updating Academic Year?",
-        text: "This will change the records appears in the dashboard!",
-        icon: "info",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, proceed it!"
-      }).then((result) => {
-        if (result.isConfirmed) {
-             $.ajax({
-                type: "POST",
-                url: "query_dasboard.php",
-                data: {
-                  "updating_ay": "1",
-                  "ayids" : ayids
-                },
-                success: function () {
-                    get_ay();
-                    $('#modal_manage_settings').modal('hide');
-                }
-              }); 
-        }
-      });
-
-     
-    }
 
     function get_ay(){
        $.ajax({
           type: "POST",
-          url: "query_dasboard.php",
-          data: {
-            "loading_ay": "1"
-          },
+          url: "query_teacher.php",
+          data: { loading_ay: 1 },
+          dataType: "json",
           success: function (response) {
-              $('#curr_ay').html(response);
+              if(response.ok){
+                  $('#curr_ay').text(response.ay);
+              } else {
+                  $('#curr_ay').text("N/A");
+              }
+          },
+          error: function(){
+              $('#curr_ay').text("Error");
           }
-        }); 
-       
+       }); 
     }
 
-    function manage_ay(){
-      $('#modal_manage_settings').modal('show');
-    }
+
 
 
   </script>
