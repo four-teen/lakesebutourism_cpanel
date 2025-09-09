@@ -4,10 +4,10 @@
     ob_start();
 
     include 'db.php';
-    include_once 'logger.php';
+    // include_once 'logger.php';
 
-    // Log page load + session info
-    log_event("Index page loaded. Session ID: " . session_id());
+    // // Log page load + session info
+    // log_event("Index page loaded. Session ID: " . session_id());
 
 
 ?>
@@ -18,7 +18,7 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BTSLife Inc · School Registration & Management</title>
+  <title>BTESLife Inc · School Registration & Management</title>
   <link rel="icon" href="assets/img/logo.png" />
 
   <!-- Bootstrap 5 -->
@@ -37,8 +37,8 @@
   <nav class="navbar navbar-expand-lg bg-white sticky-top">
     <div class="container py-2">
       <a class="navbar-brand d-flex align-items-center gap-2" href="#">
-        <img src="assets/img/logo.png" width="40" height="40" alt="BTSLife" onerror="this.style.display='none'">
-        <span class="brand-badge">BTSLife Inc.</span>
+        <img src="assets/img/logo.png" width="40" height="40" alt="BTESLife" onerror="this.style.display='none'">
+        <span class="brand-badge">BTESLife Inc.</span>
       </a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
@@ -47,10 +47,10 @@
 
       <div class="collapse navbar-collapse" id="mainNav">
         <ul class="navbar-nav ms-auto align-items-lg-center">
-          <li class="nav-item px-lg-2"><a class="nav-link active" href="#home">Home</a></li>
+<!--           <li class="nav-item px-lg-2"><a class="nav-link active" href="#home">Home</a></li>
           <li class="nav-item px-lg-2"><a class="nav-link" href="#features">Features</a></li>
           <li class="nav-item px-lg-2"><a class="nav-link" href="#stats">Stats</a></li>
-          <li class="nav-item px-lg-2"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item px-lg-2"><a class="nav-link" href="#contact">Contact</a></li> -->
           <li class="nav-item ps-lg-3 mt-2 mt-lg-0">
             <button class="btn btn-primary rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#loginModal">
               <i class="fa-solid fa-right-to-bracket me-2"></i> Secure Login
@@ -67,20 +67,16 @@
       <div class="halo"></div>
       <div class="row align-items-center g-4">
         <div class="col-lg-7">
-          <span class="chip mb-3"><i class="fa-solid fa-shield"></i> Secure · Fast · Registrar-friendly</span>
-          <h1 class="display-5 fw-bold mb-3">School Registration & Payments—made simple.</h1>
+          <span class="chip mb-3"><i class="fa-solid fa-shield"></i> Secure · Fast · Friendly</span>
+          <h1 class="display-5 fw-bold mb-3">School Registration & Payments - made simple.</h1>
           <p class="lead text-secondary mb-4">
             Handle student registration, enrollment, and collections in one clean interface for Elementary & High School.
-            Built with Bootstrap 5, jQuery (AJAX), and SweetAlert2.
           </p>
-          <div class="d-flex gap-2 gap-lg-3">
-            <a href="#features" class="btn btn-primary btn-lg rounded-pill px-4">
-              <i class="fa-solid fa-rocket me-2"></i> Get Started
-            </a>
-            <a href="#demo" class="btn btn-outline-primary btn-lg rounded-pill px-4" id="btnQuickDemo">
-              <i class="fa-regular fa-circle-play me-2"></i> Quick Demo
-            </a>
-          </div>
+<div>
+            <button class="btn btn-warning rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#loginModal">
+              <i class="fa-solid fa-right-to-bracket me-2"></i> Secure Login
+            </button>  
+</div>
         </div>
         <div class="col-lg-5">
           <div class="bg-white rounded-4 p-4 shadow-sm">
@@ -97,7 +93,16 @@
               </div>
               <div class="col-4">
                 <div class="p-3 rounded-3 border bg-light-subtle">
-                  <div class="fw-bold fs-4" id="statEnrolled">0</div>
+                  <div class="fw-bold fs-4" id="statEnrolled">
+                    <?php 
+                      $enrolled_count = "SELECT COUNT(autoid) as student_count FROM `tblstudents`";
+                      $runenrolled = mysqli_query($conn, $enrolled_count);
+                      if($runenrolled){
+                        $row_student_count = mysqli_fetch_assoc($runenrolled);
+                        echo $row_student_count['student_count'];
+                      }
+                    ?>
+                  </div>
                   <small class="text-secondary">Enrolled</small>
                 </div>
               </div>
@@ -109,7 +114,7 @@
               </div>
             </div>
             <div class="text-center mt-3">
-              <small class="text-secondary">Live data via AJAX once endpoints are ready.</small>
+              <small class="text-secondary"></small>
             </div>
           </div>
         </div>
@@ -120,12 +125,12 @@
   <!-- Feature Cards -->
   <section id="features" class="container my-5">
     <div class="text-center mb-4">
-      <h2 class="fw-bold">Core Modules</h2>
-      <p class="text-secondary mb-0">Click a card to begin. These will route to module pages later.</p>
+      <h2 class="fw-bold"></h2>
+      <p class="text-secondary mb-0"></p>
     </div>
     <div class="row g-4">
       <div class="col-md-6 col-lg-3">
-        <a href="modules/students/index.php" class="text-decoration-none">
+        <a href="#" class="text-decoration-none">
           <div class="card card-hover h-100">
             <div class="card-body p-4">
               <i class="fa-solid fa-user-plus fa-2x text-primary"></i>
@@ -136,7 +141,7 @@
         </a>
       </div>
       <div class="col-md-6 col-lg-3">
-        <a href="modules/enrollment/index.php" class="text-decoration-none">
+        <a href="#" class="text-decoration-none">
           <div class="card card-hover h-100">
             <div class="card-body p-4">
               <i class="fa-solid fa-list-check fa-2x text-primary"></i>
@@ -147,7 +152,7 @@
         </a>
       </div>
       <div class="col-md-6 col-lg-3">
-        <a href="modules/payments/index.php" class="text-decoration-none">
+        <a href="#" class="text-decoration-none">
           <div class="card card-hover h-100">
             <div class="card-body p-4">
               <i class="fa-solid fa-peso-sign fa-2x text-primary"></i>
@@ -158,7 +163,7 @@
         </a>
       </div>
       <div class="col-md-6 col-lg-3">
-        <a href="modules/reports/index.php" class="text-decoration-none">
+        <a href="#" class="text-decoration-none">
           <div class="card card-hover h-100">
             <div class="card-body p-4">
               <i class="fa-solid fa-chart-pie fa-2x text-primary"></i>
@@ -177,14 +182,34 @@
       <div class="col-md-4">
         <div class="stat p-4">
           <div class="d-flex align-items-center mb-2"><i class="fa-solid fa-children me-2 text-primary"></i><strong>Elementary</strong></div>
-          <div class="display-6 fw-bold" id="statElem">0</div>
+          <div class="display-6 fw-bold" id="statElem">
+            <?php 
+               $elem_count = "SELECT COUNT(autoid) as student_count FROM `tblstudents`
+              WHERE grade_level < 7";
+              $runelem = mysqli_query($conn, $elem_count);
+              if($runelem){
+                $row_student_count = mysqli_fetch_assoc($runelem);
+                echo $row_student_count['student_count'];
+              }
+            ?>
+          </div>
           <small class="text-secondary">Enrolled Students (S.Y. 2025–2026)</small>
         </div>
       </div>
       <div class="col-md-4">
         <div class="stat p-4">
           <div class="d-flex align-items-center mb-2"><i class="fa-solid fa-user-graduate me-2 text-primary"></i><strong>High School</strong></div>
-          <div class="display-6 fw-bold" id="statHS">0</div>
+          <div class="display-6 fw-bold" id="statHS">
+            <?php 
+              $highschool_count = "SELECT COUNT(autoid) as student_count FROM `tblstudents`
+              WHERE grade_level >= 7";
+              $runhighschool = mysqli_query($conn, $highschool_count);
+              if($runhighschool){
+                $row_student_count = mysqli_fetch_assoc($runhighschool);
+                echo $row_student_count['student_count'];
+              }
+            ?>
+          </div>
           <small class="text-secondary">Enrolled Students (S.Y. 2025–2026)</small>
         </div>
       </div>
@@ -202,19 +227,18 @@
   <section id="contact" class="container my-5">
     <div class="row align-items-center g-3">
       <div class="col-md-8">
-        <h4 class="fw-bold mb-1">Need help or a new feature?</h4>
-        <p class="text-secondary mb-0">Contact the Registrar/Cashier or send a ticket to the BTSLife IT Desk.</p>
+        <h4 class="fw-bold mb-1">Need help?</h4>
+        <p class="text-secondary mb-0">Contact the Administrator or contact BTESLife IT Desk.</p>
       </div>
       <div class="col-md-4 text-md-end">
-        <a href="#" class="btn btn-outline-primary rounded-pill"><i class="fa-regular fa-envelope me-2"></i> Open Support Ticket</a>
       </div>
     </div>
   </section>
 
   <footer class="py-4 border-top">
     <div class="container d-flex justify-content-between align-items-center footer">
-      <small>© <span id="yr"></span> BTSLife Inc. All rights reserved.</small>
-      <small>Built with Bootstrap 5 · jQuery · SweetAlert2</small>
+      <small>© <span id="yr"></span> BTESLife Inc. All rights reserved.</small>
+      <small>Developed by EOA | MGIS</small>
     </div>
   </footer>
 

@@ -45,6 +45,7 @@ include_once __DIR__ . '/../db.php';
   <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="../assets/vendor/simple-datatables/style.css" rel="stylesheet">
   <link href="../assets/vendor/bootstrap/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
    <!-- Template Main CSS File -->
   <link href="../assets/css/style.css" rel="stylesheet">
@@ -217,6 +218,14 @@ include_once __DIR__ . '/../db.php';
   }
 }
 
+        .select2-container--default .select2-selection--single {
+            height: 45px;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            line-height: 45px; /* Apply line-height specifically to the text element */
+        }
+
 </style>
 </head>
 
@@ -266,7 +275,7 @@ include_once __DIR__ . '/../db.php';
 
 
                 <div class="card-body">
-                  <h5 class="card-title">Reports</h5>
+                  <h5 class="card-title"></h5>
 
                         <div id="main_data">
                           <div id="loader" class="text-center" style="display: none;">
@@ -302,6 +311,55 @@ include_once __DIR__ . '/../db.php';
     </div>
   </footer><!-- End Footer -->
 
+
+<div class="modal fade" id="addingStudentsModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content shadow">
+        <div class="modal-header bg-info text-white">
+          <h5 class="modal-title" id="paymentModalLabel">Add Students</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="class_schedule_id">
+            <div class="row">
+              <div class="col-lg-12">
+                <label for="studentsID">Select Students</label>
+                <select id="studentsID" class="js-example-basic-single form-control" name="state">
+                  <?php 
+                    $get_students = "SELECT * FROM `tblstudents`";
+                    $runget_students = mysqli_query($conn, $get_students);
+                    while($row_students = mysqli_fetch_assoc($runget_students)){
+                      echo'<option value="'.$row_students['autoid'].'">'.strtoupper($row_students['last_name']).', '.strtoupper($row_students['first_name']).' '.strtoupper($row_students['middle_name']).'</option>';
+                    }
+                  ?>
+                  
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12 py-2">
+                <button  onclick="saving_students()" class="btn btn-primary">Add to list</button>
+                <hr>
+                  <div id="main_data2">
+                    <div id="loader2" class="text-center" style="display: none;">
+                      <img src="../loader.gif" alt="Loading..." width="10%">
+                    </div>
+                    <div id="content_area2"></div>
+                  </div>
+
+              </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button onclick="update_count()" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
   <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
@@ -325,8 +383,109 @@ include_once __DIR__ . '/../db.php';
   <script src="../assets/js/main.js"></script>
   <script src="../assets/sweetalert2.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 
   <script>
+
+    function update_count(){
+      load_your_subjects();
+    }
+
+    function remove_student(gradesectID){
+      var class_schedule_id = $('#class_schedule_id').val();
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+         $.ajax({
+            type: "POST",
+            url: "query_teacher.php",
+            data: {
+              "delete_the_student": "1",
+              "gradesectID" : gradesectID
+            },
+            success: function () {
+              load_students(class_schedule_id);
+              load_your_subjects();
+            }
+          }); 
+
+        }
+      });
+    }
+
+
+function load_students(cstid) {
+  var class_schedule_id = $('#class_schedule_id').val();
+
+
+  $('#loader2').show();
+  $('#content_area2').hide();
+
+  $.ajax({
+    type: "POST",
+    url: "query_teacher.php",
+    data: {
+      "loading_students_subjects": 1,
+      "cstid": cstid   // <<— IMPORTANT
+    },
+    success: function (response) {
+      $('#content_area2').html(response);
+
+      // init DataTable for the table inside the modal
+      if ($.fn.DataTable.isDataTable('#modalStudentsTable')) {
+        $('#modalStudentsTable').DataTable().destroy();
+      }
+      $('#modalStudentsTable').DataTable({
+        pageLength: 10,
+        lengthChange: false,
+        ordering: true
+      });
+    },
+    error: function () {
+      $('#content_area2').html('<p class="text-danger">Error loading data.</p>');
+    },
+    complete: function () {
+      $('#loader2').hide();
+      $('#content_area2').show();
+    }
+  });
+}
+
+
+    function saving_students(){
+      var studentsID = $('#studentsID').val();
+      var class_schedule_id = $('#class_schedule_id').val();
+
+
+       $.ajax({
+          type: "POST",
+          url: "query_teacher.php",
+          data: { 
+            "saving_subject_students": 1,
+            "studentsID" : studentsID ,
+            "class_schedule_id" : class_schedule_id
+          },
+          success: function () {
+            // $('#test').html(response);
+            // load_your_subjects();
+            load_students(class_schedule_id);
+          }
+       }); 
+    }
+
+    function add_student_list(cstid){
+      load_students(cstid);
+      $('#class_schedule_id').val(cstid);
+      $('#addingStudentsModal').modal('show');
+    }
 
     function load_your_subjects() {
         $('#loader').show(); // Show the loader
@@ -375,7 +534,20 @@ include_once __DIR__ . '/../db.php';
        }); 
     }
 
-
+  // init Select2 for the modal select
+  $(document).ready(function () {
+    // safest: init on modal show (handles re-renders)
+    $('#addingStudentsModal').on('shown.bs.modal', function () {
+      $('#studentsID').select2({
+        dropdownParent: $('#addingStudentsModal'),
+        width: '100%',
+        placeholder: 'Search student...',
+        allowClear: true
+      });
+      // optional: auto-focus/open
+      // $('#studentsID').select2('open');
+    });
+  });
 
 
   </script>

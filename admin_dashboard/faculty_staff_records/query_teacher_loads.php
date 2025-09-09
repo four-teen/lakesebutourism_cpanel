@@ -106,10 +106,11 @@ require_once __DIR__ . '/../../db.php';
 
 	if(isset($_POST['saving_subj_teachers'])){
 		$teachersid = $_POST['teachersid'];
-		$classid = $_POST['classid'];		
-		$insert = "INSERT INTO `tblclass_schedules_teachers` (`cst_teachersid`, `cst_classid`) VALUES ('$teachersid', '$classid')";
+		$classid = $_POST['classid'];	
+		$sectionsID = $_POST['sectionsID'];	
+		$insert = "INSERT INTO `tblclass_schedules_teachers` (`cst_teachersid`, `cst_classid`, `cst_sectionid`) VALUES ('$teachersid', '$classid', '$sectionsID')";
 		$runinsert = mysqli_query($conn, $insert);
-		echo $insert;
+		// echo $insert;
 	}
 	
 	if(isset($_POST['delete_class_schedule'])){
@@ -137,7 +138,11 @@ require_once __DIR__ . '/../../db.php';
 		        <?php
 		        	$select = "SELECT * FROM `tblclass_schedules`
 					LEFT JOIN tblsubjects on tblsubjects.subjectid=tblclass_schedules.subjectid
-					WHERE levelid='$levelID' AND sectionsid='$sectionsID'";
+					WHERE levelid='$levelID'";
+		        	// $select = "SELECT * FROM `tblclass_schedules`
+					// LEFT JOIN tblsubjects on tblsubjects.subjectid=tblclass_schedules.subjectid
+					// WHERE levelid='$levelID' AND sectionsid='$sectionsID'";
+
 		        	$runselect = mysqli_query($conn, $select);
 		        	while($rowselect = mysqli_fetch_assoc($runselect)){
 		        		echo
@@ -159,9 +164,8 @@ require_once __DIR__ . '/../../db.php';
 									'; ?>
 									<?php 
 									$get_teachers = "SELECT * FROM `tblclass_schedules_teachers`
-									INNER JOIN tblteachers 
-									    ON tblteachers.teachersautoid=tblclass_schedules_teachers.cst_teachersid 
-									WHERE cst_classid='$rowselect[classid]'";
+							        INNER JOIN tblteachers ON tblteachers.teachersautoid=tblclass_schedules_teachers.cst_teachersid
+									WHERE cst_classid='$rowselect[classid]' AND cst_sectionid='$sectionsID'";
 
 									$runget_teachers = mysqli_query($conn, $get_teachers);
 

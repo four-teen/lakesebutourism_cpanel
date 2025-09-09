@@ -275,13 +275,15 @@ $sectionsID = $rowaccounts['sectionsid'];
     function saving_subject_teachers(){
         var teachersid = $('#teachersid').val();
         var classid = $('#holder_teacher_id').val();
+        var sectionsID = '<?php echo $sectionsID ?>';
         $.ajax({
             type: "POST",
             url: "query_teacher_loads.php",
             data: {
             "saving_subj_teachers": "1",
             "teachersid" : teachersid,
-            "classid" : classid
+            "classid" : classid,
+            "sectionsID" : sectionsID
             },
             success: function (response) {
                 load_class_schedules();
