@@ -96,7 +96,7 @@ $ay = isset($_SESSION['ays']) ? $_SESSION['ays'] : '';
 <body onload="get_ay();load_students()">
 
 <?php 
-  include '../header.php';
+  include 'header.php';
  ?>
 <!-- ======= Sidebar ======= -->
 <aside id="sidebar" class="sidebar">

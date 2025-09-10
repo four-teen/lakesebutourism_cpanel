@@ -107,82 +107,97 @@ if(isset($_POST['loading_details'])){
 
 
 if (isset($_POST['loading_faculty_records'])) {
-  // Serve HTML, not JSON
-  header('Content-Type: text/html; charset=UTF-8');
+    // Serve HTML, not JSON
+    header('Content-Type: text/html; charset=UTF-8');
 
-  // Small helper to resolve image path (relative to teacher_profile.php)
-  function teacher_img_src($row){
-    $p = trim($row['teacher_image'] ?? '');
-    if ($p === '') return '../../../assets/img/profile.png';
-    // stored like 'uploads/teachers/file.jpg' => prefix for page location
-    return '../../' . ltrim($p, '/');
-  }
-  ?>
-  <div class="table-responsive">
-    <table id="tblTeachers" class="table table-striped table-bordered w-100">
-      <thead>
-        <tr>
-          <th style="width:1%">Photo</th>
-          <th>ID</th>
-          <th>Full Name</th>
-          <th>Designation</th>
-          <th style="width:110px">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php
-          $q = "SELECT teachersautoid, teachersid, firstname, middlename, lastname, teacher_image
-                FROM tblteachers ORDER BY lastname, firstname";
-          $rs = mysqli_query($conn, $q);
-          while ($row = mysqli_fetch_assoc($rs)) {
-            $img = teacher_img_src($row);
-            echo '<tr>';
-            echo '  <td class="align-middle text-center" width="1%"><img class="avatar" src="'.htmlspecialchars($img).'" onerror="this.src=\'../../assets/img/profile.png\'"></td>';
-            echo '  <td class="align-middle" width="1%">'.htmlspecialchars($row['teachersid']).'</td>';
-            echo '  <td class="align-middle"><b>'.htmlspecialchars($row['lastname']).'</b>, '.htmlspecialchars(ucwords(strtolower($row['firstname']))).' '.htmlspecialchars($row['middlename']).'</td>';
-            echo '  
-                  <td class="align-middle">
-                  '; ?>
-                  <?php 
-                    $getdesignations = "SELECT * FROM `tblassigned_designation`
-                    INNER JOIN tbldesignation on tbldesignation.designationid = tblassigned_designation.ass_designationid
-                    INNER JOIN tblgradelevel on tblgradelevel.levelid=tblassigned_designation.ass_gradelevelid
-                    LEFT JOIN tblsections on tblsections.sectionsid=tblassigned_designation.ass_sectionid
-                    WHERE ass_teachersautoid='$row[teachersautoid]'";
-                    $rungetdesig = mysqli_query($conn, $getdesignations);
-                    $rowgetdesignation = mysqli_fetch_assoc($rungetdesig);
-                    echo strtoupper($rowgetdesignation['designation_desc']) . 
-     (($rowgetdesignation['level_descrition'] !== 'None' && !empty($rowgetdesignation['level_descrition'])) ? ' | ' . strtoupper($rowgetdesignation['level_descrition']) : '') .
-     (($rowgetdesignation['section_desc'] !== 'None' && !empty($rowgetdesignation['section_desc'])) ? ' ' . strtoupper($rowgetdesignation['section_desc']) : '');
-                  ?>
-                  <?php echo'
-                  </td>
-                  ';
-            echo '  <td width="1%" class="text-center text-nowrap align-middle">
-                      <div class="btn-group py-2" role="group" aria-label="Basic mixed styles example">
-                          <button title="More Information" class="btn btn-sm btn-info" data-id="'.$row['teachersautoid'].'" onclick="Teacherinfo(this)"><i class="bx bx-user"></i></button>
-                          <button title="Manage class schedule" class="btn btn-sm btn-warning" data-id="'.$row['teachersautoid'].'" onclick="manageTeacher(this,\''.$rowgetdesignation['assignedid'].'\')"><i class="bx bx-command"></i></button>
-                          <button title="Edit Profile" class="btn btn-sm btn-primary" data-id="'.$row['teachersautoid'].'" onclick="editTeacher(this)"><i class="bi bi-pencil"></i></button>
-                          <button title="Delete Profile" class="btn btn-sm btn-danger" data-id="'.$row['teachersautoid'].'" onclick="delTeacher(this)"><i class="bi bi-trash"></i></button>
-                      </div>
-                    </td>';
-            echo '</tr>';
-          }
-        ?>
-      </tbody>
-    </table>
-  </div>
-  <script>
-    // Initialize DataTable after fragment inject
-    $('#tblTeachers').DataTable({
-      pageLength: 10,
-      lengthChange: false,
-      order: [[2,'asc'],[3,'asc']]
-    });
-  </script>
-  <?php
-  exit; // IMPORTANT: stop here so we don't print JSON
+    // Small helper to resolve image path (relative to teacher_profile.php)
+    function teacher_img_src($row){
+        $p = trim($row['teacher_image'] ?? '');
+        if ($p === '') return '../../../assets/img/profile.png';
+        // stored like 'uploads/teachers/file.jpg' => prefix for page location
+        return '../../' . ltrim($p, '/');
+    }
+    ?>
+    <div class="table-responsive">
+        <table id="tblTeachers" class="table table-striped table-bordered w-100">
+            <thead>
+                <tr>
+                    <th style="width:1%">Photo</th>
+                    <th>ID</th>
+                    <th>Full Name</th>
+                    <th>Designation</th>
+                    <th style="width:110px">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                    $q = "SELECT teachersautoid, teachersid, firstname, middlename, lastname, teacher_image
+                            FROM tblteachers ORDER BY lastname, firstname";
+                    $rs = mysqli_query($conn, $q);
+                    while ($row = mysqli_fetch_assoc($rs)) {
+                        $img = teacher_img_src($row);
+                        echo '<tr>';
+                        echo '  <td class="align-middle text-center" width="1%"><img class="avatar" src="' . htmlspecialchars($img) . '" onerror="this.src=\'../../assets/img/profile.png\'"></td>';
+                        echo '  <td class="align-middle" width="1%">' . htmlspecialchars($row['teachersid']) . '</td>';
+                        echo '  <td class="align-middle"><b>' . htmlspecialchars($row['lastname']) . '</b>, ' . htmlspecialchars(ucwords(strtolower($row['firstname']))) . ' ' . htmlspecialchars($row['middlename']) . '</td>';
+
+                        // ---- FIXED: do NOT embed a <?php block inside echo; build then echo
+                        echo '  <td class="align-middle"
+                                 data-id="' . htmlspecialchars($row['teachersautoid']) . '"
+                                 onclick="Teacherinfo(this)"
+                                 style="cursor:pointer">';
+
+                        $getdesignations = "SELECT * FROM `tblassigned_designation`
+                            INNER JOIN tbldesignation ON tbldesignation.designationid = tblassigned_designation.ass_designationid
+                            INNER JOIN tblgradelevel ON tblgradelevel.levelid = tblassigned_designation.ass_gradelevelid
+                            LEFT JOIN tblsections ON tblsections.sectionsid = tblassigned_designation.ass_sectionid
+                            WHERE ass_teachersautoid='" . $row['teachersautoid'] . "'";
+
+                        $rungetdesig = mysqli_query($conn, $getdesignations);
+                        $rowgetdesignation = mysqli_fetch_assoc($rungetdesig);
+
+                        // Check if a row was found
+                        if ($rowgetdesignation) {
+                            $assignedId = $rowgetdesignation['assignedid'];
+                            echo strtoupper($rowgetdesignation['designation_desc'])
+                                . (( $rowgetdesignation['level_descrition'] !== 'None' && !empty($rowgetdesignation['level_descrition']) )
+                                    ? ' | ' . strtoupper($rowgetdesignation['level_descrition']) : '')
+                                . (( $rowgetdesignation['section_desc'] !== 'None' && !empty($rowgetdesignation['section_desc']) )
+                                    ? ' ' . strtoupper($rowgetdesignation['section_desc']) : '');
+                        } else {
+                            $assignedId = 'null'; // Set to 'null' if no designation is found
+                        }
+
+                        echo '  </td>';
+
+                        echo '  <td width="1%" class="text-center text-nowrap align-middle">
+                                    <div class="btn-group py-2" role="group" aria-label="Basic mixed styles example">
+                                        <button title="More Information" class="btn btn-sm btn-info" data-id="' . $row['teachersautoid'] . '" onclick="Teacherinfo(this)"><i class="bx bx-user"></i></button>
+                                        <button title="Manage class schedule" class="btn btn-sm btn-warning" data-id="' . $row['teachersautoid'] . '" onclick="manageTeacher(this, ' . ($assignedId !== 'null' ? "'" . htmlspecialchars($assignedId) . "'" : 'null') . ')"><i class="bx bx-command"></i></button>
+                                        <button title="Edit Profile" class="btn btn-sm btn-primary" data-id="' . $row['teachersautoid'] . '" onclick="editTeacher(this)"><i class="bi bi-pencil"></i></button>
+                                        <button title="Delete Profile" class="btn btn-sm btn-danger" data-id="' . $row['teachersautoid'] . '" onclick="delTeacher(this)"><i class="bi bi-trash"></i></button>
+                                    </div>
+                                </td>';
+                        echo '</tr>';
+                    }
+                ?>
+            </tbody>
+
+        </table>
+    </div>
+    <script>
+        // Initialize DataTable after fragment inject
+        $('#tblTeachers').DataTable({
+            pageLength: 10,
+            lengthChange: false,
+            order: [[2,'asc'],[3,'asc']]
+        });
+    </script>
+    <?php
+    exit; // IMPORTANT: stop here so we don't print JSON
 }
+
+
 
 // ---------- JSON endpoints below ----------
 header('Content-Type: application/json');
