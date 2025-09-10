@@ -218,7 +218,7 @@ include_once __DIR__ . '/../../db.php';
 
 <body onload="load_fac_workload();get_ay()">
 
-<?php include '../header.php'; ?>
+<?php include 'header.php'; ?>
 
 <!-- ======= Sidebar (short) ======= -->
 <aside id="sidebar" class="sidebar">

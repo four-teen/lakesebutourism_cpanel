@@ -49,7 +49,7 @@ $_SESSION['ayid'] = $rowsettings['ayid'];
 
 <body onload="load_fac_profile();get_ay()">
 
-<?php include '../header.php'; ?>
+<?php include 'header.php'; ?>
 
 <!-- ======= Sidebar (short) ======= -->
 <aside id="sidebar" class="sidebar">
@@ -143,7 +143,7 @@ $_SESSION['ayid'] = $rowsettings['ayid'];
         <div class="row g-3">
           <!-- preview -->
           <div class="col-12 text-center">
-            <img id="previewImg" class="avatar-lg" src="../../assets/img/profile.png" alt="preview">
+            <img id="previewImg" class="avatar-lg" src="profile.png" alt="previews">
           </div>
 
           <!-- file input -->

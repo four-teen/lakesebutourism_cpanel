@@ -52,8 +52,27 @@
               echo
               '
               <tr>
-                <td class="align-middle" width="1%">'.++$count.'.</td>
-                <td class="align-middle">'.strtoupper($rowselect['subject_description']).'</td>
+                
+              '?>
+              <?php 
+                if($rowselect['subjectid']=='10001'){
+                  echo'
+                  <td class="align-middle" width="1%"></td>
+                  <td class="align-middle"><i><span class="text-danger">'.strtoupper($rowselect['subject_description']).'</span></i></td>
+                  ';
+                }else if($rowselect['subjectid']=='10002'){
+                  echo'
+                  <td class="align-middle" width="1%"></td>
+                  <td class="align-middle"><i><span class="text-danger">'.strtoupper($rowselect['subject_description']).'</span></i></td>';
+                }else{
+                  echo'
+                  <td class="align-middle" width="1%">'.++$count.'.</td>
+                  <td class="align-middle">'.strtoupper($rowselect['subject_description']).'
+                  </td>';
+                }
+              ?>
+              <?php echo'
+                
                 <td class="align-middle text-center text-nowrap" width="1%">
                   <button onclick="removed_curr(\''.$rowselect['currid'].'\')" type="button" class="btn btn-danger"><i class="bx bx-trash"></i>
                   </button>

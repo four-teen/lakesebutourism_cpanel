@@ -83,7 +83,7 @@ $sectionsID = $rowaccounts['sectionsid'];
 
 <body onload="load_class_schedules();get_ay()">
 
-<?php include '../header.php'; ?>
+<?php include 'header.php'; ?>
 
 <aside id="sidebar" class="sidebar">
     <ul class="sidebar-nav" id="sidebar-nav">
@@ -121,7 +121,7 @@ $sectionsID = $rowaccounts['sectionsid'];
             <div class="card-body">
                 <div class="d-flex flex-wrap justify-content-between align-items-center pt-3 pb-2">
                     <div>
-                        <h5 class="card-title mb-0"><?php echo strtoupper($rowaccounts['designation_desc']) ?>: <b><?php echo $rowaccounts['lastname'] ?></b>, <?php echo $rowaccounts['firstname'] ?><br><span style="font-size:16px"><?php echo (($rowaccounts['level_descrition'] !== 'None' && !empty($rowaccounts['level_descrition'])) ? ' ' . strtoupper($rowaccounts['level_descrition']) : '') .
+                        <h5 class="card-title mb-0"><?php echo strtoupper($rowaccounts['designation_desc']) ?><b><?php echo $rowaccounts['lastname'] ?></b> <?php echo $rowaccounts['firstname'] ?><br><span style="font-size:16px"><?php echo (($rowaccounts['level_descrition'] !== 'None' && !empty($rowaccounts['level_descrition'])) ? ' ' . strtoupper($rowaccounts['level_descrition']) : '') .
                                 (($rowaccounts['section_desc'] !== 'None' && !empty($rowaccounts['section_desc'])) ? ' - ' . strtoupper($rowaccounts['section_desc']) : ''); ?></span></b></h5>
                     </div>
                 </div>
