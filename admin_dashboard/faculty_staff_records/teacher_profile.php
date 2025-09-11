@@ -280,7 +280,6 @@ $_SESSION['ayid'] = $rowsettings['ayid'];
 
     function Teacherinfo(buttonElement) {
       const teacherId = buttonElement.dataset.id;
-      alert(teacherId);
       $('#the_teacher').val(teacherId);
       $('#teacher_details_Modal').modal('show');
 

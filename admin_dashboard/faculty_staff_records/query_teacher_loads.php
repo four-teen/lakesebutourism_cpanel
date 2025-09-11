@@ -21,82 +21,94 @@ require_once __DIR__ . '/../../db.php';
 		$runget_the_teacher = mysqli_query($conn, $get_the_teacher);
 		$row_get_the_teacher = mysqli_fetch_assoc($runget_the_teacher);
 
-
-		echo 
+		echo
 		''; ?>
-    <div class="container">
-        <div class="header">
-            <img src="../../barmm.png" alt="BARMM Logo" class="logo">
-            <div class="school-info">
-                <div class="republic">Republic of the Philippines</div>
-                <div class="ministry">MINISTRY OF BASIC, HIGHER, AND TECHNICAL EDUCATION</div>
-                <div class="division">Division of Maguindanao Del Sur 1</div>
-                <div class="region">Bansamoro Autonomous Region in Muslim Mindanao</div>
-                <div class="address">BULUAN TECHNICAL EDUCATION SCHOOL OF Life, Inc.<br>Poblacion, Buluan, Maguindanao Del Sur, BARMM</div>
+			<div id="print_area">
+    <div id="print_area" class="p-5">
+        <style>
+            .header-info { text-align: center; }
+            .header-info p { margin: 0; padding: 0; line-height: 1.2; font-size: 14px; }
+            .header-logo { width: 100px; height: 100px; object-fit: cover; }
+            .content-header h4 { font-size: 18px; margin-top: 20px; margin-bottom: 5px; font-weight: bold; }
+            .info-item { margin-bottom: 5px; }
+            .info-item .label { font-weight: bold; }
+            .schedule-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+            .schedule-table th, .schedule-table td { border: 1px solid #000; padding: 8px; text-align: left; font-size: 14px; }
+            .schedule-table th { background-color: #f2f2f2; font-weight: bold; text-align: center; }
+            .signatories { margin-top: 50px; }
+            .signatory { width: 48%; display: inline-block; vertical-align: top; }
+            .signature-line { border-bottom: 1px solid #000; margin-top: 50px; }
+            .signatory-name { font-weight: bold; text-transform: uppercase; margin-top: 5px; }
+            .signatory-role { font-size: 12px; }
+
+    #print_area {
+        padding: 1in 1.5in; /* 1in top/bottom, 1.5in left/right */
+    }
+        </style>
+        
+        <div style="display: flex; align-items: center; justify-content: center; gap: 20px; text-align: center;">
+            <img src="../../assets/img/logo.png" class="header-logo" alt="Logo">
+            <div class="header-info" style="flex: 1;">
+                <p>Republic of the Philippines</p>
+                <p>MINISTRY OF BASIC, HIGHER, AND TECHNICAL EDUCATION</p>
+                <p>Division of Maguindanao Del Sur 1</p>
+                <p>Bangsamoro Autonomous Region in Muslim Mindanao</p>
+                <p style="font-weight: bold;">BULUAN TECHNICAL EDUCATION SCHOOL OF LIFE, Inc.</p>
+                <p>Poblacion, Buluan, Maguindanao Del Sur, BARMM</p>
             </div>
-            <img src="../../bteslife.png" alt="DepEd Logo" class="logo">
+            <img src="../../assets/img/logo.png" class="header-logo" alt="Logo">
+        </div>
+        <hr>
+
+        <div class="content-header" style="text-align: center;">
+            <h4>INDIVIDUAL LOADS</h4>
+            <div style="margin-bottom: 20px;">S.Y. </div>
         </div>
 
-        <div class="title-section">
-            <div class="main-title">INDIVIDUAL LOADS</div>
-            <div class="sy">S.Y. 2025 – 2026</div>
-        </div>
-
-        <div class="info-block">
-            <div><span class="label">NAME:</span> <span class="value"><?php echo $row_get_the_teacher['firstname']. ', '.$row_get_the_teacher['middlename'].'. '.$row_get_the_teacher['lastname'] ?></span></div>
-            <div><span class="label">POSITION:</span> <span class="value"><?php echo strtoupper($row_get_the_teacher['level_descrition']) ?> – <?php echo strtoupper($row_get_the_teacher['section_desc']) ?> <?php echo strtoupper($row_get_the_teacher['designation_desc']) ?></span></div>
+        <div class="teacher-info" style="margin-bottom: 20px;">
+            <div class="info-item"><span class="label">NAME:</span> </div>
+            <div class="info-item"><span class="label">POSITION:</span> </div>
         </div>
 
         <table class="schedule-table">
             <thead>
                 <tr>
-                    <th>TIME</th>
-                    <th>SUBJECT</th>
-                    <th>YEAR LEVEL</th>
+                    <th width="15%">TIME</th>
+                    <th width="50%">SUBJECT</th>
+                    <th width="35%">YEAR LEVEL</th>
                 </tr>
             </thead>
             <tbody>
-            	<?php 
-            		$get_schedule = "SELECT * FROM `tblclass_schedules_teachers`
-					INNER JOIN tblclass_schedules on tblclass_schedules.classid=tblclass_schedules_teachers.cst_classid
-					INNER JOIN tblsubjects on tblsubjects.subjectid = tblclass_schedules.subjectid
-                    INNER JOIN tblgradelevel on tblgradelevel.levelid=tblclass_schedules.levelID
-                    INNER JOIN tblsections on tblsections.sectionsid=tblclass_schedules.sectionsID
-                    WHERE cst_teachersid='$_POST[teacherid]'";
-            		$rungetselect = mysqli_query($conn, $get_schedule);
-            		while($rowselect = mysqli_fetch_assoc($rungetselect)){
-            			echo
-            			'
-			                <tr>
-			                    <td>'.$rowselect['time_from'].'-'.$rowselect['time_to'].'</td>
-			                    <td>'.$rowselect['subject_description'].'</td>
-			                    <td>'.$rowselect['level_descrition'].' '.$rowselect['section_desc'].'</td>
-			                </tr>
-            			';
-            		}
-            	?>
+            	<tr>
+            		<td></td>
+            		<td></td>
+            		<td></td>
+            	</tr>
             </tbody>
         </table>
 
-        <div class="approved-by">
-            <div>PREPARED BY:</div>
-            <div class="signature-block">
-                <!-- <img src="" alt="Signature Johanna" class="signature-image"> -->
-                <div class="name">JOHANA M. DIMALILAY</div>
-                <div class="title">ACADEMIC COORDINATOR</div>
+        <div class="signatories">
+            <div class="signatory" style="text-align: left;">
+                <div style="margin-bottom: 10px;">PREPARED BY:</div>
+                <div class="signature-line" style="height: 50px;"></div>
+                <div class="signatory-name">JOHANA M. DIMALILAY</div>
+                <div class="signatory-role">ACADEMIC COORDINATOR</div>
             </div>
-        </div>
-
-        <div class="approved-by">
-            <div>APPROVED BY:</div>
-            <div class="signature-block">
-                <!-- <img src="" alt="Signature Flora" class="signature-image"> -->
-                <div class="name">FLORA UY SALENDAB</div>
-                <div class="title">SCHOOL HEAD</div>
+            
+            <div class="signatory" style="text-align: right;">
+                <div style="margin-bottom: 10px;">APPROVED BY:</div>
+                <div class="signature-line" style="height: 50px;"></div>
+                <div class="signatory-name">FLORA UY SALENDAB</div>
+                <div class="signatory-role">SCHOOL HEAD</div>
             </div>
         </div>
     </div>
-		<?php echo'';
+				
+			</div>
+
+		<?php echo '';
+
+
 	}
 
 	if(isset($_POST['remove_subject_teacher'])){
@@ -121,6 +133,7 @@ require_once __DIR__ . '/../../db.php';
 	if(isset($_POST['loading_class_schedules'])){
 		$levelID = $_POST['levelID'];
 		$sectionsID = $_POST['sectionsID'];
+		// echo $levelID. '-' .$sectionsID; 
 		echo
 		''; ?>
 		  <div class="table-responsive">
@@ -136,9 +149,15 @@ require_once __DIR__ . '/../../db.php';
 		      </thead>
 		      <tbody>
 		        <?php
-		        	$select = "SELECT * FROM `tblclass_schedules`
-					LEFT JOIN tblsubjects on tblsubjects.subjectid=tblclass_schedules.subjectid
-					WHERE levelid='$levelID'";
+
+		        	$select = "SELECT * FROM `tblcurriculum`
+		        	INNER JOIN tblsubjects on tblsubjects.subjectid=tblcurriculum.subjectid
+					WHERE gradelevelid='$levelID' AND sectID='$sectionsID'";		        	
+
+		        	// $select = "SELECT * FROM `tblclass_schedules`
+					// LEFT JOIN tblsubjects on tblsubjects.subjectid=tblclass_schedules.subjectid
+					// WHERE levelid='$levelID'";
+
 		        	// $select = "SELECT * FROM `tblclass_schedules`
 					// LEFT JOIN tblsubjects on tblsubjects.subjectid=tblclass_schedules.subjectid
 					// WHERE levelid='$levelID' AND sectionsid='$sectionsID'";
@@ -148,7 +167,7 @@ require_once __DIR__ . '/../../db.php';
 		        		echo
 		        		'
 					        <tr>
-					        	<td width="1%" class="text-nowrap align-middle">'.date('h:i', strtotime($rowselect['time_from'])).'-'.date('h:i', strtotime($rowselect['time_to'])).'</td>
+					        	<td width="1%" class="text-nowrap align-middle">'.date('h:i', strtotime($rowselect['timefrom'])).'-'.date('h:i', strtotime($rowselect['timeto'])).'</td>
 					    '; ?>
 					    <?php 
 					    	if($rowselect['subjectid']=='10001'){
@@ -160,27 +179,32 @@ require_once __DIR__ . '/../../db.php';
 					    	}
 					    ?>
 					    <?php echo'
-					        	<td title="click here to add teacher..." onclick="add_teacher(\''.$rowselect['classid'].'\')" style="cursor:pointer">
+					        	<td title="click here to add teacher..." onclick="add_teacher(\''.$rowselect['currid'].'\')" style="cursor:pointer">
 									'; ?>
 									<?php 
 									$get_teachers = "SELECT * FROM `tblclass_schedules_teachers`
 							        INNER JOIN tblteachers ON tblteachers.teachersautoid=tblclass_schedules_teachers.cst_teachersid
-									WHERE cst_classid='$rowselect[classid]' AND cst_sectionid='$sectionsID'";
+									WHERE cst_classid='$rowselect[currid]' AND cst_sectionid='$sectionsID'";
 
 									$runget_teachers = mysqli_query($conn, $get_teachers);
+									if(mysqli_num_rows($runget_teachers)<=0){
+										echo '<i><span class="text-secondary" style="font-size:12px">No teacher assigned</span></i>';
+									}else{
+										$names = [];
+										while($row_get_teachers = mysqli_fetch_assoc($runget_teachers)){
+										    $names[] = '<b>'.strtoupper($row_get_teachers['lastname']).'</b>, '.ucwords(strtolower($row_get_teachers['firstname'])).' <i title="Remove this teacher..." style="position: relative;top:2px" class="bx  bx-trash text-danger" id="delButoon" onclick="event.stopPropagation(); remove(\''.$row_get_teachers['cstid'].'\')"></i>  ';
+										}
 
-									$names = [];
-									while($row_get_teachers = mysqli_fetch_assoc($runget_teachers)){
-									    $names[] = '<b>'.strtoupper($row_get_teachers['lastname']).'</b>, '.ucwords(strtolower($row_get_teachers['firstname'])).' <i title="Remove this teacher..." style="position: relative;top:2px" class="bx  bx-trash text-danger" id="delButoon" onclick="event.stopPropagation(); remove(\''.$row_get_teachers['cstid'].'\')"></i>  ';
+										echo implode(', ', $names);										
 									}
 
-									echo implode(', ', $names);
+
 
 									?>
 									<?php echo'
 					        	</td>
 					        	<td width="1%" class="text-nowrap align-middle">
-									<button onclick="delete_schedule(\''.$rowselect['classid'].'\')" class="btn btn-danger btn-sm">Remove</button>
+									<button onclick="delete_schedule(\''.$rowselect['currid'].'\')" class="btn btn-danger btn-sm">Remove</button>
 					        	</td>
 					        </tr>
 		        		';

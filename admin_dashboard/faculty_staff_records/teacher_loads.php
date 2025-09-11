@@ -121,55 +121,9 @@ $sectionsID = $rowaccounts['sectionsid'];
             <div class="card-body">
                 <div class="d-flex flex-wrap justify-content-between align-items-center pt-3 pb-2">
                     <div>
-                        <h5 class="card-title mb-0"><?php echo strtoupper($rowaccounts['designation_desc']) ?><b><?php echo $rowaccounts['lastname'] ?></b> <?php echo $rowaccounts['firstname'] ?><br><span style="font-size:16px"><?php echo (($rowaccounts['level_descrition'] !== 'None' && !empty($rowaccounts['level_descrition'])) ? ' ' . strtoupper($rowaccounts['level_descrition']) : '') .
+                        <h5 class="card-title mb-0"><?php echo strtoupper($rowaccounts['designation_desc']) ?>: <b><?php echo $rowaccounts['lastname'] ?></b> <?php echo $rowaccounts['firstname'] ?><br><span style="font-size:16px"><?php echo (($rowaccounts['level_descrition'] !== 'None' && !empty($rowaccounts['level_descrition'])) ? ' ' . strtoupper($rowaccounts['level_descrition']) : '') .
                                 (($rowaccounts['section_desc'] !== 'None' && !empty($rowaccounts['section_desc'])) ? ' - ' . strtoupper($rowaccounts['section_desc']) : ''); ?></span></b></h5>
                     </div>
-                </div>
-                <div>
-                  <!-- <div id="test">test</div> -->
-                    <p>
-                      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                        Add New Schedule
-                      </button>
-                    </p>
-                    <div class="collapse" id="collapseExample">
-                      <div class="card card-body py-2 px-2">
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <label for="timefrom">Time From</label>
-                                <input type="time" class="form-control" id="timefrom" required>
-                            </div>
-                            <div class="col-lg-3">
-                                <label for="timeto">Time To</label>
-                                <input type="time" class="form-control" id="timeto" required>
-                            </div>
-                            <div class="col-lg-6">
-                                <label for="subjectid">Subject/Others</label>
-                                <select id="subjectid" class="form-control" required>
-                                    <option value="" selected disabled>Select a subject</option>
-                                    <?php
-                                        $getsubjects = "SELECT * FROM `tblsubjects`";
-                                        $rungetsubjects = mysqli_query($conn, $getsubjects);
-                                        if(mysqli_num_rows($rungetsubjects) > 0) {
-                                            while($rowsubjects = mysqli_fetch_assoc($rungetsubjects)){
-                                                echo '<option value="'.$rowsubjects['subjectid'].'">'.$rowsubjects['subject_description'].'</option>';
-                                            }
-                                        }
-                                    ?>
-                                    <option value="" disabled>----------------------------</option>
-                                    <option value="10001">Break Time</option>
-                                    <option value="10002">Lunch</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-lg-12 py-2">
-                            <button onclick="saving_new_schedule()" class="btn btn-primary btn-sm float-end">Add ti list...</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>                  
-                    <hr>
                 </div>
                 <div id="main_data">
                     <div id="loader" class="text-center" style="display: none;">

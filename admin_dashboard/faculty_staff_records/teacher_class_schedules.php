@@ -33,187 +33,85 @@ include_once __DIR__ . '/../../db.php';
   <!-- Template Main CSS -->
   <link href="../../assets/css/style.css" rel="stylesheet">
 
-<style>
-        * { font-family:'Poppins',system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; }
-        .avatar { width:46px;height:46px;border-radius:50%;object-fit:cover;border:1px solid #e7e7e7;background:#f7f7f7; }
-        .avatar-lg { width:120px;height:120px;border-radius:12px;object-fit:cover;border:1px solid #e7e7e7;background:#f7f7f7; }
-        .table thead th { font-weight:700; }
-        .btn-icon { padding:.35rem .55rem; }
-
-        .select2-container--default .select2-selection--single {
-            height: 45px;
-        }
-
-        .select2-container--default .select2-selection--single .select2-selection__rendered {
-            line-height: 45px; /* Apply line-height specifically to the text element */
-        }
-
-        /* --- Updated CSS for transparency --- */
-        #header,
-        .header,
-        .header-content,
-        .card-body {
-            background-color: transparent !important;
-            box-shadow: none !important;
-            border: none !important;
-        }
-
-        .container {
-            background-color: transparent !important;
-            box-shadow: none !important;
-            box-sizing: border-box;
-            font-size: 11pt;
-            width: 8.5in;
-            padding: 0.5in;
-        }
-
-        .main {
-            background-color: #f0f0f0; /* Set a background color for the body/main content */
-        }
-        /* --- End of Updated CSS --- */
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center; /* This will vertically center all items */
-    margin-bottom: 20px;
-    background-color: transparent !important;
-    padding: 10px 0; /* Add top and bottom padding for vertical spacing */
-}
-
-.header .logo {
-    width: 100px; /* Adjust size as needed */
-    height: auto;
-    background-color: transparent !important;
-}
-
-.header .school-info {
-    text-align: center;
-    flex-grow: 1; /* Allows it to take all available space */
-    margin: 0 20px; /* Add horizontal margin for spacing */
-}
-        .header .school-info .republic {
-            font-size: 10pt;
-            margin-bottom: 2px;
-        }
-        .header .school-info .ministry {
-            font-weight: bold;
-            font-size: 10.5pt;
-            margin-bottom: 2px;
-        }
-        .header .school-info .division,
-        .header .school-info .region,
-        .header .school-info .address {
-            font-size: 9.5pt;
-            line-height: 1.3;
-        }
-        .title-section {
-            text-align: center;
-            margin-top: 30px;
-            margin-bottom: 20px;
-        }
-        .title-section .main-title {
-            font-size: 14pt;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .title-section .sy {
-            font-size: 12pt;
-        }
-        .info-block {
-            margin-top: 30px;
-            margin-bottom: 30px;
-        }
-        .info-block div {
-            margin-bottom: 5px;
-        }
-        .info-block .label {
-            font-weight: normal;
-        }
-        .info-block .value {
-            font-weight: bold;
-            text-decoration: underline;
-        }
-        .schedule-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            margin-bottom: 40px;
-        }
-        .schedule-table th,
-        .schedule-table td {
-            border: 1px solid black;
-            padding: 8px;
-
-            font-size: 10.5pt;
-        }
-        .schedule-table th {
-            background-color: #f2f2f2;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-        .prepared-by,
-        .approved-by {
-            margin-top: 40px;
-        }
-        .signature-block {
-            margin-top: 20px;
-            text-align: left;
-            padding-left: 50px;
-        }
-        .signature-line {
-            height: 1px;
-            background-color: black;
-            width: 250px;
-            margin-top: 5px;
-            margin-bottom: 5px;
-        }
-        .name {
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-top: 20px;
-        }
-        .title {
-            font-size: 10pt;
-            margin-top: 2px;
-        }
-        .signature-image {
-            width: 150px;
-            height: auto;
-            display: block;
-            margin-bottom: -20px;
-            margin-left: -25px;
-        }
-        .approved-by .signature-block {
-            padding-left: 0;
-            margin-top: 60px;
-        }
-        .approved-by .signature-block .name {
-            margin-top: 5px;
-        }  
+  <style>
 @media print {
-    /* ... your existing print styles ... */
-    
-    .printable-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start; /* Align items to the top to prevent overlap */
-        width: 100%; /* Force the header to use the full available width */
-        box-sizing: border-box; /* Ensure padding is included in the width */
+    /* Set A4 with 1-inch margins on all sides */
+    @page { 
+        size: A4 portrait; 
+        margin: 1in; 
     }
 
-    .printable-header .school-info {
-        flex-grow: 1;
-        text-align: center;
-        /* Add margin to prevent the school info from touching the logos */
-        margin: 0 20px; 
+    /* Neutral base */
+    html, body { 
+        margin: 0 !important; 
+        padding: 0 !important; 
+        background: #fff !important; 
     }
-}
-/*  @page {
-    size: A4;
-    margin: 1in;
-}*/
-</style>
+
+    /* Hide app chrome */
+    header, #header, .header,
+    aside, #sidebar, .sidebar,
+    .pagetitle, nav, .breadcrumb,
+    .no-print { 
+        display: none !important; 
+    }
+
+    /* Neutralize layout containers so they don't push content */
+    #main, .main, .section, .card, .card-body {
+        position: static !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: 0 !important;
+        box-shadow: none !important;
+    }
+
+    /* Show only the printable area */
+    body * { 
+        visibility: hidden; 
+    }
+    #print_area, #print_area * { 
+        visibility: visible; 
+    }
+
+    /* Center printable area and remove extra padding/margin */
+    #print_area {
+        position: static !important; /* Change this from 'fixed' to 'static' */
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: 0 !important;
+        box-shadow: none !important;
+    }
+
+    /* Remove default top gaps on first child */
+    #print_area > *:first-child { 
+        margin-top: 0 !important; 
+        padding-top: 0 !important; 
+    }
+
+    /* Tables behave nicely across pages */
+    thead { 
+        display: table-header-group; 
+    }
+    tfoot { 
+        display: table-footer-group; 
+    }
+    table { 
+        width: 100%; 
+        border-collapse: collapse; 
+        page-break-inside: auto; 
+    }
+    tr { 
+        page-break-inside: avoid; 
+        page-break-after: auto; 
+    }
+}    
+  
+  </style>
+
 </head>
 
 <body onload="load_fac_workload();get_ay()">
@@ -255,42 +153,65 @@ include_once __DIR__ . '/../../db.php';
     </nav>
   </div>
 
-  <section class="section">
-    <div class="card">
-      <div class="card-body">
-        <div class="py-3">
-            <div class="row">
-              <div class="col-lg-6">
-                <label for="teacherid">SELECT TEACHER</label>
-                <select id="teacherid" class="js-example-basic-single form-control" name="state" onchange="load_fac_workload()">
-                  <?php 
-                    $get_teacher = "SELECT * FROM `tblteachers` ORDER BY lastname ASC";
-                    $rungetteacher = mysqli_query($conn, $get_teacher);
-                    while($rowgetteacher = mysqli_fetch_assoc($rungetteacher)){
-                      echo'<option value="'.$rowgetteacher['teachersautoid'].'">'.$rowgetteacher['lastname'].', '.$rowgetteacher['firstname'].' '.$rowgetteacher['middlename'].'</option>';
-                    }
-                  ?>
-                </select>
-              </div>
-           <div class="col-lg-6 text-lg-end">
-                <button class="btn btn-primary" onclick="print_content()">
-                    <i class='bx bx-printer'></i> <span class="icon-text">Print Workload</span>
-                </button>
+<section class="section">
+
+  <div class="card">
+    <div class="card-body">
+
+      <!-- Header / Toolbar (hides on print) -->
+      <div class="py-3 no-print">
+        <div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between gap-3">
+
+          <!-- Left: Selector -->
+          <div class="w-100 w-lg-50">
+            <label for="teacherid" class="form-label mb-1">SELECT TEACHER</label>
+            <div class="d-flex gap-2">
+              <select id="teacherid" class="js-example-basic-single form-control" name="state" onchange="load_fac_workload()">
+                <?php 
+                  $get_teacher = "SELECT * FROM `tblteachers` ORDER BY lastname ASC";
+                  $rungetteacher = mysqli_query($conn, $get_teacher);
+                  while($rowgetteacher = mysqli_fetch_assoc($rungetteacher)){
+                    echo'<option value="'.$rowgetteacher['teachersautoid'].'">'.$rowgetteacher['lastname'].', '.$rowgetteacher['firstname'].' '.$rowgetteacher['middlename'].'</option>';
+                  }
+                ?>
+              </select>
             </div>
-
-        </div>
-        <hr>
-        <div id="main_data">
-          <div id="loader" class="text-center" style="display: none;">
-            <img src="../../loader.gif" alt="Loading..." width="10%">
+            <small class="text-muted">Tip: Choose a teacher to load the latest workload details.</small>
           </div>
-          <div id="content_area"></div>
+
+          <!-- Right: Actions -->
+          <div class="w-100 w-lg-auto text-lg-end">
+<div class="btn-group">
+  <button type="button" class="btn btn-primary" onclick="print_content()">
+    <i class='bx bx-printer'></i> Print Workload
+  </button>
+</div>
+          </div>
+
         </div>
-
-
       </div>
+
+      <hr class="no-print">
+
+      <!-- Main printable content -->
+      <div id="main_data" class="mt-3">
+        <div class="print-area p-4">
+
+          <!-- Loader centered nicely inside the frame -->
+          <div id="loader" class="text-center py-5" style="display: none;">
+            <img src="../../loader.gif" alt="Loading..." width="80">
+            <div class="mt-2 text-muted">Fetching workload…</div>
+          </div>
+
+          <!-- Actual content -->
+          <div id="content_area"></div>
+
+        </div>
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
 </main>
 
 <!-- Footer -->
@@ -323,19 +244,30 @@ function print_content() {
     
     // Check if a teacher is selected
     if (!teacherid) {
-        alert("Please select a teacher first.");
+        Swal.fire({
+            icon: 'warning',
+            title: 'No Teacher Selected',
+            text: 'Please select a teacher first to view and print their workload.'
+        });
         return;
     }
 
-    // Show a loader or a message to the user
-    Swal.fire({
-        title: 'Generating document...',
-        allowOutsideClick: false,
-        didOpen: () => {
-            Swal.showLoading()
-        }
+    // Use the existing function to load content
+    load_fac_workload(function() {
+        // This is a callback function that runs after the AJAX request is complete.
+        // It ensures the content is fully loaded before we attempt to print.
+        
+        // Wait a little bit for the content to render fully.
+        setTimeout(function() {
+            window.print();
+        }, 500); // Wait 0.5 seconds
     });
-
+}
+function load_fac_workload(callback = null) {
+    $('#loader').show(); // Show the loader
+    $('#content_area').hide(); // Hide the content while loading
+    var teacherid = $('#teacherid').val();
+    
     $.ajax({
         type: "POST",
         url: "query_teacher_loads.php",
@@ -343,79 +275,30 @@ function print_content() {
             "loading_faculty_class_schedule": '1',
             "teacherid" : teacherid
         },
-success: function(response) {
-    // Open a new window
-    var printWindow = window.open('', '_blank', 'height=800,width=800');
-    
-    // Write the HTML from the response into the new window
-    printWindow.document.write('<html><head><title>Teacher\'s Workload</title>');
-    
-    // Copy all necessary CSS styles to the new window
-    var head = $('head').clone();
-    printWindow.document.write(head.html());
-    
-    // Add new print-specific CSS for A4 size and margins
-printWindow.document.write('<style>');
-printWindow.document.write('@page { size: A4; margin: 1in; }');
-printWindow.document.write('body { margin: 0; padding: 0; }');
-printWindow.document.write('.container { margin: 0 auto !important; }'); // This is the new line
-printWindow.document.write('</style>');
-    
-    printWindow.document.write('</head><body>');
-    printWindow.document.write(response);
-    printWindow.document.write('</body></html>');
-    
-    // Close the document to ensure all content is loaded
-    printWindow.document.close();
-    
-    // Wait for images to load, then print
-    setTimeout(function() {
-        printWindow.focus();
-        printWindow.print();
-        printWindow.close();
-        Swal.close();
-    }, 1000); // Wait 1 second to ensure everything is rendered
-},
+        success: function(response) {
+            $('#content_area').html(response);
+            
+            if ($.fn.DataTable.isDataTable('#tblTeachers')) {
+                $('#tblTeachers').DataTable().destroy();
+            }
+            $('#tblTeachers').DataTable({ pageLength: 10, lengthChange: false, order: [[2,'asc'],[3,'asc']] });
+        },
         error: function(xhr, status, error) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Error loading document!'
-            });
+            $('#content_area').html('<p class="text-danger">Error loading data.</p>');
+        },
+        complete: function() {
+            setTimeout(() => {
+                $('#loader').hide(); // Hide the loader
+                $('#content_area').show(); // Show the main content
+
+                // Trigger the callback function if it exists
+                if (typeof callback === 'function') {
+                    callback();
+                }
+            }, 500); // Delay ensures a smooth transition
         }
     });
 }
-    function load_fac_workload() {
-        $('#loader').show(); // Show the loader
-        $('#content_area').hide(); // Hide the content while loading
-        var teacherid = $('#teacherid').val();
-        
-        $.ajax({
-            type: "POST",
-            url: "query_teacher_loads.php",
-            data: { 
-            "loading_faculty_class_schedule": '1',
-            "teacherid" : teacherid
-          },
-            success: function(response) {
-              $('#content_area').html(response);
-              // initialize here if needed
-              if ($.fn.DataTable.isDataTable('#tblTeachers')) {
-                $('#tblTeachers').DataTable().destroy();
-              }
-              $('#tblTeachers').DataTable({ pageLength: 10, lengthChange: false, order: [[2,'asc'],[3,'asc']] });
-            },
-            error: function(xhr, status, error) {
-                $('#content_area').html('<p class="text-danger">Error loading data.</p>');
-            },
-            complete: function() {
-                setTimeout(() => {
-                    $('#loader').hide(); // Hide the loader
-                    $('#content_area').show(); // Show the main content
-                }, 500); // Delay ensures a smooth transition
-            }
-        });
-    }
 
     function get_ay(){
 

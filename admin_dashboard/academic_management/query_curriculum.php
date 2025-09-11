@@ -68,20 +68,20 @@
               echo
               '
               <tr>
-              <td class="align-middle" width="1%">'.++$count.'.</td>
-              <td class="align-middle text-nowrap" width="1%">'.strtoupper(date('h:i', strtotime($rowselect['timefrom']))).' - '.strtoupper(date('h:i', strtotime($rowselect['timeto']))).'</td>
-              <td class="align-middle" width="1%"></td>
               '?>
               <?php 
                 if($rowselect['subjectid']=='10001'){
                   echo'
-                  <td class="align-middle"><i><span class="text-danger">'.strtoupper($rowselect['subject_description']).'</span></i></td>
+                  <td colspan="4" class="align-middle"><i><span class="text-danger">('.strtoupper(date('h:i', strtotime($rowselect['timefrom']))).' - '.strtoupper(date('h:i', strtotime($rowselect['timeto']))).') '.strtoupper($rowselect['subject_description']).'</span></i></td>
                   ';
                 }else if($rowselect['subjectid']=='10002'){
                   echo'
-                  <td class="align-middle"><i><span class="text-danger">'.strtoupper($rowselect['subject_description']).'</span></i></td>';
+                  <td colspan="4"  class="align-middle"><i><span class="text-danger">('.strtoupper(date('h:i', strtotime($rowselect['timefrom']))).' - '.strtoupper(date('h:i', strtotime($rowselect['timeto']))).') '.strtoupper($rowselect['subject_description']).'</span></i></td>';
                 }else{
                   echo'
+                  <td class="align-middle" width="1%">'.++$count.'.</td>
+                  <td class="align-middle text-nowrap" width="1%">'.strtoupper(date('h:i', strtotime($rowselect['timefrom']))).' - '.strtoupper(date('h:i', strtotime($rowselect['timeto']))).'</td>
+                  <td class="align-middle" width="1%"></td>
                   <td class="align-middle">'.strtoupper($rowselect['subject_description']).'
                   </td>';
                 }
