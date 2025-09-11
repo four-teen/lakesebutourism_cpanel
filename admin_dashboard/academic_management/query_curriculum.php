@@ -20,12 +20,28 @@
     $rundelete = mysqli_query($conn, $delete);
   }
 
+  if(isset($_POST['edit_curr'])){
+    $usubjectids = $_POST['usubjectids']; 
+    $utimefrom = $_POST['utimefrom'];
+    $utimeto = $_POST['utimeto'];
+    $curriculum_ids = $_POST['curriculum_ids'];
+
+
+    $update = "UPDATE `tblcurriculum` SET `timefrom`='$utimefrom', `timeto`='$utimeto', `subjectid`='$usubjectids' where currid='$curriculum_ids'";
+    $runupdate = mysqli_query($conn, $update);
+
+  }
+
   if(isset($_POST['saving_curr'])){
     $gradelevelid = $_POST['gradelevelid'];
-    $subjectids = $_POST['subjectids'];    
-    $insert = "INSERT INTO `tblcurriculum` (`levelid`, `subjectid`, `setid`) VALUES ('$gradelevelid', '$subjectids', '$ayid')";
+    $subjectids = $_POST['subjectids']; 
+    $timefrom = $_POST['timefrom'];
+    $timeto = $_POST['timeto'];
+    $sectionids = $_POST['sectionids'];    
+
+    $insert = "INSERT INTO `tblcurriculum` (`gradelevelid`, `timefrom`, `timeto`, `subjectid`, `ayid`, `sectID`) VALUES ('$gradelevelid', '$timefrom', '$timeto', '$subjectids', '$ayid', '$sectionids')";
     $runinsert = mysqli_query($conn, $insert);
-    echo $insert;
+    // echo $insert;
   }
 
   if(isset($_POST['loading_curr'])){
@@ -35,6 +51,8 @@
         <thead>
           <tr>
             <th>#</th>
+            <th>TIME</th>
+            <th></th>
             <th>SUBJECT DESCRIPTION</th>
             <th>ACTION</th>
           </tr>
@@ -43,30 +61,27 @@
           <?php 
             $select = "SELECT * FROM `tblcurriculum`
             INNER JOIN tblsubjects on tblsubjects.subjectid=tblcurriculum.subjectid
-            INNER JOIN tblgradelevel on tblgradelevel.levelid=tblcurriculum.levelid
-            INNER JOIN tblacademic_years on tblacademic_years.ayid=tblcurriculum.setid
-            WHERE tblgradelevel.levelid='$_POST[gradelevelid]'";
+            WHERE gradelevelid='$_POST[gradelevelid]' AND sectID='$_POST[sectionids]'";
             $runselect = mysqli_query($conn, $select);
             $count = 0;
             while($rowselect = mysqli_fetch_assoc($runselect)){
               echo
               '
               <tr>
-                
+              <td class="align-middle" width="1%">'.++$count.'.</td>
+              <td class="align-middle text-nowrap" width="1%">'.strtoupper(date('h:i', strtotime($rowselect['timefrom']))).' - '.strtoupper(date('h:i', strtotime($rowselect['timeto']))).'</td>
+              <td class="align-middle" width="1%"></td>
               '?>
               <?php 
                 if($rowselect['subjectid']=='10001'){
                   echo'
-                  <td class="align-middle" width="1%"></td>
                   <td class="align-middle"><i><span class="text-danger">'.strtoupper($rowselect['subject_description']).'</span></i></td>
                   ';
                 }else if($rowselect['subjectid']=='10002'){
                   echo'
-                  <td class="align-middle" width="1%"></td>
                   <td class="align-middle"><i><span class="text-danger">'.strtoupper($rowselect['subject_description']).'</span></i></td>';
                 }else{
                   echo'
-                  <td class="align-middle" width="1%">'.++$count.'.</td>
                   <td class="align-middle">'.strtoupper($rowselect['subject_description']).'
                   </td>';
                 }
@@ -74,7 +89,9 @@
               <?php echo'
                 
                 <td class="align-middle text-center text-nowrap" width="1%">
-                  <button onclick="removed_curr(\''.$rowselect['currid'].'\')" type="button" class="btn btn-danger"><i class="bx bx-trash"></i>
+                  <button onclick="edit_curr(\''.$rowselect['currid'].'\')" type="button" class="btn btn-warning btn-sm"><i class="bx bx-edit"></i>
+                  </button>
+                  <button onclick="removed_curr(\''.$rowselect['currid'].'\')" type="button" class="btn btn-danger btn-sm"><i class="bx bx-trash"></i>
                   </button>
                 </td>
               </tr>

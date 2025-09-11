@@ -43,7 +43,7 @@
         <i class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="curriculum-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-        <li><a href="#"><i class="bi bi-circle"></i><span>Class Scheduling</span></a></li>
+        <li><a href="academic_management/student_scheduling.php"><i class="bi bi-circle"></i><span>Class Scheduling/Program</span></a></li>
         <li><a href="academic_management/student_curriculum.php"><i class="bi bi-circle"></i><span>Manage Curriculum</span></a></li>
         <li><a href="#"><i class="bi bi-circle"></i><span>Assessment and Examination Records</span></a></li>
       </ul>

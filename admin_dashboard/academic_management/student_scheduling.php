@@ -43,6 +43,7 @@
   <link href="../../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="../../assets/vendor/simple-datatables/style.css" rel="stylesheet">
   <link href="../../assets/vendor/bootstrap/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
    <!-- Template Main CSS File -->
   <link href="../../assets/css/style.css" rel="stylesheet">
@@ -56,6 +57,13 @@
       width: 150px;
       object-fit: cover;
     }
+        .select2-container--default .select2-selection--single {
+            height: 37px;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            line-height: 37px; /* Apply line-height specifically to the text element */
+        }
 </style>
 </head>
 
@@ -83,7 +91,7 @@
     <!-- <i class="bi bi-chevron-down ms-auto"></i> -->
   </a>
   <ul id="curriculum-nav" class="nav-content" data-bs-parent="#sidebar-nav">
-    <li><a href="#"><i class="bi bi-circle"></i><span>Class Scheduling</span></a></li>
+    <li><a class="nav-link active" href="#"><i class="bi bi-circle"></i><span>Class Scheduling/Program</span></a></li>
     <li><a href="student_curriculum.php"><i class="bi bi-circle"></i><span>Manage Curriculum</span></a></li>
     <li><a href="#"><i class="bi bi-circle"></i><span>Assessment and Examination Records</span></a></li>
   </ul>
@@ -95,6 +103,7 @@
 <!-- End Sidebar -->
 
   <main id="main" class="main">
+
     <div class="pagetitle">
       <h1>Manage Curriculum</h1>
       <nav>
@@ -107,7 +116,7 @@
 
     <section class="section dashboard">
 
-      <!-- <div id="test">test</div> -->
+      <div id="test">test</div>
       <div class="row">
 
         <!-- Left side columns -->
@@ -129,52 +138,75 @@
                     <li><a class="dropdown-item" href="#">Today</a></li>
                     <li><a class="dropdown-item" href="#">This Month</a></li>
                     <li><a class="dropdown-item" href="#">This Year</a></li>
+
                   </ul>
                 </div>
 
 
                 <div class="card-body">
                     <div class="row">
-                      <div class="col-lg-12">
-<!--                         <div class="btn-group py-2" role="group" aria-label="Basic mixed styles example">
-                          <button onclick="adding_curr()" type="button" class="btn btn-danger"><i class='bx bx-plus-circle'></i></button>
-                          <button onclick="adding_curr()" type="button" class="btn btn-success">Add Curriculum</button>
+                     <div class="col-lg-12">
+                      <br><br>
+
+                      <div class="border border-primary py-3 px-2 rounded">
+                        <div class="row">
+                              <div class="col-lg-2">
+                                <label for="gradelevelid">Select Grade Level</label>
+                                <select id="gradelevelid" class="form-control" onchange="load_curr()">
+                                  <?php 
+                                    $gradelevel = "SELECT * FROM `tblgradelevel`";
+                                    $rungradelevel = mysqli_query($conn, $gradelevel);
+                                    while($rowgradelevel=mysqli_fetch_assoc($rungradelevel)){
+                                      echo'<option value="'.$rowgradelevel['levelid'].'">'.$rowgradelevel['level_descrition'].'</option>';
+                                    }
+                                  ?>
+                                  
+                                </select>
+                              </div>
+                              <div class="col-lg-2">
+                                <label for="sectionids">Select Section</label>
+                                <select id="sectionids" class="form-control" onchange="load_curr()">
+                                  <?php 
+                                    $gradesection = "SELECT * FROM `tblsections`";
+                                    $rungradesection = mysqli_query($conn, $gradesection);
+                                    while($rowgradesection=mysqli_fetch_assoc($rungradesection)){
+                                      echo'<option value="'.$rowgradesection['sectionsid'].'">'.$rowgradesection['section_desc'].'</option>';
+                                    }
+                                  ?>
+                                  
+                                </select>
+                              </div>
+
+                              <div class="col-lg-2">
+                                <label for="timefrom">Time From</label>
+                                <input type="time" class="form-control" id="timefrom">
+                              </div>
+                              <div class="col-lg-2">
+                                <label for="timeto">Time To</label>
+                                <input type="time" class="form-control" id="timeto">
+                              </div>
+                              <div class="col-lg-4">
+                                <label for="subjectids">Select Subject</label>
+                                <select id="subjectids"  class="js-example-basic-single form-control" name="state">
+                                  <?php 
+                                    $subjects = "SELECT * FROM `tblsubjects`";
+                                    $runsubjects = mysqli_query($conn, $subjects);
+                                    while($rowsubjects=mysqli_fetch_assoc($runsubjects)){
+                                      echo'<option value="'.$rowsubjects['subjectid'].'">'.$rowsubjects['subject_description'].'</option>';
+                                    }
+                                  ?>
+                                  
+                                </select>
+                              </div>
                         </div>
-                        <hr> -->
-<br><br>
-                      <div class="row">
-                        <div class="col-lg-3">
-                          <label for="gradelevelid">Select Grade Level</label>
-                          <select id="gradelevelid" class="form-control" onchange="load_curr()">
-                            <?php 
-                              $gradelevel = "SELECT * FROM `tblgradelevel`";
-                              $rungradelevel = mysqli_query($conn, $gradelevel);
-                              while($rowgradelevel=mysqli_fetch_assoc($rungradelevel)){
-                                echo'<option value="'.$rowgradelevel['levelid'].'">'.$rowgradelevel['level_descrition'].'</option>';
-                              }
-                            ?>
-                            
-                          </select>
-                        </div>
-                        <div class="col-lg-9">
-                          <label for="subjectids">Select Subject</label>
-                          <select id="subjectids" class="form-control">
-                            <?php 
-                              $subjects = "SELECT * FROM `tblsubjects`";
-                              $runsubjects = mysqli_query($conn, $subjects);
-                              while($rowsubjects=mysqli_fetch_assoc($runsubjects)){
-                                echo'<option value="'.$rowsubjects['subjectid'].'">'.$rowsubjects['subject_description'].'</option>';
-                              }
-                            ?>
-                            
-                          </select>
-                        </div>
+                            <div class="row">
+                              <div class="col-lg-12 py-2">
+                                <button onclick="add_new_subjects()" class="btn btn-primary">Add to list</button>
+                              </div>
+                            </div>
+
                       </div>
-                      <div class="row">
-                        <div class="col-lg-12 py-2">
-                          <button onclick="add_new_subjects()" class="btn btn-primary btn-sm float-end">Add to list</button>
-                        </div>
-                      </div>
+
                         <hr>
                         <!-- <div id="test">test</div> -->
                         <div id="main_data">
@@ -184,9 +216,7 @@
                           <div id="content_area"></div>
                         </div>                
                       </div>
-                    </div>               
-
-                                            
+                    </div>                                     
                 </div>
 
 
@@ -216,6 +246,59 @@
     </div>
   </footer><!-- End Footer -->
 
+
+<div class="modal fade" id="updateCurrModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content shadow">
+        <div class="modal-header bg-warning text-white">
+          <h5 class="modal-title" id="paymentModalLabel">Add Teacher</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="border border-primary py-3 px-2 rounded">
+                  <div class="row">
+                    <input type="hidden" id="curriculum_ids">
+                        <div class="col-lg-3">
+                          <label for="utimefrom">Time From</label>
+                          <input type="time" class="form-control" id="utimefrom">
+                        </div>
+                        <div class="col-lg-3">
+                          <label for="utimeto">Time To</label>
+                          <input type="time" class="form-control" id="utimeto">
+                        </div>
+                        <div class="col-lg-6">
+                          <label for="usubjectids">Select Subject</label>
+                          <select id="usubjectids" class="form-control">
+                            <?php 
+                              $subjects = "SELECT * FROM `tblsubjects`";
+                              $runsubjects = mysqli_query($conn, $subjects);
+                              while($rowsubjects=mysqli_fetch_assoc($runsubjects)){
+                                echo'<option value="'.$rowsubjects['subjectid'].'">'.$rowsubjects['subject_description'].'</option>';
+                              }
+                            ?>
+                            
+                          </select>
+                        </div>
+                  </div>
+                      <div class="row">
+                        <div class="col-lg-12 py-2">
+                          <button onclick="update_new_subjects()" class="btn btn-primary">Update record</button>
+                        </div>
+                      </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary btn-sm" onclick="modal_payment_preview_close()" data-bs-dismiss="modal">Close</button>
+
+        </div>
+      </div>
+    </div>
+</div>
+
+
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
   <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
@@ -236,10 +319,52 @@
 
   <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   <script src="../../assets/js/main.js"></script>
   <script src="../../assets/sweetalert2.js"></script>
 
   <script>
+
+    function update_new_subjects(){
+      var usubjectids = $('#usubjectids').val();
+      var utimefrom = $('#utimefrom').val();
+      var utimeto = $('#utimeto').val();
+      var curriculum_ids = $('#curriculum_ids').val();
+
+      Swal.fire({
+        title: "Are you sure to modify?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, modify it!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+         $.ajax({
+            type: "POST",
+            url: "query_curriculum.php",
+            data: {
+              "edit_curr": "1",
+              "usubjectids" : usubjectids,
+              "utimefrom" : utimefrom,
+              "utimeto" : utimeto,
+              "curriculum_ids" : curriculum_ids
+            },
+            success: function (response) {
+              $('#test').html(response);
+              load_curr();
+            }
+          }); 
+
+        }
+      });      
+    }
+
+    function edit_curr(currid){
+      $('#curriculum_ids').val(currid);
+      $('#updateCurrModal').modal('show');
+    }
 
     function removed_curr(currid){
       Swal.fire({
@@ -272,13 +397,20 @@
     function add_new_subjects(){
       var gradelevelid = $('#gradelevelid').val();
       var subjectids = $('#subjectids').val();
+      var timefrom = $('#timefrom').val();
+      var timeto = $('#timeto').val();
+      var sectionids = $('#sectionids').val();
+
          $.ajax({
             type: "POST",
             url: "query_curriculum.php",
             data: {
               "saving_curr": "1",
               "gradelevelid" : gradelevelid,
-              "subjectids" : subjectids
+              "subjectids" : subjectids,
+              "timefrom" : timefrom,
+              "timeto" : timeto,
+              "sectionids" : sectionids
             },
             success: function () {
               load_curr();
@@ -297,13 +429,15 @@
         $('#loader').show(); // Show the loader
         $('#content_area').hide(); // Hide the content while loading
         var gradelevelid = $('#gradelevelid').val();
+        var sectionids = $('#sectionids').val();        
 
         $.ajax({
             type: "POST",
             url: "query_curriculum.php",
             data: { 
             "loading_curr": '1',
-            "gradelevelid" : gradelevelid 
+            "gradelevelid" : gradelevelid ,
+            "sectionids" : sectionids
           },
             success: function(response) {
                 setTimeout(() => {
@@ -335,6 +469,10 @@
           }
         }); 
     }
+
+    $(document).ready(function() {
+        $('.js-example-basic-single').select2();
+    });
 
   </script>
 
