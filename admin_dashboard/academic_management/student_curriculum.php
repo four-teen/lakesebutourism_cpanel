@@ -56,6 +56,164 @@
       width: 150px;
       object-fit: cover;
     }
+/* Keep the stretched link inside the body only */
+.subject-card .card-body { position: relative; }
+.subject-card .card-body .stretched-link {
+  z-index: 1;
+  pointer-events: none;  /* makes header items fully interactive */
+}
+
+.cta-badge{
+  background:#f5f7ff;
+  color:#4e54c8;
+  border-radius:999px;
+  padding:.35rem .8rem;
+  font-weight:600;
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  transition: transform .18s ease, background-color .18s ease, box-shadow .18s ease;
+  will-change: transform;
+  cursor: pointer;
+}
+.cta-badge:hover{
+  transform: scale(1.08);
+  background:#e8eaff;
+  box-shadow: 0 .25rem .75rem rgba(0,0,0,.08);
+}
+.cta-badge:active{
+  transform: scale(0.96);
+}
+/* Make the badge sit above and receive hover/click */
+.subject-card .card-header .cta-badge {
+  position: relative;
+  z-index: 2;
+  pointer-events: auto;
+}
+
+/* Card shell */
+.subject-card{
+  border: none;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.subject-card:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 .75rem 1.5rem rgba(0,0,0,.08);
+}
+
+/* Header + badge */
+.subject-card .card-header{
+  background: linear-gradient(135deg,#4e54c8,#8f94fb);
+  color: #fff;
+  font-weight: 600;
+  border-bottom: none;
+}
+.badge-pill {
+  background: #f5f7ff;
+  color: #4e54c8;
+  border-radius: 999px;
+  padding: .35rem .8rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.badge-pill:hover {
+  transform: scale(1.08);        /* zoom in */
+  background: #e8eaff;           /* optional: lighter background */
+}
+
+.badge-pill:active {
+  transform: scale(0.95);        /* small shrink when clicked */
+}
+
+.subject-body {
+  display: flex;
+  gap: 16px;
+  min-height: 120px;
+}
+
+/* left image */
+.subject-thumb {
+  width: 110px;
+  height: 110px;
+  border-radius: 12px;
+  object-fit: cover;
+  flex: 0 0 110px;
+  background: #f6f7fb;
+  position: relative;
+  top:25px;
+}
+
+/* right column layout */
+.subject-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* title up, metric down */
+  flex: 1;
+}
+
+/* title */
+.subject-title {
+  margin: 0;
+  font-weight: 700;
+  color: #1f3b77;
+  position: relative;
+  top:15px;
+}
+.subject-title small {
+  display: block;
+  margin-top: .125rem;
+  color: #6c7aa0;
+  font-weight: 500;
+}
+
+/* metric pinned at bottom */
+.subject-metric {
+  margin-top: auto;  /* ensures this block stays at the bottom */
+  position: relative;
+  top:20px;
+}
+.big-metric {
+  font-size: 2rem;
+  line-height: 1.2;
+  font-weight: 800;
+  color: #0d6efd;
+}
+.metric-label {
+  font-size: .85rem;
+  color: #6c757d;
+  margin-top: -2px;
+}
+
+
+/* Footer */
+.subject-card .card-footer{
+  background-color: rgba(78,84,200,.05);
+  border-top: 1px solid rgba(78,84,200,.1);
+}
+
+/* Responsive */
+@media (max-width: 575.98px){
+  .subject-body{
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 0;
+  }
+  .subject-thumb{
+    width: 100%;
+    height: 160px;
+    margin: 0;                /* reset centering for stacked layout */
+  }
+  .subject-content{
+    gap: .5rem;
+  }
+}
+
 </style>
 </head>
 
@@ -134,62 +292,17 @@
 
 
                 <div class="card-body">
-                    <div class="row">
-                      <div class="col-lg-12">
-<!--                         <div class="btn-group py-2" role="group" aria-label="Basic mixed styles example">
-                          <button onclick="adding_curr()" type="button" class="btn btn-danger"><i class='bx bx-plus-circle'></i></button>
-                          <button onclick="adding_curr()" type="button" class="btn btn-success">Add Curriculum</button>
-                        </div>
-                        <hr> -->
-<br><br>
-                      <div class="row">
-                        <div class="col-lg-3">
-                          <label for="gradelevelid">Select Grade Level</label>
-                          <select id="gradelevelid" class="form-control" onchange="load_curr()">
-                            <?php 
-                              $gradelevel = "SELECT * FROM `tblgradelevel`";
-                              $rungradelevel = mysqli_query($conn, $gradelevel);
-                              while($rowgradelevel=mysqli_fetch_assoc($rungradelevel)){
-                                echo'<option value="'.$rowgradelevel['levelid'].'">'.$rowgradelevel['level_descrition'].'</option>';
-                              }
-                            ?>
-                            
-                          </select>
-                        </div>
-                        <div class="col-lg-9">
-                          <label for="subjectids">Select Subject</label>
-                          <select id="subjectids" class="form-control">
-                            <?php 
-                              $subjects = "SELECT * FROM `tblsubjects`";
-                              $runsubjects = mysqli_query($conn, $subjects);
-                              while($rowsubjects=mysqli_fetch_assoc($runsubjects)){
-                                echo'<option value="'.$rowsubjects['subjectid'].'">'.$rowsubjects['subject_description'].'</option>';
-                              }
-                            ?>
-                            
-                          </select>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-lg-12 py-2">
-                          <button onclick="add_new_subjects()" class="btn btn-primary btn-sm float-end">Add to list</button>
-                        </div>
-                      </div>
-                        <hr>
-                        <!-- <div id="test">test</div> -->
+
                         <div id="main_data">
                           <div id="loader" class="text-center" style="display: none;">
                             <img src="../../loader.gif" alt="Loading..." width="10%">
                           </div>
                           <div id="content_area"></div>
                         </div>                
-                      </div>
+ 
                     </div>               
-
-                                            
+                                           
                 </div>
-
-
               </div>
             </div><!-- End Reports -->
 
@@ -241,56 +354,6 @@
 
   <script>
 
-    function removed_curr(currid){
-      Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
-      }).then((result) => {
-        if (result.isConfirmed) {
-         $.ajax({
-            type: "POST",
-            url: "query_curriculum.php",
-            data: {
-              "delete_curr": "1",
-              "currid" : currid
-            },
-            success: function () {
-              load_curr();
-                // $('#test').html(response);
-            }
-          }); 
-
-        }
-      });
-    }
-
-    function add_new_subjects(){
-      var gradelevelid = $('#gradelevelid').val();
-      var subjectids = $('#subjectids').val();
-         $.ajax({
-            type: "POST",
-            url: "query_curriculum.php",
-            data: {
-              "saving_curr": "1",
-              "gradelevelid" : gradelevelid,
-              "subjectids" : subjectids
-            },
-            success: function () {
-              load_curr();
-                // $('#test').html(response);
-            }
-          }); 
-         
-    }
-
-    function adding_curr(){
-      $('#modal_curr').modal('show');
-    }
 
 
     function load_curr() {
@@ -302,7 +365,7 @@
             type: "POST",
             url: "query_curriculum.php",
             data: { 
-            "loading_curr": '1',
+            "loading_curriculum_review": '1',
             "gradelevelid" : gradelevelid 
           },
             success: function(response) {

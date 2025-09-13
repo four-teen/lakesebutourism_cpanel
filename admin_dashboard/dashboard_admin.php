@@ -151,7 +151,7 @@
                 </div>
                     <a href="#" style="text-decoration: none; color: inherit;">
                       <div class="card-body">
-                        <h5 class="card-title">Manage Curriculum <span>| All</span></h5>
+                        <h5 class="card-title">Curriculum <span>| All</span></h5>
                         <div class="d-flex align-items-center">
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <i class='bx bxs-cog'></i>
@@ -223,7 +223,7 @@
                 </div>
                     <a href="#" style="text-decoration: none; color: inherit;">
                       <div class="card-body">
-                        <h5 class="card-title">Manage Transaction <span>| <button class="btn btn-info btn-sm">F6</button></span></h5>
+                        <h5 class="card-title">Manage Payments <span></span></h5>
                         <div class="d-flex align-items-center">
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <i class='bx bx-log-in-circle'></i>

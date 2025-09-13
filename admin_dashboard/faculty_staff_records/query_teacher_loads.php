@@ -94,7 +94,8 @@ INNER JOIN tblsections on tblsections.sectionsid = tblassigned_designation.ass_s
             INNER JOIN tblcurriculum on tblcurriculum.currid=tblclass_schedules_teachers.cst_classid
             INNER JOIN tblsubjects on tblsubjects.subjectid = tblcurriculum.subjectid
             inner JOIN tblgradelevel on tblgradelevel.levelid = tblcurriculum.gradelevelid
-            INNER JOIN tblsections on tblsections.sectionsid=tblcurriculum.sectID";
+            INNER JOIN tblsections on tblsections.sectionsid=tblcurriculum.sectID
+            WHERE tblteachers.teachersautoid = '{$_POST['teacherid']}'";
             $runget_subjects = mysqli_query($conn, $get_subject);
             while($rowget_subject = mysqli_fetch_assoc($runget_subjects)){
               echo

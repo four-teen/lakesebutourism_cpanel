@@ -311,53 +311,71 @@ include_once __DIR__ . '/../db.php';
     </div>
   </footer><!-- End Footer -->
 
+<!-- ======================= -->
+  <div class="modal fade" id="addingStudentsModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content shadow">
+          <div class="modal-header bg-info text-white">
+            <h5 class="modal-title" id="paymentModalLabel">Add Students</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <input type="hidden" id="class_schedule_id">
+            <input type="hidden" id="get_level_id">
+              <div class="row">
+                <div id="get_student_list">loading students</div>
 
-<div class="modal fade" id="addingStudentsModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content shadow">
-        <div class="modal-header bg-info text-white">
-          <h5 class="modal-title" id="paymentModalLabel">Add Students</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body">
-          <input type="hidden" id="class_schedule_id">
-            <div class="row">
-              <div class="col-lg-12">
-                <label for="studentsID">Select Students</label>
-                <select id="studentsID" class="js-example-basic-single form-control" name="state">
-                  <?php 
-                    $get_students = "SELECT * FROM `tblstudents`";
-                    $runget_students = mysqli_query($conn, $get_students);
-                    while($row_students = mysqli_fetch_assoc($runget_students)){
-                      echo'<option value="'.$row_students['autoid'].'">'.strtoupper($row_students['last_name']).', '.strtoupper($row_students['first_name']).' '.strtoupper($row_students['middle_name']).'</option>';
-                    }
-                  ?>
-                  
-                </select>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-lg-12 py-2">
-                <button  onclick="saving_students()" class="btn btn-primary">Add to list</button>
-                <hr>
-                  <div id="main_data2">
-                    <div id="loader2" class="text-center" style="display: none;">
-                      <img src="../loader.gif" alt="Loading..." width="10%">
+              <div class="row">
+                <div class="col-lg-12 py-2">
+                  <button  onclick="saving_students()" class="btn btn-primary">Add to list</button>
+                  <hr>
+                    <div id="main_data2">
+                      <div id="loader2" class="text-center" style="display: none;">
+                        <img src="../loader.gif" alt="Loading..." width="10%">
+                      </div>
+                      <div id="content_area2"></div>
                     </div>
-                    <div id="content_area2"></div>
-                  </div>
 
+                </div>
               </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-          <button onclick="update_count()" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+          </div>
+          <div class="modal-footer">
+            <button onclick="update_count()" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+          </div>
         </div>
       </div>
-    </div>
-</div>
+  </div>
 
 
+<!-- ======================= -->
+  <div class="modal fade" id="StudentGradeModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content shadow">
+          <div class="modal-header bg-info text-white">
+            <h5 class="modal-title" id="paymentModalLabel">Manage Grades</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+              <div class="row">
+                <div class="col-lg-12 py-2">
+                  <h4>SUBJECT: <span id="subject_info" class="text-danger"></span></h4>
+                    <div id="main_data3">
+                      <div id="loader3" class="text-center" style="display: none;">
+                        <img src="../loader.gif" alt="Loading..." width="10%">
+                      </div>
+                      <div id="content_area3"></div>
+                    </div>
+
+                </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button onclick="update_count()" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+  </div>
 
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -387,6 +405,122 @@ include_once __DIR__ . '/../db.php';
 
 
   <script>
+
+function load_manage_students(cstid) {
+  $('#loader3').show();
+  $('#content_area3').hide();
+
+  $.ajax({
+    type: "POST",
+    url: "query_manage_grades.php",
+    data: {
+      "loading_students_subjects_grades": 1,
+      "cstid" : cstid
+    },
+    success: function (response) {
+      $('#content_area3').html(response);
+
+      // init DataTable
+      if ($.fn.DataTable.isDataTable('#modalStudentsTable')) {
+        $('#modalStudentsTable').DataTable().destroy();
+      }
+      $('#modalStudentsTable').DataTable({
+        pageLength: 10,
+        lengthChange: false,
+        ordering: true
+      });
+
+      // bind once per load (safe because we .off first)
+      $(document)
+  .off('change blur', '.grade-input')
+  .on('change blur', '.grade-input', function () {
+    const $el = $(this);
+    const gradeSectId = $el.data('gsid');
+    const quarter     = $el.data('quarter');
+    const value       = ($el.val() || '').trim();
+
+    if (!gradeSectId) {
+      console.warn('Missing gradeSectId on input', this);
+      alert('Missing gradesectID for this row.'); // pang-test lang
+      return;
+    }
+
+          // validation
+          if (value !== '') {
+            if (!/^\d{1,3}(\.\d{1,2})?$/.test(value)) {
+              alert('Please enter a valid number (0–100).');
+              $el.focus();
+              return;
+            }
+            const n = parseFloat(value);
+            if (n < 0 || n > 100) {
+              alert('Grade must be between 0 and 100.');
+              $el.focus();
+              return;
+            }
+          }
+
+          // save
+          $.ajax({
+            type: 'POST',
+            url: 'query_manage_grades.php',
+            data: {
+              save_grade: 1,
+              grade_sectID: gradeSectId,
+              quarter: quarter,
+              grade_value: value
+            },
+            success: function (resp) {
+              try {
+                const r = JSON.parse(resp);
+                if (r.ok && typeof r.final_avg !== 'undefined') {
+                  const $row = $el.closest('tr');
+                  $row.find('.final-grade').text(r.final_avg === '' ? '' : r.final_avg);
+                } else if (!r.ok && r.msg) {
+                  alert(r.msg);
+                }
+              } catch(e) {
+                // ignore if server echoed non-JSON
+              }
+            },
+            error: function () {
+              alert('Saving failed. Please try again.');
+            }
+          });
+        });
+    },
+    error: function () {
+      $('#content_area3').html('<p class="text-danger">Error loading data.</p>');
+    },
+    complete: function () {
+      $('#loader3').hide();
+      $('#content_area3').show();
+    }
+  });
+}
+
+
+
+    function manage_graded(subject_description,timed,cstid){
+      load_manage_students(cstid);
+      $('#subject_info').html(subject_description);
+      $('#StudentGradeModal').modal('show');
+    }
+
+    function get_students(){
+       var get_level_id = $('#get_level_id').val(); 
+       $.ajax({
+          type: "POST",
+          url: "query_teacher.php",
+          data: { 
+            get_student_list: 1,
+            "get_level_id" : get_level_id 
+          },
+          success: function (response) {
+            $('#get_student_list').html(response);
+          }
+       }); 
+    }
 
     function update_count(){
       load_your_subjects();
@@ -474,15 +608,16 @@ function load_students(cstid) {
             "class_schedule_id" : class_schedule_id
           },
           success: function () {
-            // $('#test').html(response);
-            // load_your_subjects();
             load_students(class_schedule_id);
+            get_students();
           }
        }); 
     }
 
-    function add_student_list(cstid){
+    function add_student_list(cstid,levelid){
       load_students(cstid);
+      $('#get_level_id').val(levelid);  
+      get_students();    
       $('#class_schedule_id').val(cstid);
       $('#addingStudentsModal').modal('show');
     }

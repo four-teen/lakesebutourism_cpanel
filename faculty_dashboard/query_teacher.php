@@ -7,6 +7,38 @@ include_once __DIR__ . '/../db.php';
 
 // ======================================================
 
+if(isset($_POST['get_student_list'])){
+
+  echo
+  ''; ?>
+      <div class="col-lg-12">
+        <label for="studentsID">Select Students</label>
+        <select id="studentsID" class="js-example-basic-single form-control" name="state">
+          <?php 
+            $level = $_POST['get_level_id'] ?? ''; // kunin yung value ng input
+            $get_students = "SELECT * FROM `tblstudents` WHERE grade_level='$_POST[get_level_id]'";
+            $runget_students = mysqli_query($conn, $get_students);
+            while($row_students = mysqli_fetch_assoc($runget_students)){
+
+              $check_added = "SELECT * FROM `tblgrade_sect_students` WHERE studentID='$row_students[autoid]' AND ayID='$_SESSION[ayid]'";
+              $runcheck_added = mysqli_query($conn, $check_added);
+              $rowcheck_stud = mysqli_fetch_assoc($runcheck_added);
+
+              if($rowcheck_stud['studentID']==$row_students['autoid'] && $rowcheck_stud['ayID']==$row_students['ay']){
+                 // echo'<option value="'.$row_students['autoid'].'">'.strtoupper($row_students['last_name']).', '.strtoupper($row_students['first_name']).' '.strtoupper($row_students['middle_name']).' ('.strtoupper($row_students['grade_level']).')X';
+              }else{
+                 echo'<option value="'.$row_students['autoid'].'">'.strtoupper($row_students['last_name']).', '.strtoupper($row_students['first_name']).' '.strtoupper($row_students['middle_name']).' ('.strtoupper($row_students['grade_level']).')</option>';                
+              }
+
+ 
+            }
+          ?>
+          
+        </select>
+      </div>
+  <?php echo'';
+}
+
 if(isset($_POST['delete_the_student'])){
   $delete = "DELETE FROM `tblgrade_sect_students` WHERE gradesectID = '$_POST[gradesectID]'";
   $rundelete = mysqli_query($conn, $delete);
@@ -66,8 +98,6 @@ if(isset($_POST['saving_subject_students'])){
   $insert = "INSERT INTO `tblgrade_sect_students` (`studentID`, `ayID`, `addedBy`, `addedDateTime`, `class_schedule_id`) VALUES ('$studentsID', '$ayid', '$_SESSION[TEA_ID]', CURRENT_TIMESTAMP, '$class_schedule_id')";
   $runinsert = mysqli_query($conn, $insert);  
 
-  echo $insert; 
-
 }
 
 
@@ -75,28 +105,26 @@ if (isset($_POST['loading_your_subject'])) {
   echo '<div class="row g-3">';
 
    $select = "SELECT * FROM `tblclass_schedules_teachers`
-  INNER JOIN tblclass_schedules on tblclass_schedules.classid=tblclass_schedules_teachers.cst_classid
-  INNER JOIN tblsubjects on tblsubjects.subjectid = tblclass_schedules.subjectid
-  INNER JOIN tblgradelevel on tblgradelevel.levelid=tblclass_schedules.levelID
-  INNER JOIN tblsections on tblsections.sectionsid=tblclass_schedules_teachers.cst_sectionid
+  INNER JOIN tblcurriculum on tblcurriculum.currid=tblclass_schedules_teachers.cst_classid
+  INNER JOIN tblteachers on tblteachers.teachersautoid=tblclass_schedules_teachers.cst_teachersid
+  INNER JOIN tblgradelevel on tblgradelevel.levelid=tblcurriculum.gradelevelid
+  INNER JOIN tblsections on tblsections.sectionsid = tblclass_schedules_teachers.cst_sectionid
+  INNER JOIN tblsubjects on tblsubjects.subjectid = tblcurriculum.subjectid
+  INNER JOIN tblacademic_years on tblacademic_years.ayid=tblcurriculum.ayid
   WHERE cst_teachersid='$_SESSION[TEA_ID]'";
   $runselect = mysqli_query($conn, $select);
 
   while ($rowselect = mysqli_fetch_assoc($runselect)) {
      
-      // TODO: replace this with your actual count query
-      // e.g. SELECT COUNT(*) FROM tblrecords WHERE classid = $classId
-      // $recordsCount = 24;
 
-      // human time (optional)
-      // $lastUpdated = $updated ? date('M j, Y g:i A', strtotime($updated)) : '2 days ago';
+    $timed = $rowselect['timefrom'].' - '.$rowselect['timeto'];
 
       echo '
       <div class="col-md-6 col-lg-4">
         <div class="card subject-card h-100 shadow-sm" role="button">
           <div class="card-header d-flex justify-content-between align-items-center">
             <span>'.$rowselect['level_descrition'].' - '.strtoupper($rowselect['section_desc']).'</span>
-              <span onclick="add_student_list(\''.$rowselect['cstid'].'\')" class="badge-pill cta-badge">
+              <span onclick="add_student_list(\''.$rowselect['cstid'].'\',\''.$rowselect['levelid'].'\')" class="badge-pill cta-badge">
                 <i class="bi bi-people-fill me-1"></i> Add Students
               </span>
           </div>
@@ -109,7 +137,7 @@ if (isset($_POST['loading_your_subject'])) {
                 <div class="subject-header">
                   <h5 class="subject-title">
                     '.$rowselect['subject_description'].'
-                    <small><i class="bi bi-calculator me-1"></i>Class Schedule: <span class="text-danger">'.$rowselect['time_from'].' - '.$rowselect['time_to'].'</span></small>
+                    <small><i class="bi bi-calculator me-1"></i>Class Schedule: <span class="text-danger">'.$rowselect['timefrom'].' - '.$rowselect['timeto'].'</span></small>
                   </h5>
                 </div>
 
@@ -134,7 +162,13 @@ if (isset($_POST['loading_your_subject'])) {
           </div>
 
           <div class="card-footer text-muted">
-            <button class="btn btn-info btn-sm float-end">Manage Grades</button>
+            
+            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+              <button type="button" class="btn btn-danger">-</button>
+              <button type="button" class="btn btn-warning">Class List</button>
+              <button onclick="manage_graded(\''.$rowselect['subject_description'].'\',\''.$timed.'\', \''.$rowselect['cstid'].'\')" type="button" class="btn btn-success">Manage Grades</button>
+            </div>
+
           </div>
         </div>
       </div>';
