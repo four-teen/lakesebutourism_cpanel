@@ -16,7 +16,7 @@
         <i class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="students-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-        <li><a href="student_management/student_records.php"><i class="bi bi-circle"></i><span>Enrolment & Student Records</span></a></li>
+        <li><a href="student_management/student_records.php"><i class="bi bi-circle"></i><span class="text-danger">Enrolment & Student Records</span></a></li>
         <li><a href="#"><i class="bi bi-circle"></i><span>Attendance Tracking</span></a></li>
         <li><a href="#"><i class="bi bi-circle"></i><span>Grade and Reports</span></a></li>
         <li><a href="#"><i class="bi bi-circle"></i><span>Student Profiles</span></a></li>
@@ -30,7 +30,7 @@
         <i class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="teachers-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-        <li><a href="faculty_staff_records/teacher_profile.php"><i class="bi bi-circle"></i><span>Faculty Profile</span></a></li>
+        <li><a href="faculty_staff_records/teacher_profile.php"><i class="bi bi-circle"></i><span class="text-danger">Faculty Profile</span></a></li>
         <li><a href="#"><i class="bi bi-circle"></i><span>Teaching Loads and Schedules</span></a></li>
         <li><a href="#"><i class="bi bi-circle"></i><span>Performance Monitoring</span></a></li>
       </ul>
@@ -43,7 +43,7 @@
         <i class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="curriculum-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-        <li><a href="academic_management/student_scheduling.php"><i class="bi bi-circle"></i><span>Class Scheduling/Program</span></a></li>
+        <li><a href="academic_management/student_scheduling.php"><i class="bi bi-circle"></i><span class="text-danger">Class Scheduling/Program</span></a></li>
         <li><a href="academic_management/student_curriculum.php"><i class="bi bi-circle"></i><span>Manage Curriculum</span></a></li>
         <li><a href="#"><i class="bi bi-circle"></i><span>Assessment and Examination Records</span></a></li>
       </ul>
