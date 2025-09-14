@@ -4079,3 +4079,536 @@
 [2025-09-14 03:31:08] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
 [2025-09-14 03:31:08] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
 [2025-09-14 03:31:08] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 03:41:55] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/student_grades_reports.php] Database connection SUCCESS.
+[2025-09-14 03:41:56] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 03:41:56] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students_reporting.php] Database connection SUCCESS.
+[2025-09-14 03:42:00] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students_reporting.php] Database connection SUCCESS.
+[2025-09-14 03:42:03] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/admin_individual_reports.php?cstid=5&subject_description=English&level_descrition=Grade%207&section_desc=DESCARTES&cst_teachersid=17] Database connection SUCCESS.
+[2025-09-14 03:42:03] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 03:42:03] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students.php] Database connection SUCCESS.
+[2025-09-14 03:42:06] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students.php] Database connection SUCCESS.
+[2025-09-14 03:43:59] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/student_grades_reports.php] Database connection SUCCESS.
+[2025-09-14 03:43:59] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 03:43:59] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students_reporting.php] Database connection SUCCESS.
+[2025-09-14 03:44:00] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-14 03:44:00] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-14 03:44:00] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 03:44:01] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 03:44:06] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/student_curriculum.php] Database connection SUCCESS.
+[2025-09-14 03:44:07] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 03:44:07] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/query_curriculum.php] Database connection SUCCESS.
+[2025-09-14 03:44:12] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-14 03:44:12] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-14 03:44:12] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 03:44:12] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 03:44:15] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/student_scheduling.php] Database connection SUCCESS.
+[2025-09-14 03:44:15] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 03:44:15] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/query_curriculum.php] Database connection SUCCESS.
+[2025-09-14 03:44:18] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/query_curriculum.php] Database connection SUCCESS.
+[2025-09-14 03:44:20] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/query_curriculum.php] Database connection SUCCESS.
+[2025-09-14 03:44:29] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/query_curriculum.php] Database connection SUCCESS.
+[2025-09-14 03:47:11] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/student_scheduling.php] Database connection SUCCESS.
+[2025-09-14 03:47:12] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 03:47:12] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/query_curriculum.php] Database connection SUCCESS.
+[2025-09-14 03:47:13] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-14 03:47:13] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-14 03:47:14] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 03:47:14] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 03:47:22] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/student_grades_reports.php] Database connection SUCCESS.
+[2025-09-14 03:47:22] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 03:47:23] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students_reporting.php] Database connection SUCCESS.
+[2025-09-14 03:47:26] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students_reporting.php] Database connection SUCCESS.
+[2025-09-14 03:47:28] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/admin_individual_reports.php?cstid=5&subject_description=English&level_descrition=Grade%207&section_desc=DESCARTES&cst_teachersid=17] Database connection SUCCESS.
+[2025-09-14 03:47:28] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 03:47:28] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students.php] Database connection SUCCESS.
+[2025-09-14 03:47:31] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students.php] Database connection SUCCESS.
+[2025-09-14 03:50:21] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students.php] Database connection SUCCESS.
+[2025-09-14 03:52:17] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students.php] Database connection SUCCESS.
+[2025-09-14 03:52:26] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/admin_individual_reports.php?cstid=5&subject_description=English&level_descrition=Grade%207&section_desc=DESCARTES&cst_teachersid=17] Database connection SUCCESS.
+[2025-09-14 03:52:27] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 03:52:27] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students.php] Database connection SUCCESS.
+[2025-09-14 03:52:28] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students.php] Database connection SUCCESS.
+[2025-09-14 03:52:58] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students.php] Database connection SUCCESS.
+[2025-09-14 05:10:36] [IP:::1] [URI:/bteslife/] Database connection SUCCESS.
+[2025-09-14 05:11:59] [IP:::1] [URI:/bteslife/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-14 05:11:59] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN ATTEMPT: user='admin', type_id=1
+[2025-09-14 05:11:59] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN SUCCESS: user='admin', role='Administrator'
+[2025-09-14 05:12:00] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-14 05:12:00] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-14 05:12:00] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 05:12:00] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:12:53] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/student_records.php] Database connection SUCCESS.
+[2025-09-14 05:12:53] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:12:53] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students.php] Database connection SUCCESS.
+[2025-09-14 05:13:23] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-14 05:13:23] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-14 05:13:23] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 05:13:23] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:15:14] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/teacher_profile.php] Database connection SUCCESS.
+[2025-09-14 05:15:14] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:15:14] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:15:26] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/teacher_loads.php?teacherId=7&assignedid=1] Database connection SUCCESS.
+[2025-09-14 05:15:26] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:15:26] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/query_teacher_loads.php] Database connection SUCCESS.
+[2025-09-14 05:15:58] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/query_teacher_loads.php] Database connection SUCCESS.
+[2025-09-14 05:15:58] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/query_teacher_loads.php] Database connection SUCCESS.
+[2025-09-14 05:16:17] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/query_teacher_loads.php] Database connection SUCCESS.
+[2025-09-14 05:16:17] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/query_teacher_loads.php] Database connection SUCCESS.
+[2025-09-14 05:16:32] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/teacher_profile.php] Database connection SUCCESS.
+[2025-09-14 05:16:33] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:16:33] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:16:36] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/teacher_loads.php?teacherId=10&assignedid=2] Database connection SUCCESS.
+[2025-09-14 05:16:37] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:16:37] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/query_teacher_loads.php] Database connection SUCCESS.
+[2025-09-14 05:18:27] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/teacher_profile.php] Database connection SUCCESS.
+[2025-09-14 05:18:27] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:18:27] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:18:33] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-14 05:18:33] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-14 05:18:34] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 05:18:34] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:18:35] [IP:::1] [URI:/bteslife/index.php] Database connection SUCCESS.
+[2025-09-14 05:18:46] [IP:::1] [URI:/bteslife/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-14 05:18:46] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN ATTEMPT: user='tua', type_id=2
+[2025-09-14 05:18:46] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN SUCCESS: user='tua', role='Teacher'
+[2025-09-14 05:18:47] [IP:::1] [URI:/bteslife/faculty_dashboard/dashboard_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:18:47] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:18:47] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:20:16] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:20:16] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:20:41] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:20:43] [IP:::1] [URI:/bteslife/faculty_dashboard/class_list.php?subject_description=English&timed=07:15%20-%2008:00&cstid=5] Database connection SUCCESS.
+[2025-09-14 05:20:43] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:20:43] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:20:57] [IP:::1] [URI:/bteslife/faculty_dashboard/dashboard_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:20:57] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:20:57] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:20:59] [IP:::1] [URI:/bteslife/faculty_dashboard/query_manage_grades.php] Database connection SUCCESS.
+[2025-09-14 05:21:29] [IP:::1] [URI:/bteslife/faculty_dashboard/query_manage_grades.php] Database connection SUCCESS.
+[2025-09-14 05:21:29] [IP:::1] [URI:/bteslife/faculty_dashboard/query_manage_grades.php] Database connection SUCCESS.
+[2025-09-14 05:21:39] [IP:::1] [URI:/bteslife/faculty_dashboard/query_manage_grades.php] Database connection SUCCESS.
+[2025-09-14 05:21:39] [IP:::1] [URI:/bteslife/faculty_dashboard/query_manage_grades.php] Database connection SUCCESS.
+[2025-09-14 05:21:48] [IP:::1] [URI:/bteslife/faculty_dashboard/query_manage_grades.php] Database connection SUCCESS.
+[2025-09-14 05:21:48] [IP:::1] [URI:/bteslife/faculty_dashboard/query_manage_grades.php] Database connection SUCCESS.
+[2025-09-14 05:21:49] [IP:::1] [URI:/bteslife/faculty_dashboard/query_manage_grades.php] Database connection SUCCESS.
+[2025-09-14 05:21:49] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:21:51] [IP:::1] [URI:/bteslife/faculty_dashboard/query_manage_grades.php] Database connection SUCCESS.
+[2025-09-14 05:22:28] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:22:40] [IP:::1] [URI:/bteslife/faculty_dashboard/class_reports.php] Database connection SUCCESS.
+[2025-09-14 05:22:40] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:22:40] [IP:::1] [URI:/bteslife/faculty_dashboard/query_manage_grades.php] Database connection SUCCESS.
+[2025-09-14 05:22:48] [IP:::1] [URI:/bteslife/faculty_dashboard/query_manage_grades.php] Database connection SUCCESS.
+[2025-09-14 05:22:59] [IP:::1] [URI:/bteslife/faculty_dashboard/query_manage_grades.php] Database connection SUCCESS.
+[2025-09-14 05:23:00] [IP:::1] [URI:/bteslife/faculty_dashboard/query_manage_grades.php] Database connection SUCCESS.
+[2025-09-14 05:23:02] [IP:::1] [URI:/bteslife/faculty_dashboard/query_manage_grades.php] Database connection SUCCESS.
+[2025-09-14 05:23:03] [IP:::1] [URI:/bteslife/faculty_dashboard/query_manage_grades.php] Database connection SUCCESS.
+[2025-09-14 05:23:50] [IP:::1] [URI:/bteslife/faculty_dashboard/dashboard_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:23:50] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:23:50] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:25:00] [IP:::1] [URI:/bteslife/index.php] Database connection SUCCESS.
+[2025-09-14 05:25:05] [IP:::1] [URI:/bteslife/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-14 05:25:05] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN ATTEMPT: user='admin', type_id=1
+[2025-09-14 05:25:05] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN SUCCESS: user='admin', role='Administrator'
+[2025-09-14 05:25:06] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-14 05:25:06] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-14 05:25:06] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 05:25:06] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:25:14] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=1] Database connection SUCCESS.
+[2025-09-14 05:25:19] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 05:25:29] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=1] Database connection SUCCESS.
+[2025-09-14 05:26:05] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 05:26:25] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/student_grades_reports.php] Database connection SUCCESS.
+[2025-09-14 05:26:25] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:26:25] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students_reporting.php] Database connection SUCCESS.
+[2025-09-14 05:26:48] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students_reporting.php] Database connection SUCCESS.
+[2025-09-14 05:27:00] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/admin_class_reports.php?cstid=5&subject_description=English&level_descrition=Grade%207&section_desc=DESCARTES] Database connection SUCCESS.
+[2025-09-14 05:27:00] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:27:00] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students.php] Database connection SUCCESS.
+[2025-09-14 05:27:49] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/student_grades_reports.php] Database connection SUCCESS.
+[2025-09-14 05:27:49] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:27:49] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students_reporting.php] Database connection SUCCESS.
+[2025-09-14 05:27:53] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students_reporting.php] Database connection SUCCESS.
+[2025-09-14 05:27:55] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/admin_individual_reports.php?cstid=5&subject_description=English&level_descrition=Grade%207&section_desc=DESCARTES&cst_teachersid=17] Database connection SUCCESS.
+[2025-09-14 05:27:55] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:27:55] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students.php] Database connection SUCCESS.
+[2025-09-14 05:28:00] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students.php] Database connection SUCCESS.
+[2025-09-14 05:28:26] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/student_grades_reports.php] Database connection SUCCESS.
+[2025-09-14 05:28:26] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:28:26] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students_reporting.php] Database connection SUCCESS.
+[2025-09-14 05:28:28] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-14 05:28:28] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-14 05:28:28] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 05:28:28] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:28:38] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/teacher_profile.php] Database connection SUCCESS.
+[2025-09-14 05:28:38] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:28:38] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:28:40] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/teacher_class_schedules.php] Database connection SUCCESS.
+[2025-09-14 05:28:40] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:28:40] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/query_teacher_loads.php] Database connection SUCCESS.
+[2025-09-14 05:29:11] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/query_teacher_loads.php] Database connection SUCCESS.
+[2025-09-14 05:29:57] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/teacher_profile.php] Database connection SUCCESS.
+[2025-09-14 05:29:57] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:29:57] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:30:00] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-14 05:30:00] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-14 05:30:00] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 05:30:00] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:30:13] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/student_scheduling.php] Database connection SUCCESS.
+[2025-09-14 05:30:13] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:30:13] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/query_curriculum.php] Database connection SUCCESS.
+[2025-09-14 05:30:16] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/query_curriculum.php] Database connection SUCCESS.
+[2025-09-14 05:30:20] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/query_curriculum.php] Database connection SUCCESS.
+[2025-09-14 05:30:51] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/query_curriculum.php] Database connection SUCCESS.
+[2025-09-14 05:30:55] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/query_curriculum.php] Database connection SUCCESS.
+[2025-09-14 05:31:02] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/query_curriculum.php] Database connection SUCCESS.
+[2025-09-14 05:31:14] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-14 05:31:14] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-14 05:31:14] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 05:31:14] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:31:17] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/student_grades_reports.php] Database connection SUCCESS.
+[2025-09-14 05:31:17] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:31:17] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students_reporting.php] Database connection SUCCESS.
+[2025-09-14 05:31:21] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students_reporting.php] Database connection SUCCESS.
+[2025-09-14 05:31:23] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/admin_individual_reports.php?cstid=5&subject_description=English&level_descrition=Grade%207&section_desc=DESCARTES&cst_teachersid=17] Database connection SUCCESS.
+[2025-09-14 05:31:23] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:31:23] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students.php] Database connection SUCCESS.
+[2025-09-14 05:31:25] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students.php] Database connection SUCCESS.
+[2025-09-14 05:34:38] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/student_grades_reports.php] Database connection SUCCESS.
+[2025-09-14 05:34:38] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:34:39] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students_reporting.php] Database connection SUCCESS.
+[2025-09-14 05:34:41] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-14 05:34:41] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-14 05:34:42] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 05:34:42] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:34:43] [IP:::1] [URI:/bteslife/index.php] Database connection SUCCESS.
+[2025-09-14 05:34:50] [IP:::1] [URI:/bteslife/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-14 05:34:50] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN ATTEMPT: user='tua', type_id=2
+[2025-09-14 05:34:50] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN SUCCESS: user='tua', role='Teacher'
+[2025-09-14 05:34:51] [IP:::1] [URI:/bteslife/faculty_dashboard/dashboard_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:34:52] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:34:52] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:35:00] [IP:::1] [URI:/bteslife/faculty_dashboard/query_manage_grades.php] Database connection SUCCESS.
+[2025-09-14 05:35:07] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:35:10] [IP:::1] [URI:/bteslife/index.php] Database connection SUCCESS.
+[2025-09-14 05:35:17] [IP:::1] [URI:/bteslife/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-14 05:35:17] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN ATTEMPT: user='admin', type_id=1
+[2025-09-14 05:35:17] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN SUCCESS: user='admin', role='Administrator'
+[2025-09-14 05:35:18] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-14 05:35:18] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-14 05:35:18] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 05:35:18] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:35:20] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/teacher_profile.php] Database connection SUCCESS.
+[2025-09-14 05:35:21] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:35:21] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:35:26] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/teacher_loads.php?teacherId=7&assignedid=1] Database connection SUCCESS.
+[2025-09-14 05:35:27] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/query_teacher_loads.php] Database connection SUCCESS.
+[2025-09-14 05:35:27] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:35:37] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/query_teacher_loads.php] Database connection SUCCESS.
+[2025-09-14 05:35:37] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/query_teacher_loads.php] Database connection SUCCESS.
+[2025-09-14 05:35:40] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/teacher_profile.php] Database connection SUCCESS.
+[2025-09-14 05:35:40] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:35:40] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:35:42] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-14 05:35:42] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-14 05:35:42] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 05:35:42] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:35:43] [IP:::1] [URI:/bteslife/index.php] Database connection SUCCESS.
+[2025-09-14 05:35:50] [IP:::1] [URI:/bteslife/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-14 05:35:50] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN ATTEMPT: user='tua', type_id=2
+[2025-09-14 05:35:50] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN SUCCESS: user='tua', role='Teacher'
+[2025-09-14 05:35:51] [IP:::1] [URI:/bteslife/faculty_dashboard/dashboard_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:35:51] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:35:51] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:35:55] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:35:55] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:36:05] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:36:05] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:36:05] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:36:17] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:36:22] [IP:::1] [URI:/bteslife/faculty_dashboard/query_manage_grades.php] Database connection SUCCESS.
+[2025-09-14 05:36:32] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:36:34] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:36:34] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:37:16] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:37:17] [IP:::1] [URI:/bteslife/index.php] Database connection SUCCESS.
+[2025-09-14 05:37:25] [IP:::1] [URI:/bteslife/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-14 05:37:25] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN ATTEMPT: user='admin', type_id=1
+[2025-09-14 05:37:25] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN FAIL: Wrong password.
+[2025-09-14 05:37:34] [IP:::1] [URI:/bteslife/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-14 05:37:34] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN ATTEMPT: user='admin', type_id=1
+[2025-09-14 05:37:35] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN SUCCESS: user='admin', role='Administrator'
+[2025-09-14 05:37:35] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-14 05:37:35] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-14 05:37:36] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 05:37:36] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:37:39] [IP:::1] [URI:/bteslife/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
+[2025-09-14 05:37:39] [IP:::1] [URI:/bteslife/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-14 05:38:06] [IP:::1] [URI:/bteslife/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-14 05:38:06] [IP:::1] [URI:/bteslife/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-14 05:38:11] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-14 05:38:11] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-14 05:38:11] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 05:38:11] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:38:12] [IP:::1] [URI:/bteslife/index.php] Database connection SUCCESS.
+[2025-09-14 05:38:21] [IP:::1] [URI:/bteslife/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-14 05:38:21] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN ATTEMPT: user='akil', type_id=2
+[2025-09-14 05:38:21] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN SUCCESS: user='akil', role='Teacher'
+[2025-09-14 05:38:22] [IP:::1] [URI:/bteslife/faculty_dashboard/dashboard_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:38:22] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:38:22] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:38:31] [IP:::1] [URI:/bteslife/index.php] Database connection SUCCESS.
+[2025-09-14 05:38:36] [IP:::1] [URI:/bteslife/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-14 05:38:36] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN ATTEMPT: user='admin', type_id=1
+[2025-09-14 05:38:36] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN SUCCESS: user='admin', role='Administrator'
+[2025-09-14 05:38:37] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-14 05:38:37] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-14 05:38:37] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 05:38:37] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:38:45] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/teacher_profile.php] Database connection SUCCESS.
+[2025-09-14 05:38:45] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:38:45] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:38:49] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/teacher_loads.php?teacherId=7&assignedid=1] Database connection SUCCESS.
+[2025-09-14 05:38:49] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/query_teacher_loads.php] Database connection SUCCESS.
+[2025-09-14 05:38:49] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:38:57] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/query_teacher_loads.php] Database connection SUCCESS.
+[2025-09-14 05:38:57] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/query_teacher_loads.php] Database connection SUCCESS.
+[2025-09-14 05:39:06] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/teacher_profile.php] Database connection SUCCESS.
+[2025-09-14 05:39:06] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:39:06] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:39:08] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-14 05:39:08] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-14 05:39:08] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 05:39:08] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:39:09] [IP:::1] [URI:/bteslife/index.php] Database connection SUCCESS.
+[2025-09-14 05:39:29] [IP:::1] [URI:/bteslife/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-14 05:39:29] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN ATTEMPT: user='akil', type_id=2
+[2025-09-14 05:39:29] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN SUCCESS: user='akil', role='Teacher'
+[2025-09-14 05:39:30] [IP:::1] [URI:/bteslife/faculty_dashboard/dashboard_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:39:30] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:39:30] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:41:06] [IP:::1] [URI:/bteslife/index.php] Database connection SUCCESS.
+[2025-09-14 05:41:14] [IP:::1] [URI:/bteslife/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-14 05:41:14] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN ATTEMPT: user='admin', type_id=1
+[2025-09-14 05:41:14] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN SUCCESS: user='admin', role='Administrator'
+[2025-09-14 05:41:15] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-14 05:41:15] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-14 05:41:16] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 05:41:16] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:41:19] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/student_grades_reports.php] Database connection SUCCESS.
+[2025-09-14 05:41:20] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:41:20] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students_reporting.php] Database connection SUCCESS.
+[2025-09-14 05:41:24] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students_reporting.php] Database connection SUCCESS.
+[2025-09-14 05:41:31] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students_reporting.php] Database connection SUCCESS.
+[2025-09-14 05:41:34] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students_reporting.php] Database connection SUCCESS.
+[2025-09-14 05:41:39] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/admin_individual_reports.php?cstid=5&subject_description=English&level_descrition=Grade%207&section_desc=DESCARTES&cst_teachersid=17] Database connection SUCCESS.
+[2025-09-14 05:41:39] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:41:39] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students.php] Database connection SUCCESS.
+[2025-09-14 05:41:44] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students.php] Database connection SUCCESS.
+[2025-09-14 05:42:44] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/student_grades_reports.php] Database connection SUCCESS.
+[2025-09-14 05:42:45] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:42:45] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students_reporting.php] Database connection SUCCESS.
+[2025-09-14 05:42:47] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-14 05:42:47] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-14 05:42:47] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 05:42:47] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:42:54] [IP:::1] [URI:/bteslife/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
+[2025-09-14 05:42:54] [IP:::1] [URI:/bteslife/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-14 05:42:56] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-14 05:42:56] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-14 05:42:56] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 05:42:57] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:42:59] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/teacher_profile.php] Database connection SUCCESS.
+[2025-09-14 05:42:59] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:42:59] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:43:24] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-14 05:43:24] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-14 05:43:24] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 05:43:24] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:44:01] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/teacher_profile.php] Database connection SUCCESS.
+[2025-09-14 05:44:01] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:44:01] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 05:44:04] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-14 05:44:04] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-14 05:44:04] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 05:44:05] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:44:06] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/student_records.php] Database connection SUCCESS.
+[2025-09-14 05:44:06] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:44:06] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students.php] Database connection SUCCESS.
+[2025-09-14 05:44:35] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-14 05:44:35] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-14 05:44:35] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 05:44:35] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:45:55] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/student_records.php] Database connection SUCCESS.
+[2025-09-14 05:45:56] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:45:56] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students.php] Database connection SUCCESS.
+[2025-09-14 05:47:04] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-14 05:47:04] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-14 05:47:04] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 05:47:04] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:47:12] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/student_scheduling.php] Database connection SUCCESS.
+[2025-09-14 05:47:12] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:47:12] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/query_curriculum.php] Database connection SUCCESS.
+[2025-09-14 05:47:13] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/student_curriculum.php] Database connection SUCCESS.
+[2025-09-14 05:47:13] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:47:13] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/query_curriculum.php] Database connection SUCCESS.
+[2025-09-14 05:47:21] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-14 05:47:21] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-14 05:47:21] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 05:47:22] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:47:25] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/student_curriculum.php] Database connection SUCCESS.
+[2025-09-14 05:47:25] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:47:25] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/query_curriculum.php] Database connection SUCCESS.
+[2025-09-14 05:47:30] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-14 05:47:30] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-14 05:47:30] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 05:47:30] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:47:43] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/student_scheduling.php] Database connection SUCCESS.
+[2025-09-14 05:47:43] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:47:43] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/query_curriculum.php] Database connection SUCCESS.
+[2025-09-14 05:47:46] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/query_curriculum.php] Database connection SUCCESS.
+[2025-09-14 05:47:50] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/query_curriculum.php] Database connection SUCCESS.
+[2025-09-14 05:51:49] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-14 05:51:49] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-14 05:51:49] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 05:51:50] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:54:56] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-14 05:54:56] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-14 05:54:57] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 05:54:57] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:55:19] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/student_scheduling.php] Database connection SUCCESS.
+[2025-09-14 05:55:19] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:55:19] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/query_curriculum.php] Database connection SUCCESS.
+[2025-09-14 05:55:27] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/query_curriculum.php] Database connection SUCCESS.
+[2025-09-14 05:56:02] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/query_curriculum.php] Database connection SUCCESS.
+[2025-09-14 05:56:04] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/query_curriculum.php] Database connection SUCCESS.
+[2025-09-14 05:56:07] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/query_curriculum.php] Database connection SUCCESS.
+[2025-09-14 05:56:13] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/query_curriculum.php] Database connection SUCCESS.
+[2025-09-14 05:57:07] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-14 05:57:07] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-14 05:57:07] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 05:57:08] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:57:12] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=1] Database connection SUCCESS.
+[2025-09-14 05:57:38] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/student_records.php] Database connection SUCCESS.
+[2025-09-14 05:57:38] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 05:57:38] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students.php] Database connection SUCCESS.
+[2025-09-14 05:57:52] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students.php] Database connection SUCCESS.
+[2025-09-14 06:00:09] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-14 06:00:09] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-14 06:00:09] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 06:00:10] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 06:18:08] [IP:::1] [URI:/bteslife/index.php] Database connection SUCCESS.
+[2025-09-14 06:18:18] [IP:::1] [URI:/bteslife/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-14 06:18:18] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN ATTEMPT: user='tua', type_id=2
+[2025-09-14 06:18:18] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN SUCCESS: user='tua', role='Teacher'
+[2025-09-14 06:18:19] [IP:::1] [URI:/bteslife/faculty_dashboard/dashboard_teacher.php] Database connection SUCCESS.
+[2025-09-14 06:18:20] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 06:18:20] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 06:18:34] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 06:18:34] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 06:18:51] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 06:23:52] [IP:::1] [URI:/bteslife/faculty_dashboard/dashboard_teacher.php] Database connection SUCCESS.
+[2025-09-14 06:23:52] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 06:23:52] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 11:08:44] [IP:::1] [URI:/bteslife/] Database connection SUCCESS.
+[2025-09-14 11:10:02] [IP:::1] [URI:/bteslife/] Database connection SUCCESS.
+[2025-09-14 11:10:20] [IP:::1] [URI:/bteslife/] Database connection SUCCESS.
+[2025-09-14 11:12:07] [IP:::1] [URI:/bteslife/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-14 11:12:07] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN ATTEMPT: user='admin', type_id=1
+[2025-09-14 11:12:08] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN SUCCESS: user='admin', role='Administrator'
+[2025-09-14 11:12:08] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-14 11:12:08] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-14 11:12:09] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 11:12:09] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 11:12:43] [IP:::1] [URI:/bteslife/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
+[2025-09-14 11:12:43] [IP:::1] [URI:/bteslife/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-14 11:13:21] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-14 11:13:21] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-14 11:13:21] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 11:13:21] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 11:13:22] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/student_records.php] Database connection SUCCESS.
+[2025-09-14 11:13:23] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 11:13:23] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students.php] Database connection SUCCESS.
+[2025-09-14 11:13:48] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/student_records.php] Database connection SUCCESS.
+[2025-09-14 11:13:48] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 11:13:48] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students.php] Database connection SUCCESS.
+[2025-09-14 11:14:44] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-14 11:14:44] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-14 11:14:44] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 11:14:44] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 11:14:53] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/student_grades_reports.php] Database connection SUCCESS.
+[2025-09-14 11:14:53] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 11:14:53] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students_reporting.php] Database connection SUCCESS.
+[2025-09-14 11:15:26] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students_reporting.php] Database connection SUCCESS.
+[2025-09-14 11:15:32] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/admin_class_reports.php?cstid=5&subject_description=English&level_descrition=Grade%207&section_desc=DESCARTES] Database connection SUCCESS.
+[2025-09-14 11:15:33] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 11:15:33] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students.php] Database connection SUCCESS.
+[2025-09-14 11:15:55] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/student_grades_reports.php] Database connection SUCCESS.
+[2025-09-14 11:15:55] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 11:15:55] [IP:::1] [URI:/bteslife/admin_dashboard/student_management/query_students_reporting.php] Database connection SUCCESS.
+[2025-09-14 11:15:57] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-14 11:15:57] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-14 11:15:57] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 11:15:58] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 11:16:00] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/student_scheduling.php] Database connection SUCCESS.
+[2025-09-14 11:16:00] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 11:16:00] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/query_curriculum.php] Database connection SUCCESS.
+[2025-09-14 11:16:02] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/query_curriculum.php] Database connection SUCCESS.
+[2025-09-14 11:16:05] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/query_curriculum.php] Database connection SUCCESS.
+[2025-09-14 11:16:52] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/student_curriculum.php] Database connection SUCCESS.
+[2025-09-14 11:16:52] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 11:16:52] [IP:::1] [URI:/bteslife/admin_dashboard/academic_management/query_curriculum.php] Database connection SUCCESS.
+[2025-09-14 11:17:22] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-14 11:17:22] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-14 11:17:22] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 11:17:22] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 11:17:37] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/teacher_profile.php] Database connection SUCCESS.
+[2025-09-14 11:17:38] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 11:17:38] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 11:19:56] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 11:20:25] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/teacher_loads.php?teacherId=7&assignedid=1] Database connection SUCCESS.
+[2025-09-14 11:20:25] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 11:20:25] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/query_teacher_loads.php] Database connection SUCCESS.
+[2025-09-14 11:20:56] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/teacher_profile.php] Database connection SUCCESS.
+[2025-09-14 11:20:56] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 11:20:56] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 11:21:02] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/query_teacher.php?get_teacher=1&teachersautoid=7] Database connection SUCCESS.
+[2025-09-14 11:21:06] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/teacher_class_schedules.php] Database connection SUCCESS.
+[2025-09-14 11:21:06] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/query_teacher_loads.php] Database connection SUCCESS.
+[2025-09-14 11:21:06] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 11:21:11] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/query_teacher_loads.php] Database connection SUCCESS.
+[2025-09-14 11:21:45] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/teacher_profile.php] Database connection SUCCESS.
+[2025-09-14 11:21:45] [IP:::1] [URI:/bteslife/admin_dashboard/faculty_staff_records/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 11:21:45] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 11:21:45] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-14 11:21:45] [IP:::1] [URI:/bteslife/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-14 11:21:46] [IP:::1] [URI:/bteslife/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-14 11:21:46] [IP:::1] [URI:/bteslife/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-14 11:21:47] [IP:::1] [URI:/bteslife/index.php] Database connection SUCCESS.
+[2025-09-14 11:22:26] [IP:::1] [URI:/bteslife/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-14 11:22:26] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN ATTEMPT: user='tua', type_id=2
+[2025-09-14 11:22:26] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN FAIL: Wrong password.
+[2025-09-14 11:22:32] [IP:::1] [URI:/bteslife/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-14 11:22:32] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN ATTEMPT: user='tua', type_id=2
+[2025-09-14 11:22:32] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN FAIL: Wrong password.
+[2025-09-14 11:22:36] [IP:::1] [URI:/bteslife/index.php] Database connection SUCCESS.
+[2025-09-14 11:22:45] [IP:::1] [URI:/bteslife/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-14 11:22:45] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN ATTEMPT: user='tua', type_id=2
+[2025-09-14 11:22:45] [IP:::1] [URI:/bteslife/modules/auth/login.php] LOGIN SUCCESS: user='tua', role='Teacher'
+[2025-09-14 11:22:46] [IP:::1] [URI:/bteslife/faculty_dashboard/dashboard_teacher.php] Database connection SUCCESS.
+[2025-09-14 11:22:46] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 11:22:46] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 11:23:34] [IP:::1] [URI:/bteslife/faculty_dashboard/class_list.php?subject_description=English&timed=07:15%20-%2008:00&cstid=5] Database connection SUCCESS.
+[2025-09-14 11:23:35] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 11:23:35] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 11:23:58] [IP:::1] [URI:/bteslife/faculty_dashboard/dashboard_teacher.php] Database connection SUCCESS.
+[2025-09-14 11:23:59] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 11:23:59] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 11:24:01] [IP:::1] [URI:/bteslife/faculty_dashboard/query_manage_grades.php] Database connection SUCCESS.
+[2025-09-14 11:24:28] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 11:24:29] [IP:::1] [URI:/bteslife/faculty_dashboard/class_reports.php] Database connection SUCCESS.
+[2025-09-14 11:24:29] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 11:24:29] [IP:::1] [URI:/bteslife/faculty_dashboard/query_manage_grades.php] Database connection SUCCESS.
+[2025-09-14 11:24:32] [IP:::1] [URI:/bteslife/faculty_dashboard/query_manage_grades.php] Database connection SUCCESS.
+[2025-09-14 11:24:56] [IP:::1] [URI:/bteslife/faculty_dashboard/dashboard_teacher.php] Database connection SUCCESS.
+[2025-09-14 11:24:57] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.
+[2025-09-14 11:24:57] [IP:::1] [URI:/bteslife/faculty_dashboard/query_teacher.php] Database connection SUCCESS.

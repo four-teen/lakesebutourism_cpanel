@@ -171,7 +171,7 @@ $ay = isset($_SESSION['ays']) ? $_SESSION['ays'] : '';
                 <div class="card-body">
                   <h5 class="card-title">Student List</h5>
                         <hr>
-                        <div id="test">test</div>
+                        <!-- <div id="test">test</div> -->
                         <div id="main_data">
                           <div id="loader" class="text-center" style="display: none;">
                             <img src="../../loader.gif" alt="Loading..." width="10%">

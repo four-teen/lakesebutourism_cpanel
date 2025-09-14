@@ -18,7 +18,7 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BTESLife Inc · School Registration & Management</title>
+  <title>BTESLife Inc · MIS</title>
   <link rel="icon" href="assets/img/logo.png" />
 
   <!-- Bootstrap 5 -->
@@ -38,7 +38,7 @@
     <div class="container py-2">
       <a class="navbar-brand d-flex align-items-center gap-2" href="#">
         <img src="assets/img/logo.png" width="40" height="40" alt="BTESLife" onerror="this.style.display='none'">
-        <span class="brand-badge">BTESLife Inc.</span>
+        <span class="brand-badge">BTESLife Inc. MIS</span>
       </a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">

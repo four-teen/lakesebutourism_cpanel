@@ -116,7 +116,7 @@
 
     <section class="section dashboard">
 
-      <div id="test">test</div>
+      <!-- <div id="test">test</div> -->
       <div class="row">
 
         <!-- Left side columns -->

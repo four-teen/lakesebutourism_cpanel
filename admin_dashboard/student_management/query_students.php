@@ -73,6 +73,45 @@ if(isset($_POST['loading_individual_grade_reports'])){
     echo'STUDENT NAME: '.$row_students['last_name'].', '.$row_students['first_name'].' '.$row_students['middle_name'].'<br>';
     echo 'Grade level & Section: '.$row_students['level_descrition'];
 
+    echo
+    ''; ?>
+    <hr>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>LEARNING AREAS</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php 
+                $get_subjects = "SELECT * FROM `tblcurriculum_only` 
+                INNER JOIN tblsubjects on tblsubjects.subjectid = tblcurriculum_only.subjectid
+                WHERE gradelevelid='$grade_level'";
+                $runget_subjects = mysqli_query($conn, $get_subjects);
+                while($rowsubjects = mysqli_fetch_assoc($runget_subjects)){
+                  echo
+                  '
+                  <tr>
+                    <td>'.$rowsubjects['subject_description'].'</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                 ';
+                }
+
+            ?>
+
+          </tbody>
+          
+        </table>
+    <?php echo'';
+
+
+
 
 
   }else if($grade_level >= 12 && $grade_level <= 13){  
