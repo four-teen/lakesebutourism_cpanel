@@ -17,77 +17,77 @@
 
 
   if(isset($_POST['loading_curriculum_review'])){
-  echo '<div class="row g-3">';
+      echo '<div class="row g-3">';
 
-   $select = "SELECT DISTINCT tblsections.section_desc,tblgradelevel.level_descrition, tblgradelevel.levelid,tblsections.sectionsid FROM `tblcurriculum` 
-  INNER JOIN tblgradelevel on tblgradelevel.levelid=tblcurriculum.gradelevelid
-  INNER JOIN tblsections on tblsections.sectionsid=tblcurriculum.sectID";
-    $runselect = mysqli_query($conn, $select);
+       $select = "SELECT DISTINCT tblsections.section_desc,tblgradelevel.level_descrition, tblgradelevel.levelid,tblsections.sectionsid FROM `tblcurriculum` 
+      INNER JOIN tblgradelevel on tblgradelevel.levelid=tblcurriculum.gradelevelid
+      INNER JOIN tblsections on tblsections.sectionsid=tblcurriculum.sectID";
+        $runselect = mysqli_query($conn, $select);
 
-  while ($rowselect = mysqli_fetch_assoc($runselect)) {
-   
-      echo '
-      <div class="col-md-6 col-lg-4">
-        <div class="card subject-card h-100 shadow-sm" role="button">
-          <div class="card-header d-flex justify-content-between align-items-center">
-            <span>'.$rowselect['level_descrition'].'</span>
-              <span class="badge-pill cta-badge">
-                <i class="bi bi-backpack4"></i> Show Entries
-              </span>
-          </div>
+      while ($rowselect = mysqli_fetch_assoc($runselect)) {
+       
+          echo '
+          <div class="col-md-6 col-lg-4">
+            <div class="card subject-card h-100 shadow-sm" role="button">
+              <div class="card-header d-flex justify-content-between align-items-center">
+                <span>'.$rowselect['level_descrition'].'</span>
+                  <span class="badge-pill cta-badge">
+                    <i class="bi bi-backpack4"></i> Show Entries
+                  </span>
+              </div>
 
-          <div class="card-body">
-            <div class="subject-body">
-              <img src="../../assets/img/subject_logo.png" alt="Subject image" class="subject-thumb">
+              <div class="card-body">
+                <div class="subject-body">
+                  <img src="../../assets/img/subject_logo.png" alt="Subject image" class="subject-thumb">
 
-              <div class="flex-grow-1 subject-content">
-                <div class="subject-header">
-                  <h5 class="subject-title">
-                    '.strtoupper($rowselect['section_desc']).'
-                    
-                  </h5>
-                </div>
+                  <div class="flex-grow-1 subject-content">
+                    <div class="subject-header">
+                      <h5 class="subject-title">
+                        '.strtoupper($rowselect['section_desc']).'
+                        
+                      </h5>
+                    </div>
 
-                <div class="subject-metric">
-                  <div class="big-metric" id="rec-count-2">
-                  '; ?>
-                  <?php 
-                    $select_count = "SELECT * FROM `tblcurriculum` WHERE gradelevelid='$rowselect[levelid]' AND sectID='$rowselect[sectionsid]' AND (subjectid != '10001' AND subjectid != '10002')";
-                    $runselect_count = mysqli_query($conn, $select_count);
-                    echo mysqli_num_rows($runselect_count);
-                  ?>
-                  <?php echo'
+                    <div class="subject-metric">
+                      <div class="big-metric" id="rec-count-2">
+                      '; ?>
+                      <?php 
+                        $select_count = "SELECT * FROM `tblcurriculum` WHERE gradelevelid='$rowselect[levelid]' AND sectID='$rowselect[sectionsid]' AND (subjectid != '10001' AND subjectid != '10002')";
+                        $runselect_count = mysqli_query($conn, $select_count);
+                        echo mysqli_num_rows($runselect_count);
+                      ?>
+                      <?php echo'
+                      </div>
+                      <div class="metric-label">subject(s)</div>
+                    </div>
                   </div>
-                  <div class="metric-label">subject(s)</div>
                 </div>
+                <a href="javascript:void(0)" class="stretched-link" aria-hidden="true"></a>
+              </div>
+
+              <div class="card-footer text-muted">
+                
+                 
+              '; ?>
+              <?php 
+                $get_adviser = "SELECT * FROM `tblassigned_designation`
+                INNER JOIN tblteachers on tblteachers.teachersautoid=tblassigned_designation.ass_teachersautoid
+                INNER JOIN tbldesignation on tbldesignation.designationid=tblassigned_designation.ass_designationid
+                WHERE ass_gradelevelid='$rowselect[levelid]' and ass_sectionid='$rowselect[sectionsid]'";
+                $rungetadvise = mysqli_query($conn, $get_adviser);
+                $rowadviser = mysqli_fetch_assoc($rungetadvise);
+
+                echo'ADVISER: '.$rowadviser['firstname'].', '.$rowadviser['middlename'].' '.$rowadviser['lastname'];
+              ?>
+              <?php echo'
+
               </div>
             </div>
-            <a href="javascript:void(0)" class="stretched-link" aria-hidden="true"></a>
-          </div>
+          </div>';
+      }
 
-          <div class="card-footer text-muted">
-            
-             
-          '; ?>
-          <?php 
-            $get_adviser = "SELECT * FROM `tblassigned_designation`
-            INNER JOIN tblteachers on tblteachers.teachersautoid=tblassigned_designation.ass_teachersautoid
-            INNER JOIN tbldesignation on tbldesignation.designationid=tblassigned_designation.ass_designationid
-            WHERE ass_gradelevelid='$rowselect[levelid]' and ass_sectionid='$rowselect[sectionsid]'";
-            $rungetadvise = mysqli_query($conn, $get_adviser);
-            $rowadviser = mysqli_fetch_assoc($rungetadvise);
-
-            echo'ADVISER: '.$rowadviser['firstname'].', '.$rowadviser['middlename'].' '.$rowadviser['lastname'];
-          ?>
-          <?php echo'
-
-          </div>
-        </div>
-      </div>';
-  }
-
-  echo '</div>';
-  exit;
+      echo '</div>';
+      exit;
 
   }
 

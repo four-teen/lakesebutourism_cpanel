@@ -80,6 +80,74 @@ if (isset($_POST['save_grade'])) {
 }
 
 
+if(isset($_POST['loading_grade_reports'])){
+  echo ''; ?>
+    <div class="fw-bold fs-5">Subject:
+      <span class="meta-badge"><?php echo htmlspecialchars($_POST['subject_description']); ?></span>
+    </div>
+    <div class="subtle small">GRADE: <span class="fw-semibold"><?php echo htmlspecialchars($_POST['level_descrition'].' '.$_POST['section_desc']); ?></span></div>  
+    <div class="table-responsive">
+      <table id="modalStudentsTable" class="table table-striped table-bordered w-100">
+        <thead>
+          <tr>
+            <th class="align-middle">#</th>
+            <th class="align-middle">STUDENT NAME</th>
+            <th class="align-middle text-center">1st Grading</th>
+            <th class="align-middle text-center">2nd Grading</th>
+            <th class="align-middle text-center">3rd Grading</th>
+            <th class="align-middle text-center">4th Grading</th>
+            <th class="align-middle text-center">Final Grade</th>
+          </tr>          
+        </thead>
+        <tbody>
+          <?php 
+            $select = "SELECT gss.*, s.last_name, s.first_name, s.middle_name,
+                  g.grade_first, g.grade_second, g.grade_third, g.grade_fourth
+           FROM tblgrade_sect_students AS gss
+           INNER JOIN tblstudents AS s 
+             ON s.autoid = gss.studentID
+           LEFT JOIN tblgrades AS g 
+             ON g.grade_sectID = gss.gradesectID WHERE class_schedule_id='$_POST[cstid]'";
+            $runselect = mysqli_query($conn, $select);
+            $count = 0;
+            while($rowselect = mysqli_fetch_assoc($runselect)){
+              $gsid = $rowselect['grade_sectID'] ?? ($rowselect['gradesectID'] ?? '');
+
+              // default values blank (pwedeng mapuno ng LEFT JOIN later kung gusto mo)
+              $g1 = $rowselect['grade_first']  ?? '';
+              $g2 = $rowselect['grade_second'] ?? '';
+              $g3 = $rowselect['grade_third']  ?? '';
+              $g4 = $rowselect['grade_fourth'] ?? '';
+
+              // compute simple average
+              $vals = [];
+              foreach ([$g1,$g2,$g3,$g4] as $v) {
+                if ($v !== '' && $v !== null) $vals[] = (float)$v;
+              }
+              $avg = count($vals) ? number_format(array_sum($vals)/4, 2) : '';
+
+              echo '
+              <tr>
+                <td class="align-middle text-end" width="1%">'.++$count.'.</td>
+                <td class="align-middle">'.strtoupper($rowselect['last_name']).', '.strtoupper($rowselect['first_name']).' '.strtoupper($rowselect['middle_name']).'</td>
+
+                <td class="align-middle text-center" width="1%">'.htmlspecialchars($g1).'</td>
+                <td class="align-middle text-center" width="1%">'.htmlspecialchars($g2).'</td>
+                <td class="align-middle text-center" width="1%">'.htmlspecialchars($g3).'</td>
+                <td class="align-middle text-center" width="1%">'.htmlspecialchars($g4).'</td>
+
+                <td class="align-middle text-center" width="1%">
+                  <span class="final-grade">'.$avg.'</span>
+                </td>
+              </tr>
+              ';
+            }
+          ?>
+        </tbody>
+      </table>
+    </div>
+  <?php echo '';
+}
 
 if(isset($_POST['loading_students_subjects_grades'])){
   echo ''; ?>

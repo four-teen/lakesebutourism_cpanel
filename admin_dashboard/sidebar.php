@@ -18,7 +18,7 @@
       <ul id="students-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
         <li><a href="student_management/student_records.php"><i class="bi bi-circle"></i><span class="text-danger">Enrolment & Student Records</span></a></li>
         <li><a href="#"><i class="bi bi-circle"></i><span>Attendance Tracking</span></a></li>
-        <li><a href="#"><i class="bi bi-circle"></i><span>Grade and Reports</span></a></li>
+        <li><a href="student_management/student_grades_reports.php"><i class="bi bi-circle"></i><span class="text-danger">Grade and Reports</span></a></li>
         <li><a href="#"><i class="bi bi-circle"></i><span>Student Profiles</span></a></li>
       </ul>
     </li>

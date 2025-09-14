@@ -15,6 +15,150 @@
 
   // ================ code states here==================
 
+
+if(isset($_POST['loading_individual_grade_reports'])){
+  $get_students = "SELECT * FROM `tblstudents`
+  INNER JOIN tblgradelevel on tblgradelevel.levelid=tblstudents.grade_level
+  WHERE autoid='$_POST[student_id]' LIMIT 1";
+  $runget_students = mysqli_query($conn, $get_students);
+  $row_students = mysqli_fetch_assoc($runget_students);
+
+  /* ==== EMPTY-STATE (no record found) ==== */
+  if (!$runget_students || mysqli_num_rows($runget_students) === 0) {
+    ?>
+    <style>
+      /* Scoped styling */
+      #igrEmptyWrap .empty-state{
+        background: linear-gradient(180deg,#f8fafc,#ffffff);
+        border: 1px dashed #dfe3ea;
+        border-radius: 16px;
+        padding: 3rem 1.25rem;
+      }
+      #igrEmptyWrap .icon-wrap{
+        width: 84px; height: 84px; border-radius: 20px;
+        display:flex; align-items:center; justify-content:center;
+        background:#eef2ff; color:#4338ca; margin:0 auto 1rem;
+      }
+      #igrEmptyWrap .icon-wrap svg{ width:46px; height:46px; }
+      #igrEmptyWrap h5{ margin:.5rem 0 .25rem; font-weight:700; }
+      #igrEmptyWrap p{ color:#6b7280; margin-bottom:1.25rem; }
+      #igrEmptyWrap .btn{ border-radius:999px; padding:.55rem 1rem; }
+    </style>
+
+    <div id="igrEmptyWrap" class="container py-4">
+      <div class="empty-state text-center shadow-sm">
+        <div class="icon-wrap">
+          <!-- person-search icon (inline SVG, no dependency) -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              d="M15.75 6.75a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.25a7.5 7.5 0 0115 0M18.5 18.5l3 3" />
+          </svg>
+        </div>
+        <h5>No record found</h5>
+        <p>Please select student.
+        </p>
+
+      </div>
+    </div>
+    <?php
+    exit; // stop here if no record
+  }
+
+  $grade_level = $row_students['grade_level'];
+  
+  if($grade_level >= 1 && $grade_level <= 7){//elementary
+    echo "elementary";
+  }else if($grade_level >= 8 && $grade_level <= 11){
+     
+    echo'STUDENT NAME: '.$row_students['last_name'].', '.$row_students['first_name'].' '.$row_students['middle_name'].'<br>';
+    echo 'Grade level & Section: '.$row_students['level_descrition'];
+
+
+
+  }else if($grade_level >= 12 && $grade_level <= 13){  
+    echo "senior";
+  }else{
+    echo "none";
+  }
+
+
+
+}
+
+
+
+if(isset($_POST['loading_grade_reports'])){
+  echo ''; ?>
+    <div class="fw-bold fs-5">Subject:
+      <span class="meta-badge"><?php echo htmlspecialchars($_POST['subject_description']); ?></span>
+    </div>
+    <div class="subtle small">GRADE: <span class="fw-semibold"><?php echo htmlspecialchars($_POST['level_descrition'].' '.$_POST['section_desc']); ?></span></div>  
+    <div class="table-responsive">
+      <table id="modalStudentsTable" class="table table-striped table-bordered w-100">
+        <thead>
+          <tr>
+            <th class="align-middle">#</th>
+            <th class="align-middle">STUDENT NAME</th>
+            <th class="align-middle text-center">1st Grading</th>
+            <th class="align-middle text-center">2nd Grading</th>
+            <th class="align-middle text-center">3rd Grading</th>
+            <th class="align-middle text-center">4th Grading</th>
+            <th class="align-middle text-center">Final Grade</th>
+          </tr>          
+        </thead>
+        <tbody>
+          <?php 
+            $select = "SELECT gss.*, s.last_name, s.first_name, s.middle_name,
+                  g.grade_first, g.grade_second, g.grade_third, g.grade_fourth
+           FROM tblgrade_sect_students AS gss
+           INNER JOIN tblstudents AS s 
+             ON s.autoid = gss.studentID
+           LEFT JOIN tblgrades AS g 
+             ON g.grade_sectID = gss.gradesectID WHERE class_schedule_id='$_POST[cstid]'";
+            $runselect = mysqli_query($conn, $select);
+            $count = 0;
+            while($rowselect = mysqli_fetch_assoc($runselect)){
+              $gsid = $rowselect['grade_sectID'] ?? ($rowselect['gradesectID'] ?? '');
+
+              // default values blank (pwedeng mapuno ng LEFT JOIN later kung gusto mo)
+              $g1 = $rowselect['grade_first']  ?? '';
+              $g2 = $rowselect['grade_second'] ?? '';
+              $g3 = $rowselect['grade_third']  ?? '';
+              $g4 = $rowselect['grade_fourth'] ?? '';
+
+              // compute simple average
+              $vals = [];
+              foreach ([$g1,$g2,$g3,$g4] as $v) {
+                if ($v !== '' && $v !== null) $vals[] = (float)$v;
+              }
+              $avg = count($vals) ? number_format(array_sum($vals)/4, 2) : '';
+
+              echo '
+              <tr>
+                <td class="align-middle text-end" width="1%">'.++$count.'.</td>
+                <td class="align-middle">'.strtoupper($rowselect['last_name']).', '.strtoupper($rowselect['first_name']).' '.strtoupper($rowselect['middle_name']).'</td>
+
+                <td class="align-middle text-center" width="1%">'.htmlspecialchars($g1).'</td>
+                <td class="align-middle text-center" width="1%">'.htmlspecialchars($g2).'</td>
+                <td class="align-middle text-center" width="1%">'.htmlspecialchars($g3).'</td>
+                <td class="align-middle text-center" width="1%">'.htmlspecialchars($g4).'</td>
+
+                <td class="align-middle text-center" width="1%">
+                  <span class="final-grade">'.$avg.'</span>
+                </td>
+              </tr>
+              ';
+            }
+          ?>
+        </tbody>
+      </table>
+    </div>
+  <?php echo '';
+}
+
+
+
+
 // fetch one student (for edit)
 if(isset($_POST['get_student'])){
   header('Content-Type: application/json');

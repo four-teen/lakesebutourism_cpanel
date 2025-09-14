@@ -4,7 +4,7 @@
 
     <!-- Dashboard -->
     <li class="nav-item">
-      <a class="nav-link" href="dashboard_admin.php">
+      <a class="nav-link" href="dashboard_teacher.php">
         <i class="bi bi-grid"></i> <span>Dashboard</span>
       </a>
     </li>
@@ -15,9 +15,8 @@
         <i class="bx bx-user-circle text-primary"></i> <span>Student Management</span>
       </a>
       <ul id="students-nav" class="nav-content" data-bs-parent="#sidebar-nav">
-        <li><a href="#"><i class="bi bi-circle"></i><span>My Workload</span></a></li>
-        <li><a href="#"><i class="bi bi-circle"></i><span>Manage Grades</span></a></li>
-        <li><a href="#"><i class="bi bi-circle"></i><span>Student Reports</span></a></li>
+        <li class="active"><a href="#" class=" text-danger"><i class="bi bi-circle"></i><span>My Workload</span></a></li>
+        <li><a href="class_reports.php"><i class="bi bi-circle"></i><span>Student Reports</span></a></li>
       </ul>
     </li>
 

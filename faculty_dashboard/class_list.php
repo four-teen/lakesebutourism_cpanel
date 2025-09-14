@@ -49,7 +49,33 @@ include_once __DIR__ . '/../db.php';
 
    <!-- Template Main CSS File -->
   <link href="../assets/css/style.css" rel="stylesheet">
-<style>
+  <style>
+
+  /* Print ONLY the injected clone */
+  @media print {
+    body.printing * { display: none !important; }
+    body.printing #__print_clone,
+    body.printing #__print_clone * {
+      display: block !important;
+      visibility: visible !important;
+    }
+    body.printing #__print_clone {
+      position: static !important;
+      width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      border: 0 !important;
+      box-shadow: none !important;
+      background: #fff !important;
+    }
+    /* Keep table structure readable when printed */
+    #__print_clone thead { display: table-header-group; }
+    #__print_clone tfoot { display: table-footer-group; }
+    #__print_clone table { width: 100%; border-collapse: collapse; page-break-inside: auto; }
+    #__print_clone tr { page-break-inside: avoid; page-break-after: auto; }
+    @page { size: A4 portrait; margin: 15mm; }
+  }
+
     .search-item.active {
       background-color: #0d6efd;
       color: white;
@@ -60,176 +86,176 @@ include_once __DIR__ . '/../db.php';
       object-fit: cover;
     }
 
-/* Keep the stretched link inside the body only */
-.subject-card .card-body { position: relative; }
-.subject-card .card-body .stretched-link {
-  z-index: 1;
-  pointer-events: none;  /* makes header items fully interactive */
-}
+    /* Keep the stretched link inside the body only */
+    .subject-card .card-body { position: relative; }
+    .subject-card .card-body .stretched-link {
+      z-index: 1;
+      pointer-events: none;  /* makes header items fully interactive */
+    }
 
-.cta-badge{
-  background:#f5f7ff;
-  color:#4e54c8;
-  border-radius:999px;
-  padding:.35rem .8rem;
-  font-weight:600;
-  display:inline-flex;
-  align-items:center;
-  gap:4px;
-  transition: transform .18s ease, background-color .18s ease, box-shadow .18s ease;
-  will-change: transform;
-  cursor: pointer;
-}
-.cta-badge:hover{
-  transform: scale(1.08);
-  background:#e8eaff;
-  box-shadow: 0 .25rem .75rem rgba(0,0,0,.08);
-}
-.cta-badge:active{
-  transform: scale(0.96);
-}
-/* Make the badge sit above and receive hover/click */
-.subject-card .card-header .cta-badge {
-  position: relative;
-  z-index: 2;
-  pointer-events: auto;
-}
+    .cta-badge{
+      background:#f5f7ff;
+      color:#4e54c8;
+      border-radius:999px;
+      padding:.35rem .8rem;
+      font-weight:600;
+      display:inline-flex;
+      align-items:center;
+      gap:4px;
+      transition: transform .18s ease, background-color .18s ease, box-shadow .18s ease;
+      will-change: transform;
+      cursor: pointer;
+    }
+    .cta-badge:hover{
+      transform: scale(1.08);
+      background:#e8eaff;
+      box-shadow: 0 .25rem .75rem rgba(0,0,0,.08);
+    }
+    .cta-badge:active{
+      transform: scale(0.96);
+    }
+    /* Make the badge sit above and receive hover/click */
+    .subject-card .card-header .cta-badge {
+      position: relative;
+      z-index: 2;
+      pointer-events: auto;
+    }
 
-/* Card shell */
-.subject-card{
-  border: none;
-  border-radius: 14px;
-  overflow: hidden;
-  transition: transform .15s ease, box-shadow .15s ease;
-}
-.subject-card:hover{
-  transform: translateY(-3px);
-  box-shadow: 0 .75rem 1.5rem rgba(0,0,0,.08);
-}
+    /* Card shell */
+    .subject-card{
+      border: none;
+      border-radius: 14px;
+      overflow: hidden;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .subject-card:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 .75rem 1.5rem rgba(0,0,0,.08);
+    }
 
-/* Header + badge */
-.subject-card .card-header{
-  background: linear-gradient(135deg,#4e54c8,#8f94fb);
-  color: #fff;
-  font-weight: 600;
-  border-bottom: none;
-}
-.badge-pill {
-  background: #f5f7ff;
-  color: #4e54c8;
-  border-radius: 999px;
-  padding: .35rem .8rem;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  transition: transform 0.2s ease, background-color 0.2s ease;
-}
+    /* Header + badge */
+    .subject-card .card-header{
+      background: linear-gradient(135deg,#4e54c8,#8f94fb);
+      color: #fff;
+      font-weight: 600;
+      border-bottom: none;
+    }
+    .badge-pill {
+      background: #f5f7ff;
+      color: #4e54c8;
+      border-radius: 999px;
+      padding: .35rem .8rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
 
-.badge-pill:hover {
-  transform: scale(1.08);        /* zoom in */
-  background: #e8eaff;           /* optional: lighter background */
-}
+    .badge-pill:hover {
+      transform: scale(1.08);        /* zoom in */
+      background: #e8eaff;           /* optional: lighter background */
+    }
 
-.badge-pill:active {
-  transform: scale(0.95);        /* small shrink when clicked */
-}
+    .badge-pill:active {
+      transform: scale(0.95);        /* small shrink when clicked */
+    }
 
-.subject-body {
-  display: flex;
-  gap: 16px;
-  min-height: 120px;
-}
+    .subject-body {
+      display: flex;
+      gap: 16px;
+      min-height: 120px;
+    }
 
-/* left image */
-.subject-thumb {
-  width: 110px;
-  height: 110px;
-  border-radius: 12px;
-  object-fit: cover;
-  flex: 0 0 110px;
-  background: #f6f7fb;
-  position: relative;
-  top:25px;
-}
+    /* left image */
+    .subject-thumb {
+      width: 110px;
+      height: 110px;
+      border-radius: 12px;
+      object-fit: cover;
+      flex: 0 0 110px;
+      background: #f6f7fb;
+      position: relative;
+      top:25px;
+    }
 
-/* right column layout */
-.subject-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* title up, metric down */
-  flex: 1;
-}
+    /* right column layout */
+    .subject-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; /* title up, metric down */
+      flex: 1;
+    }
 
-/* title */
-.subject-title {
-  margin: 0;
-  font-weight: 700;
-  color: #1f3b77;
-  position: relative;
-  top:15px;
-}
-.subject-title small {
-  display: block;
-  margin-top: .125rem;
-  color: #6c7aa0;
-  font-weight: 500;
-}
+    /* title */
+    .subject-title {
+      margin: 0;
+      font-weight: 700;
+      color: #1f3b77;
+      position: relative;
+      top:15px;
+    }
+    .subject-title small {
+      display: block;
+      margin-top: .125rem;
+      color: #6c7aa0;
+      font-weight: 500;
+    }
 
-/* metric pinned at bottom */
-.subject-metric {
-  margin-top: auto;  /* ensures this block stays at the bottom */
-  position: relative;
-  top:20px;
-}
-.big-metric {
-  font-size: 2rem;
-  line-height: 1.2;
-  font-weight: 800;
-  color: #0d6efd;
-}
-.metric-label {
-  font-size: .85rem;
-  color: #6c757d;
-  margin-top: -2px;
-}
+    /* metric pinned at bottom */
+    .subject-metric {
+      margin-top: auto;  /* ensures this block stays at the bottom */
+      position: relative;
+      top:20px;
+    }
+    .big-metric {
+      font-size: 2rem;
+      line-height: 1.2;
+      font-weight: 800;
+      color: #0d6efd;
+    }
+    .metric-label {
+      font-size: .85rem;
+      color: #6c757d;
+      margin-top: -2px;
+    }
 
 
-/* Footer */
-.subject-card .card-footer{
-  background-color: rgba(78,84,200,.05);
-  border-top: 1px solid rgba(78,84,200,.1);
-}
+    /* Footer */
+    .subject-card .card-footer{
+      background-color: rgba(78,84,200,.05);
+      border-top: 1px solid rgba(78,84,200,.1);
+    }
 
-/* Responsive */
-@media (max-width: 575.98px){
-  .subject-body{
-    flex-direction: column;
-    align-items: flex-start;
-    min-height: 0;
-  }
-  .subject-thumb{
-    width: 100%;
-    height: 160px;
-    margin: 0;                /* reset centering for stacked layout */
-  }
-  .subject-content{
-    gap: .5rem;
-  }
-}
+    /* Responsive */
+    @media (max-width: 575.98px){
+      .subject-body{
+        flex-direction: column;
+        align-items: flex-start;
+        min-height: 0;
+      }
+      .subject-thumb{
+        width: 100%;
+        height: 160px;
+        margin: 0;                /* reset centering for stacked layout */
+      }
+      .subject-content{
+        gap: .5rem;
+      }
+    }
 
-        .select2-container--default .select2-selection--single {
-            height: 45px;
-        }
+    .select2-container--default .select2-selection--single {
+        height: 45px;
+    }
 
-        .select2-container--default .select2-selection--single .select2-selection__rendered {
-            line-height: 45px; /* Apply line-height specifically to the text element */
-        }
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+        line-height: 45px; /* Apply line-height specifically to the text element */
+    }
 
-</style>
+  </style>
 </head>
 
-<body onload="get_ay();load_your_subjects()">
+<body onload="get_ay();load_your_classlist()">
 
 
 
@@ -241,10 +267,10 @@ include_once __DIR__ . '/../db.php';
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Your Class</h1>
+      <h1>Class List</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+          <li class="breadcrumb-item"><a href="dashboard_teacher.php">Home</a></li>
           <li class="breadcrumb-item active">Dashboard</li>
         </ol>
       </nav>
@@ -406,236 +432,22 @@ include_once __DIR__ . '/../db.php';
 
   <script>
 
-
-function manage_class_list(subject_description,timed,cstid){
-  window.location = 'class_list.php?subject_description='+subject_description+'&timed='+timed+'&cstid='+cstid;
-}
-
-function load_manage_students(cstid) {
-  $('#loader3').show();
-  $('#content_area3').hide();
-
-  $.ajax({
-    type: "POST",
-    url: "query_manage_grades.php",
-    data: {
-      "loading_students_subjects_grades": 1,
-      "cstid" : cstid
-    },
-    success: function (response) {
-      $('#content_area3').html(response);
-
-      // init DataTable
-      if ($.fn.DataTable.isDataTable('#modalStudentsTable')) {
-        $('#modalStudentsTable').DataTable().destroy();
-      }
-      $('#modalStudentsTable').DataTable({
-        pageLength: 10,
-        lengthChange: false,
-        ordering: true
-      });
-
-      // bind once per load (safe because we .off first)
-      $(document)
-  .off('change blur', '.grade-input')
-  .on('change blur', '.grade-input', function () {
-    const $el = $(this);
-    const gradeSectId = $el.data('gsid');
-    const quarter     = $el.data('quarter');
-    const value       = ($el.val() || '').trim();
-
-    if (!gradeSectId) {
-      console.warn('Missing gradeSectId on input', this);
-      alert('Missing gradesectID for this row.'); // pang-test lang
-      return;
-    }
-
-          // validation
-          if (value !== '') {
-            if (!/^\d{1,3}(\.\d{1,2})?$/.test(value)) {
-              alert('Please enter a valid number (0–100).');
-              $el.focus();
-              return;
-            }
-            const n = parseFloat(value);
-            if (n < 0 || n > 100) {
-              alert('Grade must be between 0 and 100.');
-              $el.focus();
-              return;
-            }
-          }
-
-          // save
-          $.ajax({
-            type: 'POST',
-            url: 'query_manage_grades.php',
-            data: {
-              save_grade: 1,
-              grade_sectID: gradeSectId,
-              quarter: quarter,
-              grade_value: value
-            },
-            success: function (resp) {
-              try {
-                const r = JSON.parse(resp);
-                if (r.ok && typeof r.final_avg !== 'undefined') {
-                  const $row = $el.closest('tr');
-                  $row.find('.final-grade').text(r.final_avg === '' ? '' : r.final_avg);
-                } else if (!r.ok && r.msg) {
-                  alert(r.msg);
-                }
-              } catch(e) {
-                // ignore if server echoed non-JSON
-              }
-            },
-            error: function () {
-              alert('Saving failed. Please try again.');
-            }
-          });
-        });
-    },
-    error: function () {
-      $('#content_area3').html('<p class="text-danger">Error loading data.</p>');
-    },
-    complete: function () {
-      $('#loader3').hide();
-      $('#content_area3').show();
-    }
-  });
-}
-
-
-
-    function manage_graded(subject_description,timed,cstid){
-      load_manage_students(cstid);
-      $('#subject_info').html(subject_description);
-      $('#StudentGradeModal').modal('show');
-    }
-
-    function get_students(){
-       var get_level_id = $('#get_level_id').val(); 
-       $.ajax({
-          type: "POST",
-          url: "query_teacher.php",
-          data: { 
-            get_student_list: 1,
-            "get_level_id" : get_level_id 
-          },
-          success: function (response) {
-            $('#get_student_list').html(response);
-          }
-       }); 
-    }
-
-    function update_count(){
-      load_your_subjects();
-    }
-
-    function remove_student(gradesectID){
-      var class_schedule_id = $('#class_schedule_id').val();
-      Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
-      }).then((result) => {
-        if (result.isConfirmed) {
-         $.ajax({
-            type: "POST",
-            url: "query_teacher.php",
-            data: {
-              "delete_the_student": "1",
-              "gradesectID" : gradesectID
-            },
-            success: function () {
-              load_students(class_schedule_id);
-              load_your_subjects();
-            }
-          }); 
-
-        }
-      });
-    }
-
-
-function load_students(cstid) {
-  var class_schedule_id = $('#class_schedule_id').val();
-
-
-  $('#loader2').show();
-  $('#content_area2').hide();
-
-  $.ajax({
-    type: "POST",
-    url: "query_teacher.php",
-    data: {
-      "loading_students_subjects": 1,
-      "cstid": cstid   // <<— IMPORTANT
-    },
-    success: function (response) {
-      $('#content_area2').html(response);
-
-      // init DataTable for the table inside the modal
-      if ($.fn.DataTable.isDataTable('#modalStudentsTable')) {
-        $('#modalStudentsTable').DataTable().destroy();
-      }
-      $('#modalStudentsTable').DataTable({
-        pageLength: 10,
-        lengthChange: false,
-        ordering: true
-      });
-    },
-    error: function () {
-      $('#content_area2').html('<p class="text-danger">Error loading data.</p>');
-    },
-    complete: function () {
-      $('#loader2').hide();
-      $('#content_area2').show();
-    }
-  });
-}
-
-
-    function saving_students(){
-      var studentsID = $('#studentsID').val();
-      var class_schedule_id = $('#class_schedule_id').val();
-
-
-       $.ajax({
-          type: "POST",
-          url: "query_teacher.php",
-          data: { 
-            "saving_subject_students": 1,
-            "studentsID" : studentsID ,
-            "class_schedule_id" : class_schedule_id
-          },
-          success: function () {
-            load_students(class_schedule_id);
-            get_students();
-          }
-       }); 
-    }
-
-    function add_student_list(cstid,levelid){
-      load_students(cstid);
-      $('#get_level_id').val(levelid);  
-      get_students();    
-      $('#class_schedule_id').val(cstid);
-      $('#addingStudentsModal').modal('show');
-    }
-
-    function load_your_subjects() {
+    function load_your_classlist() {
         $('#loader').show(); // Show the loader
         $('#content_area').hide(); // Hide the content while loading
+
+        var cstid = '<?php echo $_GET['cstid'] ?>';
+        var timed = '<?php echo $_GET['timed'] ?>';
+        var subject_description = '<?php echo $_GET['subject_description'] ?>';
 
         $.ajax({
             type: "POST",
             url: "query_teacher.php",
             data: { 
-            "loading_your_subject": '1' 
+            "loading_subject_class_list": '1',
+            "cstid" : cstid ,
+            "timed" : timed,
+            "subject_description" : subject_description,
           },
             success: function(response) {
                 setTimeout(() => {
@@ -673,22 +485,6 @@ function load_students(cstid) {
           }
        }); 
     }
-
-  // init Select2 for the modal select
-  $(document).ready(function () {
-    // safest: init on modal show (handles re-renders)
-    $('#addingStudentsModal').on('shown.bs.modal', function () {
-      $('#studentsID').select2({
-        dropdownParent: $('#addingStudentsModal'),
-        width: '100%',
-        placeholder: 'Search student...',
-        allowClear: true
-      });
-      // optional: auto-focus/open
-      // $('#studentsID').select2('open');
-    });
-  });
-
 
   </script>
 
