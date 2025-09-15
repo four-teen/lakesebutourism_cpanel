@@ -4,23 +4,21 @@
     ob_start();
 
     include 'db.php';
-    // include_once 'logger.php';
-
-    // // Log page load + session info
-    // log_event("Index page loaded. Session ID: " . session_id());
-
-
+    $get_config = "SELECT * FROM `tblconfig`";
+    $runget_config = mysqli_query($conn, $get_config);
+    $row_config = mysqli_fetch_assoc($runget_config);
+    $_SESSION['title'] = $row_config['system_name'];
+    $_SESSION['footer'] = $row_config['system_footer'];
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-<!-- REPLACE your current <head> with this -->
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Lake Sebu · Tourism Console</title>
+  <title><?php echo $_SESSION['title'] ?> · Console</title>
 
   <!-- Favicons (transparent lotus) -->
   <link rel="icon" href="assets/img/logo.png" type="image/svg+xml">
@@ -176,14 +174,7 @@
             <div class="col-4">
               <div class="p-3 rounded-3 border bg-light-subtle">
                 <div class="fw-bold fs-4" id="statEnrolled">
-                  <?php 
-                    $enrolled_count = "SELECT COUNT(autoid) as student_count FROM `tblstudents`";
-                    $runenrolled = mysqli_query($conn, $enrolled_count);
-                    if($runenrolled){
-                      $row_student_count = mysqli_fetch_assoc($runenrolled);
-                      echo $row_student_count['student_count'];
-                    }
-                  ?>
+0
                 </div>
                 <small class="text-secondary">Active Accounts</small>
               </div>
@@ -270,14 +261,7 @@
           <i class="bx bx-building-house me-2 text-teal"></i><strong>Resorts & Stays</strong>
         </div>
         <div class="display-6 fw-bold" id="statElem">
-          <?php 
-            $elem_count = "SELECT COUNT(autoid) as student_count FROM `tblstudents` WHERE grade_level < 7";
-            $runelem = mysqli_query($conn, $elem_count);
-            if($runelem){
-              $row_student_count = mysqli_fetch_assoc($runelem);
-              echo $row_student_count['student_count'];
-            }
-          ?>
+0
         </div>
         <small class="text-secondary">Registered (placeholder mapping)</small>
       </div>
@@ -288,14 +272,7 @@
           <i class="bx bx-directions me-2 text-teal"></i><strong>Tours & Operators</strong>
         </div>
         <div class="display-6 fw-bold" id="statHS">
-          <?php 
-            $highschool_count = "SELECT COUNT(autoid) as student_count FROM `tblstudents` WHERE grade_level >= 7";
-            $runhighschool = mysqli_query($conn, $highschool_count);
-            if($runhighschool){
-              $row_student_count = mysqli_fetch_assoc($runhighschool);
-              echo $row_student_count['student_count'];
-            }
-          ?>
+0
         </div>
         <small class="text-secondary">Accredited (placeholder mapping)</small>
       </div>
@@ -327,7 +304,7 @@
 
   <footer class="py-4 border-top">
     <div class="container d-flex justify-content-between align-items-center footer">
-      <small>© <span id="yr"></span> Lake Sebu Tourism. All rights reserved.</small>
+      <small>© <span id="yr"></span> <?php echo $_SESSION['footer'] ?>. All rights reserved.</small>
       <small>Developed by <b>SKSU-College of Computer Studies</b></small>
     </div>
   </footer>

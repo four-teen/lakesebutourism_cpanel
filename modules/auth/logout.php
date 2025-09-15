@@ -17,5 +17,5 @@ if (ini_get('session.use_cookies')) {
 session_destroy();
 
 // redirect back to landing page
-header('Location: /bteslife/index.php');
+header('Location: /lakesebutourism_cpanel/index.php');
 exit;
