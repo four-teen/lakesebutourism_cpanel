@@ -14,221 +14,311 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<!-- REPLACE your current <head> with this -->
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BTESLife Inc · MIS</title>
-  <link rel="icon" href="assets/img/logo.png" />
+
+  <title>Lake Sebu · Tourism Console</title>
+
+  <!-- Favicons (transparent lotus) -->
+  <link rel="icon" href="assets/img/logo.png" type="image/svg+xml">
+  <meta name="theme-color" content="#0d6efd" />
 
   <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Font Awesome (icons) -->
+  <!-- Font Awesome (existing icons) -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
+  <!-- Boxicons (for lotus / tourism icons) -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 
   <link rel="stylesheet" href="css/mycss.css">
 
   <style>
+    :root{
+      --ls-primary:#0d6efd;         /* Primary brand */
+      --ls-accent:#00a19a;          /* Teal accent */
+      --ls-ink:#1e2a35;
+      --ls-muted:#6c7a89;
+    }
+    body{ color:var(--ls-ink); }
 
+    /* Glassy navbar */
+    .navbar-glass{
+      background: rgba(255,255,255,.9);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(0,0,0,.06);
+    }
+
+    .brand-badge{
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+    .brand-sub{
+      font-size:.78rem;
+      color:var(--ls-muted);
+    }
+
+    /* Hero with Lake background */
+    .hero{
+      position: relative;
+      border-radius: 1rem;
+      overflow: hidden;
+      background: #f3f7fb;
+      min-height: 420px;
+    }
+    .hero::before{
+      content:"";
+      position:absolute; inset:0;
+      background:url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=2400&auto=format&fit=crop') center/cover no-repeat;
+      filter: saturate(1.05) contrast(0.95) brightness(0.9);
+    }
+    .hero::after{
+      content:"";
+      position:absolute; inset:0;
+      background:linear-gradient(120deg, rgba(0,0,0,.45), rgba(0,0,0,.25), rgba(0,0,0,.35));
+    }
+    .hero .content{
+      position:relative; z-index:2; color:#fff;
+    }
+    .chip{
+      display:inline-flex; align-items:center; gap:.5rem;
+      background: rgba(255,255,255,.15);
+      border:1px solid rgba(255,255,255,.25);
+      color:#fff; padding:.35rem .75rem; border-radius:50rem;
+      backdrop-filter: blur(4px);
+    }
+
+    /* Card hover */
+    .card-hover{ transition:transform .25s ease, box-shadow .25s ease; }
+    .card-hover:hover{ transform:translateY(-4px); box-shadow: 0 10px 26px rgba(2,36,89,.08); }
+
+    /* Stat tiles */
+    .stat{
+      border-radius: 1rem;
+      background: linear-gradient(180deg,#ffffff,#f7fbff);
+      border:1px solid #eef2f7;
+    }
+
+    /* Tourism color accents */
+    .text-teal{ color: var(--ls-accent)!important; }
+    .bg-teal{ background-color: var(--ls-accent)!important; color:#fff!important; }
   </style>
 </head>
+
 <body>
-  <!-- Top Nav -->
-  <nav class="navbar navbar-expand-lg bg-white sticky-top">
-    <div class="container py-2">
-      <a class="navbar-brand d-flex align-items-center gap-2" href="#">
-        <img src="assets/img/logo.png" width="40" height="40" alt="BTESLife" onerror="this.style.display='none'">
-        <span class="brand-badge">BTESLife Inc. MIS</span>
-      </a>
+<!-- REPLACE your <nav> ... </nav> with this -->
+<nav class="navbar navbar-expand-lg navbar-glass sticky-top">
+  <div class="container py-2">
+<a class="navbar-brand d-flex align-items-center" href="#home">
+  <img src="assets/img/logo.png" alt="Lake Sebu Tourism" width="36" height="36" class="me-2">
+  <div>
+    <strong>Lake Sebu</strong><br>
+    <small class="text-muted">South Cotabato • PH</small>
+  </div>
+</a>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-      <div class="collapse navbar-collapse" id="mainNav">
-        <ul class="navbar-nav ms-auto align-items-lg-center">
-<!--           <li class="nav-item px-lg-2"><a class="nav-link active" href="#home">Home</a></li>
-          <li class="nav-item px-lg-2"><a class="nav-link" href="#features">Features</a></li>
-          <li class="nav-item px-lg-2"><a class="nav-link" href="#stats">Stats</a></li>
-          <li class="nav-item px-lg-2"><a class="nav-link" href="#contact">Contact</a></li> -->
-          <li class="nav-item ps-lg-3 mt-2 mt-lg-0">
-            <button class="btn btn-primary rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#loginModal">
-              <i class="fa-solid fa-right-to-bracket me-2"></i> Secure Login
-            </button>
-          </li>
-        </ul>
-      </div>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item px-lg-2"><a class="nav-link" href="#" id="openPublic">Public Site</a></li>
+        <li class="nav-item ps-lg-3 mt-2 mt-lg-0">
+          <button class="btn btn-primary rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#loginModal">
+            <i class="fa-solid fa-right-to-bracket me-2"></i> Secure Login
+          </button>
+        </li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
+
 
   <!-- Hero -->
-  <section id="home" class="container my-4 my-lg-5">
-    <div class="hero p-4 p-lg-5">
-      <div class="halo"></div>
-      <div class="row align-items-center g-4">
-        <div class="col-lg-7">
-          <span class="chip mb-3"><i class="fa-solid fa-shield"></i> Secure · Fast · Friendly</span>
-          <h1 class="display-5 fw-bold mb-3">School Registration & Payments - made simple.</h1>
-          <p class="lead text-secondary mb-4">
-            Handle student registration, enrollment, and collections in one clean interface for Elementary & High School.
-          </p>
-<div>
-            <button class="btn btn-warning rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#loginModal">
-              <i class="fa-solid fa-right-to-bracket me-2"></i> Secure Login
-            </button>  
-</div>
+<!-- REPLACE the entire Hero <section id="home"> ... </section> with this -->
+<section id="home" class="container my-4 my-lg-5">
+  <div class="hero p-4 p-lg-5">
+    <div class="row align-items-center g-4 content">
+      <div class="col-lg-7">
+        <span class="chip mb-3">
+          <i class='bx bxs-shield'></i> Secure • Tourism CMS • Business Onboarding
+        </span>
+        <h1 class="display-6 fw-bold mb-3">Manage Lake Sebu’s Public Site — content, tours, stays, and events.</h1>
+        <p class="lead mb-4">
+          Admins and accredited businesses log in here to update the <strong>main Lake Sebu tourism page</strong> — highlights, rates, itineraries, and announcements.
+        </p>
+        <div class="d-flex gap-2 flex-wrap">
+          <button class="btn btn-warning rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#loginModal">
+            <i class="fa-solid fa-right-to-bracket me-2"></i> Secure Login
+          </button>
+          <a href="/" class="btn btn-outline-light rounded-pill px-3" id="visitPublic">
+            <i class='bx bx-globe me-1'></i> Visit Public Site
+          </a>
         </div>
-        <div class="col-lg-5">
-          <div class="bg-white rounded-4 p-4 shadow-sm">
-            <div class="d-flex align-items-center mb-3">
-              <i class="fa-solid fa-chart-line fs-3 text-primary me-2"></i>
-              <h5 class="mb-0">Today at a glance</h5>
-            </div>
-            <div class="row text-center g-3">
-              <div class="col-4">
-                <div class="p-3 rounded-3 border bg-light-subtle">
-                  <div class="fw-bold fs-4" id="statNew">0</div>
-                  <small class="text-secondary">New Reg</small>
-                </div>
-              </div>
-              <div class="col-4">
-                <div class="p-3 rounded-3 border bg-light-subtle">
-                  <div class="fw-bold fs-4" id="statEnrolled">
-                    <?php 
-                      $enrolled_count = "SELECT COUNT(autoid) as student_count FROM `tblstudents`";
-                      $runenrolled = mysqli_query($conn, $enrolled_count);
-                      if($runenrolled){
-                        $row_student_count = mysqli_fetch_assoc($runenrolled);
-                        echo $row_student_count['student_count'];
-                      }
-                    ?>
-                  </div>
-                  <small class="text-secondary">Enrolled</small>
-                </div>
-              </div>
-              <div class="col-4">
-                <div class="p-3 rounded-3 border bg-light-subtle">
-                  <div class="fw-bold fs-4" id="statPaid">₱0</div>
-                  <small class="text-secondary">Collections</small>
-                </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="bg-white rounded-4 p-4 shadow-sm">
+          <div class="d-flex align-items-center mb-3">
+            <i class="fa-solid fa-chart-line fs-3 text-primary me-2"></i>
+            <h5 class="mb-0">Today at a glance</h5>
+          </div>
+          <div class="row text-center g-3">
+            <div class="col-4">
+              <div class="p-3 rounded-3 border bg-light-subtle">
+                <div class="fw-bold fs-4" id="statNew">0</div>
+                <small class="text-secondary">New Signups</small>
               </div>
             </div>
-            <div class="text-center mt-3">
-              <small class="text-secondary"></small>
+            <div class="col-4">
+              <div class="p-3 rounded-3 border bg-light-subtle">
+                <div class="fw-bold fs-4" id="statEnrolled">
+                  <?php 
+                    $enrolled_count = "SELECT COUNT(autoid) as student_count FROM `tblstudents`";
+                    $runenrolled = mysqli_query($conn, $enrolled_count);
+                    if($runenrolled){
+                      $row_student_count = mysqli_fetch_assoc($runenrolled);
+                      echo $row_student_count['student_count'];
+                    }
+                  ?>
+                </div>
+                <small class="text-secondary">Active Accounts</small>
+              </div>
             </div>
+            <div class="col-4">
+              <div class="p-3 rounded-3 border bg-light-subtle">
+                <div class="fw-bold fs-4" id="statPaid">₱0</div>
+                <small class="text-secondary">Payments</small>
+              </div>
+            </div>
+          </div>
+          <div class="text-center mt-3">
+            <small class="text-secondary">*Placeholders — will map to tourism metrics later.</small>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Feature Cards -->
-  <section id="features" class="container my-5">
-    <div class="text-center mb-4">
-      <h2 class="fw-bold"></h2>
-      <p class="text-secondary mb-0"></p>
+
+<!-- REPLACE the whole Features <section id="features"> ... -->
+<section id="features" class="container my-5">
+  <div class="text-center mb-4">
+    <h2 class="fw-bold">What you can manage</h2>
+    <p class="text-secondary mb-0">Admins and businesses update sections shown on the public Lake Sebu site.</p>
+  </div>
+  <div class="row g-4">
+    <div class="col-md-6 col-lg-3">
+      <a href="#" class="text-decoration-none">
+        <div class="card card-hover h-100">
+          <div class="card-body p-4">
+            <i class="bx bxs-edit-alt bx-md text-primary"></i>
+            <h5 class="mt-3 mb-1 text-dark">Homepage Content</h5>
+            <p class="text-secondary mb-0">Hero, highlights, culture, responsible tourism.</p>
+          </div>
+        </div>
+      </a>
     </div>
-    <div class="row g-4">
-      <div class="col-md-6 col-lg-3">
-        <a href="#" class="text-decoration-none">
-          <div class="card card-hover h-100">
-            <div class="card-body p-4">
-              <i class="fa-solid fa-user-plus fa-2x text-primary"></i>
-              <h5 class="mt-3 mb-1 text-dark">Registration</h5>
-              <p class="text-secondary mb-0">Create student profiles, upload requirements, auto-ID.</p>
-            </div>
+    <div class="col-md-6 col-lg-3">
+      <a href="#" class="text-decoration-none">
+        <div class="card card-hover h-100">
+          <div class="card-body p-4">
+            <i class="bx bxs-briefcase bx-md text-primary"></i>
+            <h5 class="mt-3 mb-1 text-dark">Business Listings</h5>
+            <p class="text-secondary mb-0">Onboard resorts, tours, cafés; manage profiles.</p>
           </div>
-        </a>
-      </div>
-      <div class="col-md-6 col-lg-3">
-        <a href="#" class="text-decoration-none">
-          <div class="card card-hover h-100">
-            <div class="card-body p-4">
-              <i class="fa-solid fa-list-check fa-2x text-primary"></i>
-              <h5 class="mt-3 mb-1 text-dark">Enrollment</h5>
-              <p class="text-secondary mb-0">Assign grade/section, auto-load subjects per level.</p>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-6 col-lg-3">
-        <a href="#" class="text-decoration-none">
-          <div class="card card-hover h-100">
-            <div class="card-body p-4">
-              <i class="fa-solid fa-peso-sign fa-2x text-primary"></i>
-              <h5 class="mt-3 mb-1 text-dark">Payments</h5>
-              <p class="text-secondary mb-0">Post payments, OR no., partials, balances, reports.</p>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-6 col-lg-3">
-        <a href="#" class="text-decoration-none">
-          <div class="card card-hover h-100">
-            <div class="card-body p-4">
-              <i class="fa-solid fa-chart-pie fa-2x text-primary"></i>
-              <h5 class="mt-3 mb-1 text-dark">Reports</h5>
-              <p class="text-secondary mb-0">Enrollment & collection dashboards and exports.</p>
-            </div>
-          </div>
-        </a>
-      </div>
+        </div>
+      </a>
     </div>
-  </section>
+    <div class="col-md-6 col-lg-3">
+      <a href="#" class="text-decoration-none">
+        <div class="card card-hover h-100">
+          <div class="card-body p-4">
+            <i class="bx bxs-purchase-tag bx-md text-primary"></i>
+            <h5 class="mt-3 mb-1 text-dark">Tours & Rates</h5>
+            <p class="text-secondary mb-0">Prices, inclusions, schedules, availability.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-6 col-lg-3">
+      <a href="#" class="text-decoration-none">
+        <div class="card card-hover h-100">
+          <div class="card-body p-4">
+            <i class="bx bxs-megaphone bx-md text-primary"></i>
+            <h5 class="mt-3 mb-1 text-dark">Events & News</h5>
+            <p class="text-secondary mb-0">Helobung Festival, advisories, announcements.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
 
   <!-- Quick Stats (placeholders) -->
-  <section id="stats" class="container my-5">
-    <div class="row g-3">
-      <div class="col-md-4">
-        <div class="stat p-4">
-          <div class="d-flex align-items-center mb-2"><i class="fa-solid fa-children me-2 text-primary"></i><strong>Elementary</strong></div>
-          <div class="display-6 fw-bold" id="statElem">
-            <?php 
-               $elem_count = "SELECT COUNT(autoid) as student_count FROM `tblstudents`
-              WHERE grade_level < 7";
-              $runelem = mysqli_query($conn, $elem_count);
-              if($runelem){
-                $row_student_count = mysqli_fetch_assoc($runelem);
-                echo $row_student_count['student_count'];
-              }
-            ?>
-          </div>
-          <small class="text-secondary">Enrolled Students (S.Y. 2025–2026)</small>
+<!-- REPLACE the section title + labels in #stats (keep PHP queries as-is) -->
+<section id="stats" class="container my-5">
+  <div class="row g-3">
+    <div class="col-md-4">
+      <div class="stat p-4">
+        <div class="d-flex align-items-center mb-2">
+          <i class="bx bx-building-house me-2 text-teal"></i><strong>Resorts & Stays</strong>
         </div>
-      </div>
-      <div class="col-md-4">
-        <div class="stat p-4">
-          <div class="d-flex align-items-center mb-2"><i class="fa-solid fa-user-graduate me-2 text-primary"></i><strong>High School</strong></div>
-          <div class="display-6 fw-bold" id="statHS">
-            <?php 
-              $highschool_count = "SELECT COUNT(autoid) as student_count FROM `tblstudents`
-              WHERE grade_level >= 7";
-              $runhighschool = mysqli_query($conn, $highschool_count);
-              if($runhighschool){
-                $row_student_count = mysqli_fetch_assoc($runhighschool);
-                echo $row_student_count['student_count'];
-              }
-            ?>
-          </div>
-          <small class="text-secondary">Enrolled Students (S.Y. 2025–2026)</small>
+        <div class="display-6 fw-bold" id="statElem">
+          <?php 
+            $elem_count = "SELECT COUNT(autoid) as student_count FROM `tblstudents` WHERE grade_level < 7";
+            $runelem = mysqli_query($conn, $elem_count);
+            if($runelem){
+              $row_student_count = mysqli_fetch_assoc($runelem);
+              echo $row_student_count['student_count'];
+            }
+          ?>
         </div>
-      </div>
-      <div class="col-md-4">
-        <div class="stat p-4">
-          <div class="d-flex align-items-center mb-2"><i class="fa-solid fa-sack-dollar me-2 text-primary"></i><strong>Total Collections</strong></div>
-          <div class="display-6 fw-bold" id="statCollections">₱0</div>
-          <small class="text-secondary">Since June 1, 2025</small>
-        </div>
+        <small class="text-secondary">Registered (placeholder mapping)</small>
       </div>
     </div>
-  </section>
+    <div class="col-md-4">
+      <div class="stat p-4">
+        <div class="d-flex align-items-center mb-2">
+          <i class="bx bx-directions me-2 text-teal"></i><strong>Tours & Operators</strong>
+        </div>
+        <div class="display-6 fw-bold" id="statHS">
+          <?php 
+            $highschool_count = "SELECT COUNT(autoid) as student_count FROM `tblstudents` WHERE grade_level >= 7";
+            $runhighschool = mysqli_query($conn, $highschool_count);
+            if($runhighschool){
+              $row_student_count = mysqli_fetch_assoc($runhighschool);
+              echo $row_student_count['student_count'];
+            }
+          ?>
+        </div>
+        <small class="text-secondary">Accredited (placeholder mapping)</small>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="stat p-4">
+        <div class="d-flex align-items-center mb-2">
+          <i class="bx bx-wallet me-2 text-teal"></i><strong>Total Collections</strong>
+        </div>
+        <div class="display-6 fw-bold" id="statCollections">₱0</div>
+        <small class="text-secondary">From bookings (placeholder)</small>
+      </div>
+    </div>
+  </div>
+</section>
+
 
   <!-- Contact / Footer -->
   <section id="contact" class="container my-5">
     <div class="row align-items-center g-3">
       <div class="col-md-8">
         <h4 class="fw-bold mb-1">Need help?</h4>
-        <p class="text-secondary mb-0">Contact the Administrator or contact BTESLife IT Desk.</p>
+        <p class="text-secondary mb-0">Contact the Administrator or contact TOURISM IT Desk.</p>
       </div>
       <div class="col-md-4 text-md-end">
       </div>
@@ -237,8 +327,8 @@
 
   <footer class="py-4 border-top">
     <div class="container d-flex justify-content-between align-items-center footer">
-      <small>© <span id="yr"></span> BTESLife Inc. All rights reserved.</small>
-      <small>Developed by EOA | MGIS</small>
+      <small>© <span id="yr"></span> Lake Sebu Tourism. All rights reserved.</small>
+      <small>Developed by <b>SKSU-College of Computer Studies</b></small>
     </div>
   </footer>
 
