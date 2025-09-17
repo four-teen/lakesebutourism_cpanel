@@ -22,10 +22,10 @@ if ($user === '' || $pass === '' || $type_id <= 0) {
 }
 
 $sql = "SELECT a.acc_id, a.acc_username, a.acc_password, a.acc_fullname, a.acc_email,
-               a.acc_status, a.acc_type_id, t.type_name, tea.teachersautoid
+               a.acc_status, a.acc_type_id, t.type_name, tea.usersautoid
         FROM tblaccounts a
         INNER JOIN tblaccount_type t ON t.type_id = a.acc_type_id
-        INNER JOIN tblteachers tea on tea.teachersautoid=a.teacher_id
+        INNER JOIN tblowners tea on tea.usersautoid=a.teacher_id
         WHERE (a.acc_username = ? OR a.acc_email = ?) LIMIT 1";
 $stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($stmt, 'ss', $user, $user);
@@ -46,7 +46,7 @@ if ((int)$row['acc_type_id'] !== $type_id) {
 if (!password_verify($pass, $row['acc_password'])) {
   fail('Wrong password.');
 }
-$_SESSION['TEA_ID']    = (int)$row['teachersautoid'];
+$_SESSION['TEA_ID']    = (int)$row['usersautoid'];
 $_SESSION['ACC_ID']    = (int)$row['acc_id'];
 $_SESSION['USERNAME']  = $row['acc_username'];
 $_SESSION['FULLNAME']  = $row['acc_fullname'];

@@ -113,7 +113,7 @@ $_SESSION['ayid'] = $rowsettings['ayid'];
 <!-- Footer -->
 <footer id="footer" class="footer">
   <div class="copyright">
-    &copy; Copyright <strong><span>BTESLife</span></strong>. All Rights Reserved
+    &copy; Copyright <strong><span><?php echo $_SESSION['footer'] ?></span></strong>. All Rights Reserved
   </div>
   <div class="credits">Powered by <a href="#">eoa * mgli</a></div>
 </footer>
@@ -135,13 +135,13 @@ $_SESSION['ayid'] = $rowsettings['ayid'];
 
 <div class="row mb-2">
   <div class="col-md-12">
-    <label>Faculty (for Teacher Accounts)</label>
+    <label>Users (for Owners Accounts)</label>
     <select class="form-control" id="teacher_id">
-      <option value="">-- Select Faculty --</option>
+      <option value="">-- Select Establishments --</option>
       <?php
-        $fac = mysqli_query($conn,"SELECT teachersautoid, firstname, middlename, lastname FROM tblteachers ORDER BY lastname ASC");
+        $fac = mysqli_query($conn,"SELECT * FROM `tblowners` order by establishments ASC");
         while($r = mysqli_fetch_assoc($fac)){
-          echo '<option value="'.$r['teachersautoid'].'">'.strtoupper($r['lastname'].", ".$r['firstname']." ".$r['middlename']).'</option>';
+          echo '<option value="'.$r['userssautoid'].'">'.strtoupper($r['establishments'].'</option>';
         }
       ?>
     </select>

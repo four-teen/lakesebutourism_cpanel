@@ -130,3 +130,157 @@
 [2025-09-15 12:21:10] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
 [2025-09-15 12:21:10] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
 [2025-09-15 12:21:11] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 00:19:01] [IP:::1] [URI:/cpanel/] Database connection FAILED: Unknown database 'lakesebu_db'
+[2025-09-17 00:20:41] [IP:::1] [URI:/cpanel/] Database connection SUCCESS.
+[2025-09-17 00:22:33] [IP:::1] [URI:/cpanel/] Database connection SUCCESS.
+[2025-09-17 00:22:51] [IP:::1] [URI:/cpanel/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-17 00:22:51] [IP:::1] [URI:/cpanel/modules/auth/login.php] LOGIN ATTEMPT: user='admin', type_id=1
+[2025-09-17 00:22:51] [IP:::1] [URI:/cpanel/modules/auth/login.php] LOGIN SUCCESS: user='admin', role='Administrator'
+[2025-09-17 00:22:52] [IP:::1] [URI:/cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 00:22:52] [IP:::1] [URI:/cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-17 00:22:53] [IP:::1] [URI:/cpanel/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-17 00:22:53] [IP:::1] [URI:/cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 02:20:19] [IP:::1] [URI:/cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 02:20:19] [IP:::1] [URI:/cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-17 02:20:20] [IP:::1] [URI:/cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 02:20:20] [IP:::1] [URI:/cpanel/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-17 07:57:06] [IP:::1] [URI:/cpanel/] Database connection SUCCESS.
+[2025-09-17 07:57:18] [IP:::1] [URI:/cpanel/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-17 07:57:18] [IP:::1] [URI:/cpanel/modules/auth/login.php] LOGIN ATTEMPT: user='admin', type_id=1
+[2025-09-17 07:57:18] [IP:::1] [URI:/cpanel/modules/auth/login.php] LOGIN SUCCESS: user='admin', role='Administrator'
+[2025-09-17 07:57:19] [IP:::1] [URI:/cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 07:57:19] [IP:::1] [URI:/cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-17 07:57:19] [IP:::1] [URI:/cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 07:57:19] [IP:::1] [URI:/cpanel/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-17 07:58:28] [IP:::1] [URI:/cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 07:58:28] [IP:::1] [URI:/cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-17 07:58:28] [IP:::1] [URI:/cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 07:58:28] [IP:::1] [URI:/cpanel/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-17 07:58:47] [IP:::1] [URI:/cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 07:58:47] [IP:::1] [URI:/cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-17 07:58:47] [IP:::1] [URI:/cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 07:58:47] [IP:::1] [URI:/cpanel/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-17 07:59:37] [IP:::1] [URI:/cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 07:59:37] [IP:::1] [URI:/cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-17 07:59:37] [IP:::1] [URI:/cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 07:59:37] [IP:::1] [URI:/cpanel/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-17 07:59:46] [IP:::1] [URI:/cpanel/admin_dashboard/student_management/student_records.php] Database connection SUCCESS.
+[2025-09-17 07:59:46] [IP:::1] [URI:/cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 07:59:46] [IP:::1] [URI:/cpanel/admin_dashboard/student_management/query_students.php] Database connection SUCCESS.
+[2025-09-17 07:59:52] [IP:::1] [URI:/cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 07:59:52] [IP:::1] [URI:/cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-17 07:59:52] [IP:::1] [URI:/cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 07:59:52] [IP:::1] [URI:/cpanel/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-17 08:00:01] [IP:::1] [URI:/cpanel/admin_dashboard/student_management/student_records.php] Database connection SUCCESS.
+[2025-09-17 08:00:01] [IP:::1] [URI:/cpanel/admin_dashboard/student_management/query_students.php] Database connection SUCCESS.
+[2025-09-17 08:00:01] [IP:::1] [URI:/cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 08:03:28] [IP:::1] [URI:/cpanel/admin_dashboard/student_management/student_records.php] Database connection SUCCESS.
+[2025-09-17 08:03:28] [IP:::1] [URI:/cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 08:03:28] [IP:::1] [URI:/cpanel/admin_dashboard/student_management/query_students.php] Database connection SUCCESS.
+[2025-09-17 08:03:41] [IP:::1] [URI:/cpanel/admin_dashboard/student_management/query_students.php] Database connection SUCCESS.
+[2025-09-17 08:03:41] [IP:::1] [URI:/cpanel/admin_dashboard/student_management/query_students.php] Database connection SUCCESS.
+[2025-09-17 08:03:46] [IP:::1] [URI:/cpanel/admin_dashboard/student_management/student_records.php] Database connection SUCCESS.
+[2025-09-17 08:03:46] [IP:::1] [URI:/cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 08:03:46] [IP:::1] [URI:/cpanel/admin_dashboard/student_management/query_students.php] Database connection SUCCESS.
+[2025-09-17 08:04:24] [IP:::1] [URI:/cpanel/admin_dashboard/student_management/student_records.php] Database connection SUCCESS.
+[2025-09-17 08:04:24] [IP:::1] [URI:/cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 08:04:24] [IP:::1] [URI:/cpanel/admin_dashboard/student_management/query_students.php] Database connection SUCCESS.
+[2025-09-17 08:04:37] [IP:::1] [URI:/cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 08:04:37] [IP:::1] [URI:/cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-17 08:04:37] [IP:::1] [URI:/cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 08:04:37] [IP:::1] [URI:/cpanel/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-17 08:05:27] [IP:::1] [URI:/cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 08:05:27] [IP:::1] [URI:/cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-17 08:05:27] [IP:::1] [URI:/cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 08:05:27] [IP:::1] [URI:/cpanel/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-17 08:05:38] [IP:::1] [URI:/cpanel/] Database connection SUCCESS.
+[2025-09-17 08:05:44] [IP:::1] [URI:/cpanel/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-17 08:05:44] [IP:::1] [URI:/cpanel/modules/auth/login.php] LOGIN ATTEMPT: user='admin', type_id=1
+[2025-09-17 08:05:44] [IP:::1] [URI:/cpanel/modules/auth/login.php] LOGIN FAIL: User not found.
+[2025-09-17 08:06:38] [IP:::1] [URI:/cpanel/] Database connection SUCCESS.
+[2025-09-17 08:06:43] [IP:::1] [URI:/cpanel/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-17 08:06:43] [IP:::1] [URI:/cpanel/modules/auth/login.php] LOGIN ATTEMPT: user='admin', type_id=1
+[2025-09-17 08:06:43] [IP:::1] [URI:/cpanel/modules/auth/login.php] LOGIN SUCCESS: user='admin', role='Administrator'
+[2025-09-17 08:06:44] [IP:::1] [URI:/cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 08:06:44] [IP:::1] [URI:/cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-17 08:06:44] [IP:::1] [URI:/cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 08:06:44] [IP:::1] [URI:/cpanel/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-17 08:10:28] [IP:::1] [URI:/cpanel/] Database connection SUCCESS.
+[2025-09-17 08:10:37] [IP:::1] [URI:/cpanel/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-17 08:10:37] [IP:::1] [URI:/cpanel/modules/auth/login.php] LOGIN ATTEMPT: user='admin', type_id=1
+[2025-09-17 08:10:37] [IP:::1] [URI:/cpanel/modules/auth/login.php] LOGIN SUCCESS: user='admin', role='Administrator'
+[2025-09-17 08:10:38] [IP:::1] [URI:/cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 08:10:38] [IP:::1] [URI:/cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-17 08:10:38] [IP:::1] [URI:/cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 08:10:38] [IP:::1] [URI:/cpanel/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-17 08:11:45] [IP:::1] [URI:/cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 08:11:45] [IP:::1] [URI:/cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-17 08:11:45] [IP:::1] [URI:/cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 08:11:45] [IP:::1] [URI:/cpanel/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-17 08:11:55] [IP:::1] [URI:/cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 08:11:55] [IP:::1] [URI:/cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-17 08:11:55] [IP:::1] [URI:/cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 08:11:55] [IP:::1] [URI:/cpanel/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-17 08:16:07] [IP:::1] [URI:/cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 08:16:07] [IP:::1] [URI:/cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-17 08:16:07] [IP:::1] [URI:/cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 08:16:07] [IP:::1] [URI:/cpanel/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-17 08:16:11] [IP:::1] [URI:/cpanel/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
+[2025-09-17 08:16:11] [IP:::1] [URI:/cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 08:16:18] [IP:::1] [URI:/cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 08:16:18] [IP:::1] [URI:/cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-17 08:16:18] [IP:::1] [URI:/cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 08:16:18] [IP:::1] [URI:/cpanel/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-17 08:16:19] [IP:::1] [URI:/cpanel/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
+[2025-09-17 08:16:19] [IP:::1] [URI:/cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 08:16:49] [IP:::1] [URI:/cpanel/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
+[2025-09-17 08:16:49] [IP:::1] [URI:/cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 08:17:21] [IP:::1] [URI:/cpanel/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
+[2025-09-17 08:17:21] [IP:::1] [URI:/cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 08:17:43] [IP:::1] [URI:/cpanel/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
+[2025-09-17 08:17:43] [IP:::1] [URI:/cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 08:21:51] [IP:::1] [URI:/cpanel/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
+[2025-09-17 08:21:51] [IP:::1] [URI:/cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 08:21:57] [IP:::1] [URI:/cpanel/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
+[2025-09-17 08:21:57] [IP:::1] [URI:/cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 08:22:02] [IP:::1] [URI:/cpanel/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
+[2025-09-17 08:22:02] [IP:::1] [URI:/cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 08:22:17] [IP:::1] [URI:/cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 08:22:17] [IP:::1] [URI:/cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-17 08:22:17] [IP:::1] [URI:/cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 08:22:17] [IP:::1] [URI:/cpanel/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-17 08:22:24] [IP:::1] [URI:/cpanel/] Database connection SUCCESS.
+[2025-09-17 08:22:31] [IP:::1] [URI:/cpanel/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-17 08:22:31] [IP:::1] [URI:/cpanel/modules/auth/login.php] LOGIN ATTEMPT: user='admin', type_id=1
+[2025-09-17 08:22:31] [IP:::1] [URI:/cpanel/modules/auth/login.php] LOGIN FAIL: User not found.
+[2025-09-17 08:23:41] [IP:::1] [URI:/cpanel/] Database connection SUCCESS.
+[2025-09-17 08:23:46] [IP:::1] [URI:/cpanel/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-17 08:23:46] [IP:::1] [URI:/cpanel/modules/auth/login.php] LOGIN ATTEMPT: user='admin', type_id=1
+[2025-09-17 08:23:46] [IP:::1] [URI:/cpanel/modules/auth/login.php] LOGIN SUCCESS: user='admin', role='Administrator'
+[2025-09-17 08:24:17] [IP:::1] [URI:/cpanel/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-17 08:24:17] [IP:::1] [URI:/cpanel/modules/auth/login.php] LOGIN ATTEMPT: user='admin', type_id=1
+[2025-09-17 08:24:17] [IP:::1] [URI:/cpanel/modules/auth/login.php] LOGIN SUCCESS: user='admin', role='Administrator'
+[2025-09-17 08:24:51] [IP:::1] [URI:/cpanel/] Database connection SUCCESS.
+[2025-09-17 08:24:58] [IP:::1] [URI:/cpanel/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-17 08:24:58] [IP:::1] [URI:/cpanel/modules/auth/login.php] LOGIN ATTEMPT: user='admin', type_id=1
+[2025-09-17 08:24:58] [IP:::1] [URI:/cpanel/modules/auth/login.php] LOGIN SUCCESS: user='admin', role='Administrator'
+[2025-09-17 08:24:59] [IP:::1] [URI:/cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 08:24:59] [IP:::1] [URI:/cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-17 08:24:59] [IP:::1] [URI:/cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 08:24:59] [IP:::1] [URI:/cpanel/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-17 08:28:13] [IP:::1] [URI:/cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 08:28:13] [IP:::1] [URI:/cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-17 08:28:13] [IP:::1] [URI:/cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 08:28:13] [IP:::1] [URI:/cpanel/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-17 08:29:40] [IP:::1] [URI:/lakesebutourism_cpanel/] Database connection SUCCESS.
+[2025-09-17 08:30:06] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-17 08:30:06] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] LOGIN ATTEMPT: user='admin', type_id=1
+[2025-09-17 08:30:06] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] LOGIN SUCCESS: user='admin', role='Administrator'
+[2025-09-17 08:30:07] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 08:30:07] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-17 08:30:07] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 08:30:07] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-17 08:30:08] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
+[2025-09-17 08:30:08] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 08:30:38] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
+[2025-09-17 08:30:38] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.

@@ -13,7 +13,7 @@ if(isset($_POST['loading_account'])){
         <tr>
           <th>#</th>
           <th>Username</th>
-          <th>Faculty</th>
+          <th>Owner</th>
           <th>Email</th>
           <th>Type</th>
           <th>Status</th>
@@ -23,16 +23,15 @@ if(isset($_POST['loading_account'])){
       </thead>
       <tbody>
       <?php
-      $select = "SELECT a.*, at.type_name,
-                 CONCAT(t.lastname, ', ', t.firstname, ' ', t.middlename) AS faculty_name
+      $select = "SELECT *
                  FROM tblaccounts a
                  INNER JOIN tblaccount_type at ON at.type_id = a.acc_type_id
-                 LEFT JOIN tblteachers t ON t.teachersautoid = a.teacher_id
+                 LEFT JOIN tblowners t ON t.usersautoid = a.teacher_id
                  ORDER BY a.created_at DESC";
       $run = mysqli_query($conn,$select);
       $count = 0;
       while($row=mysqli_fetch_assoc($run)){
-        $who = $row['faculty_name'] ? strtoupper($row['faculty_name']) : ($row['acc_fullname'] ?: '—');
+        $who = '';
         echo '
         <tr>
           <td class="align-middle text-end" width="1%">'.++$count.'.</td>

@@ -316,10 +316,10 @@
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="copyright">
-      &copy; Copyright <strong><span>BTESLife</span></strong>. All Rights Reserved
+      &copy; Copyright <strong><span><?php echo $_SESSION['title'] ?></span></strong>. All Rights Reserved
     </div>
     <div class="credits">
-      Powered by <a href="#">bteslife</a>
+      Powered by <a href="#"><?php echo $_SESSION['footer'] ?></a>
     </div>
   </footer><!-- End Footer -->
 
