@@ -26,12 +26,12 @@ if(isset($_POST['loading_account'])){
       $select = "SELECT *
                  FROM tblaccounts a
                  INNER JOIN tblaccount_type at ON at.type_id = a.acc_type_id
-                 LEFT JOIN tblowners t ON t.usersautoid = a.teacher_id
+                 LEFT JOIN tblowners t ON t.usersautoid = a.owner_id
                  ORDER BY a.created_at DESC";
       $run = mysqli_query($conn,$select);
       $count = 0;
       while($row=mysqli_fetch_assoc($run)){
-        $who = '';
+        $who = $row['establishments'];
         echo '
         <tr>
           <td class="align-middle text-end" width="1%">'.++$count.'.</td>
@@ -61,7 +61,7 @@ if(isset($_POST['loading_account'])){
 // Save (Insert/Update)
 if(isset($_POST['save_account'])){
   $acc_id       = $_POST['acc_id'];
-  $teacher_id   = ($_POST['teacher_id'] !== '' ? $_POST['teacher_id'] : NULL);
+  $owner_id   = ($_POST['owner_id'] !== '' ? $_POST['owner_id'] : NULL);
   $acc_username = trim($_POST['acc_username']);
   $acc_password = $_POST['acc_password'];
   $acc_email    = trim($_POST['acc_email']);
@@ -75,54 +75,58 @@ if(isset($_POST['save_account'])){
   if($cUser > 0){ http_response_code(409); echo 'DUP_USERNAME'; exit; }
 
   // duplicate faculty link (exclude self)
-  if($teacher_id){
-    $qTeach = "SELECT COUNT(*) c FROM tblaccounts WHERE teacher_id='$teacher_id'".
+  if($owner_id){
+    $qTeach = "SELECT COUNT(*) c FROM tblaccounts WHERE owner_id='$owner_id'".
               ($acc_id ? " AND acc_id <> '$acc_id'" : "");
     $cTeach = mysqli_fetch_assoc(mysqli_query($conn,$qTeach))['c'];
     if($cTeach > 0){ http_response_code(409); echo 'DUP_TEACHER'; exit; }
   }
 
-  // derive fullname from tblteachers if teacher_id is set
+  // derive fullname from tblowners if teacher_id is set
   $derived_fullname = "(
-    SELECT CONCAT(lastname, ', ', firstname, ' ', middlename)
-    FROM tblteachers WHERE teachersautoid = ".($teacher_id ? "'$teacher_id'" : "NULL")."
+    SELECT CONCAT(establishments)
+    FROM tblowners WHERE usersautoid = ".($owner_id ? "'$owner_id'" : "NULL")."
   )";
 
   if($acc_id == ""){ // INSERT
     $hashpass = password_hash($acc_password, PASSWORD_BCRYPT);
     $insert = "INSERT INTO tblaccounts
-               (teacher_id, acc_username, acc_password, acc_fullname, acc_email, acc_type_id, acc_status)
-               VALUES (".($teacher_id ? "'$teacher_id'" : "NULL").",
+               (owner_id, acc_username, acc_password, acc_fullname, acc_email, acc_type_id, acc_status)
+               VALUES (".($owner_id ? "'$owner_id'" : "NULL").",
                        '$acc_username',
                        '$hashpass',
-                       ".($teacher_id ? $derived_fullname : "NULL").",
+                       ".($owner_id ? $derived_fullname : "NULL").",
                        '$acc_email',
                        '$acc_type_id',
                        '$acc_status')";
+
     mysqli_query($conn,$insert);
   }else{ // UPDATE
     if($acc_password != ""){
       $hashpass = password_hash($acc_password, PASSWORD_BCRYPT);
       $update = "UPDATE tblaccounts SET
-                 teacher_id=".($teacher_id ? "'$teacher_id'" : "NULL").",
+                 owner_id=".($owner_id ? "'$owner_id'" : "NULL").",
                  acc_username='$acc_username',
                  acc_password='$hashpass',
-                 acc_fullname=".($teacher_id ? $derived_fullname : "acc_fullname").",
+                 acc_fullname=".($owner_id ? $derived_fullname : "acc_fullname").",
                  acc_email='$acc_email',
                  acc_type_id='$acc_type_id',
                  acc_status='$acc_status'
                  WHERE acc_id='$acc_id'";
+
     }else{
       $update = "UPDATE tblaccounts SET
-                 teacher_id=".($teacher_id ? "'$teacher_id'" : "NULL").",
+                 owner_id=".($owner_id ? "'$owner_id'" : "NULL").",
                  acc_username='$acc_username',
-                 acc_fullname=".($teacher_id ? $derived_fullname : "acc_fullname").",
+                 acc_fullname=".($owner_id ? $derived_fullname : "acc_fullname").",
                  acc_email='$acc_email',
                  acc_type_id='$acc_type_id',
                  acc_status='$acc_status'
                  WHERE acc_id='$acc_id'";
     }
+
     mysqli_query($conn,$update);
+
   }
   exit;
 }

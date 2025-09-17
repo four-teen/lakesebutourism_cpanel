@@ -25,7 +25,7 @@ $sql = "SELECT a.acc_id, a.acc_username, a.acc_password, a.acc_fullname, a.acc_e
                a.acc_status, a.acc_type_id, t.type_name, tea.usersautoid
         FROM tblaccounts a
         INNER JOIN tblaccount_type t ON t.type_id = a.acc_type_id
-        INNER JOIN tblowners tea on tea.usersautoid=a.teacher_id
+        INNER JOIN tblowners tea on tea.usersautoid=a.owner_id
         WHERE (a.acc_username = ? OR a.acc_email = ?) LIMIT 1";
 $stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($stmt, 'ss', $user, $user);
@@ -63,7 +63,7 @@ $base = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\');
 $redirect = $base . '/dashboard.php';
 switch ($row['type_name']) {
   case 'Administrator': $redirect = 'admin_dashboard/dashboard_admin.php'; break;
-  case 'Teacher':       $redirect = 'faculty_dashboard/dashboard_teacher.php'; break;
+  case 'Owner': $redirect = 'owner_dashboard/dashboard_owner.php'; break;
   case 'Staff':         $redirect = 'dashboard_staff.php'; break;
 }
 echo json_encode(['ok'=>true, 'role'=>$row['type_name'], 'redirect'=>$redirect]);

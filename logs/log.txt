@@ -284,3 +284,273 @@
 [2025-09-17 08:30:08] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
 [2025-09-17 08:30:38] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
 [2025-09-17 08:30:38] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:02:27] [IP:::1] [URI:/lakesebutourism_cpanel/] Database connection SUCCESS.
+[2025-09-17 11:03:26] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-17 11:03:26] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] LOGIN ATTEMPT: user='admin', type_id=1
+[2025-09-17 11:03:27] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] LOGIN SUCCESS: user='admin', role='Administrator'
+[2025-09-17 11:03:27] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 11:03:27] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-17 11:03:28] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-17 11:03:28] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 11:03:55] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 11:03:55] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-17 11:03:55] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-17 11:03:56] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 11:05:42] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
+[2025-09-17 11:05:42] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:06:22] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:06:22] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:06:28] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 11:06:28] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-17 11:06:28] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-17 11:06:28] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 11:06:29] [IP:::1] [URI:/lakesebutourism_cpanel/index.php] Database connection SUCCESS.
+[2025-09-17 11:06:34] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-17 11:06:34] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] LOGIN ATTEMPT: user='elbren', type_id=1
+[2025-09-17 11:06:34] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] LOGIN FAIL: User not found.
+[2025-09-17 11:06:43] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-17 11:06:43] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] LOGIN ATTEMPT: user='elbren', type_id=1
+[2025-09-17 11:06:43] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] LOGIN FAIL: User not found.
+[2025-09-17 11:08:33] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-17 11:08:33] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] LOGIN ATTEMPT: user='admin', type_id=1
+[2025-09-17 11:08:33] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] LOGIN SUCCESS: user='admin', role='Administrator'
+[2025-09-17 11:08:34] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 11:08:34] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-17 11:08:34] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-17 11:08:34] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 11:08:36] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
+[2025-09-17 11:08:36] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:09:48] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
+[2025-09-17 11:09:49] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:10:58] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
+[2025-09-17 11:10:58] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:15:17] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
+[2025-09-17 11:15:17] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:18:44] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
+[2025-09-17 11:18:45] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:19:15] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
+[2025-09-17 11:19:15] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:19:27] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:19:27] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:22:28] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 11:22:28] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-17 11:22:28] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-17 11:22:28] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 11:22:29] [IP:::1] [URI:/lakesebutourism_cpanel/index.php] Database connection SUCCESS.
+[2025-09-17 11:22:35] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-17 11:22:35] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] LOGIN ATTEMPT: user='admin', type_id=1
+[2025-09-17 11:22:35] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] LOGIN FAIL: User not found.
+[2025-09-17 11:22:52] [IP:::1] [URI:/lakesebutourism_cpanel/index.php] Database connection SUCCESS.
+[2025-09-17 11:22:57] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-17 11:22:57] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] LOGIN ATTEMPT: user='admin', type_id=1
+[2025-09-17 11:22:57] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] LOGIN SUCCESS: user='admin', role='Administrator'
+[2025-09-17 11:22:58] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 11:22:58] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-17 11:22:58] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-17 11:22:58] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 11:22:59] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
+[2025-09-17 11:22:59] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:23:17] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
+[2025-09-17 11:23:17] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:23:40] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:23:40] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:26:29] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
+[2025-09-17 11:26:29] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:26:58] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:26:58] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:28:40] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
+[2025-09-17 11:28:41] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:28:50] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:28:50] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:29:31] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
+[2025-09-17 11:29:31] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:29:41] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:29:41] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:30:18] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
+[2025-09-17 11:30:18] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:30:27] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:30:27] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:31:00] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:31:58] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
+[2025-09-17 11:31:58] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:32:14] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:32:14] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:32:53] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 11:32:53] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-17 11:32:53] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-17 11:32:53] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 11:32:54] [IP:::1] [URI:/lakesebutourism_cpanel/index.php] Database connection SUCCESS.
+[2025-09-17 11:32:59] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-17 11:32:59] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] LOGIN ATTEMPT: user='koko', type_id=1
+[2025-09-17 11:32:59] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] LOGIN SUCCESS: user='koko', role='Administrator'
+[2025-09-17 11:33:00] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 11:33:00] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by koko (Administrator)
+[2025-09-17 11:33:00] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-17 11:33:00] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 11:33:15] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
+[2025-09-17 11:33:15] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:36:20] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
+[2025-09-17 11:36:20] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:36:38] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 11:36:38] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by koko (Administrator)
+[2025-09-17 11:36:39] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-17 11:36:39] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 11:36:40] [IP:::1] [URI:/lakesebutourism_cpanel/index.php] Database connection SUCCESS.
+[2025-09-17 11:36:46] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-17 11:36:46] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] LOGIN ATTEMPT: user='admin', type_id=1
+[2025-09-17 11:36:46] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] LOGIN SUCCESS: user='admin', role='Administrator'
+[2025-09-17 11:36:47] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 11:36:47] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-17 11:36:47] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-17 11:36:47] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 11:36:48] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
+[2025-09-17 11:36:48] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:37:23] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:37:23] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:38:22] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
+[2025-09-17 11:38:22] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:39:33] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
+[2025-09-17 11:39:33] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:39:52] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 11:39:52] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-17 11:39:52] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-17 11:39:52] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 11:39:53] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
+[2025-09-17 11:39:53] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:40:09] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:40:09] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:40:48] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 11:40:48] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by admin (Administrator)
+[2025-09-17 11:40:48] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-17 11:40:48] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 11:40:50] [IP:::1] [URI:/lakesebutourism_cpanel/index.php] Database connection SUCCESS.
+[2025-09-17 11:40:55] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-17 11:40:55] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] LOGIN ATTEMPT: user='elbren', type_id=1
+[2025-09-17 11:40:55] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] LOGIN SUCCESS: user='elbren', role='Administrator'
+[2025-09-17 11:40:56] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 11:40:56] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by elbren (Administrator)
+[2025-09-17 11:40:56] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-17 11:40:56] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 11:40:57] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
+[2025-09-17 11:40:57] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:41:08] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:41:09] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:41:11] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:41:11] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:41:20] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
+[2025-09-17 11:41:20] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:41:55] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 11:41:55] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by elbren (Administrator)
+[2025-09-17 11:41:55] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-17 11:41:55] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 11:41:59] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/student_management/student_records.php] Database connection SUCCESS.
+[2025-09-17 11:42:00] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 11:42:00] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/student_management/query_students.php] Database connection SUCCESS.
+[2025-09-17 11:44:10] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 11:44:10] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by elbren (Administrator)
+[2025-09-17 11:44:10] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-17 11:44:10] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 11:44:14] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 11:44:14] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by elbren (Administrator)
+[2025-09-17 11:44:14] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-17 11:44:14] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 11:47:14] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 11:47:14] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by elbren (Administrator)
+[2025-09-17 11:47:14] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/chart_students_by_grade.php?ay=2] Database connection SUCCESS.
+[2025-09-17 11:47:14] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/query_dasboard.php] Database connection SUCCESS.
+[2025-09-17 11:48:29] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 11:48:29] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by elbren (Administrator)
+[2025-09-17 11:48:44] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
+[2025-09-17 11:48:44] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:49:12] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 11:49:12] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by elbren (Administrator)
+[2025-09-17 11:49:13] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/manage_owner.php] Database connection SUCCESS.
+[2025-09-17 11:49:13] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/query_account.php] Database connection SUCCESS.
+[2025-09-17 11:51:00] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/manage_owner.php] Database connection SUCCESS.
+[2025-09-17 11:51:16] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/manage_owner.php] Database connection SUCCESS.
+[2025-09-17 11:51:41] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/manage_owner.php] Database connection SUCCESS.
+[2025-09-17 11:51:41] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/query_owners.php] Database connection SUCCESS.
+[2025-09-17 11:52:42] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/manage_owner.php] Database connection SUCCESS.
+[2025-09-17 11:52:43] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/query_owners.php] Database connection SUCCESS.
+[2025-09-17 11:53:10] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/manage_owner.php] Database connection SUCCESS.
+[2025-09-17 11:53:10] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/query_owners.php] Database connection SUCCESS.
+[2025-09-17 11:53:18] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/manage_owner.php] Database connection SUCCESS.
+[2025-09-17 11:53:18] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/query_owners.php] Database connection SUCCESS.
+[2025-09-17 11:53:55] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/manage_owner.php] Database connection SUCCESS.
+[2025-09-17 11:53:55] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/query_owners.php] Database connection SUCCESS.
+[2025-09-17 11:54:31] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/manage_owner.php] Database connection SUCCESS.
+[2025-09-17 11:54:32] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/query_owners.php] Database connection SUCCESS.
+[2025-09-17 11:55:08] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/manage_owner.php] Database connection SUCCESS.
+[2025-09-17 11:55:09] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/query_owners.php] Database connection SUCCESS.
+[2025-09-17 11:55:23] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/manage_owner.php] Database connection SUCCESS.
+[2025-09-17 11:55:24] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/query_owners.php] Database connection SUCCESS.
+[2025-09-17 11:55:31] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/manage_owner.php] Database connection SUCCESS.
+[2025-09-17 11:55:32] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/query_owners.php] Database connection SUCCESS.
+[2025-09-17 11:55:40] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/manage_owner.php] Database connection SUCCESS.
+[2025-09-17 11:55:41] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/query_owners.php] Database connection SUCCESS.
+[2025-09-17 11:55:50] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/manage_owner.php] Database connection SUCCESS.
+[2025-09-17 11:55:51] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/query_owners.php] Database connection SUCCESS.
+[2025-09-17 11:56:34] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/manage_owner.php] Database connection SUCCESS.
+[2025-09-17 11:56:35] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/query_owners.php] Database connection SUCCESS.
+[2025-09-17 11:57:11] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/manage_owner.php] Database connection SUCCESS.
+[2025-09-17 11:57:12] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/query_owners.php] Database connection SUCCESS.
+[2025-09-17 11:57:49] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/manage_owner.php] Database connection SUCCESS.
+[2025-09-17 11:58:38] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/manage_owner.php] Database connection SUCCESS.
+[2025-09-17 11:58:46] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/manage_owner.php] Database connection SUCCESS.
+[2025-09-17 11:58:47] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/query_owners.php] Database connection SUCCESS.
+[2025-09-17 11:59:28] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/manage_owner.php] Database connection SUCCESS.
+[2025-09-17 11:59:29] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/query_owners.php] Database connection SUCCESS.
+[2025-09-17 12:03:00] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/manage_owner.php] Database connection SUCCESS.
+[2025-09-17 12:03:01] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/query_owners.php] Database connection SUCCESS.
+[2025-09-17 12:05:03] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/manage_owner.php] Database connection SUCCESS.
+[2025-09-17 12:05:03] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/query_owners.php] Database connection SUCCESS.
+[2025-09-17 12:05:41] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/manage_owner.php] Database connection SUCCESS.
+[2025-09-17 12:05:41] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/query_owners.php] Database connection SUCCESS.
+[2025-09-17 12:07:01] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/manage_owner.php] Database connection SUCCESS.
+[2025-09-17 12:07:01] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/query_owners.php] Database connection SUCCESS.
+[2025-09-17 12:07:45] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/manage_owner.php] Database connection SUCCESS.
+[2025-09-17 12:07:45] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/query_owners.php] Database connection SUCCESS.
+[2025-09-17 12:07:55] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/manage_owner.php] Database connection SUCCESS.
+[2025-09-17 12:07:56] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/query_owners.php] Database connection SUCCESS.
+[2025-09-17 12:08:17] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/manage_owner.php] Database connection SUCCESS.
+[2025-09-17 12:08:37] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/manage_owner.php] Database connection SUCCESS.
+[2025-09-17 12:08:37] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/query_owners.php] Database connection SUCCESS.
+[2025-09-17 12:08:46] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/manage_owner.php] Database connection SUCCESS.
+[2025-09-17 12:08:46] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/query_owners.php] Database connection SUCCESS.
+[2025-09-17 12:09:00] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/manage_owner.php] Database connection SUCCESS.
+[2025-09-17 12:09:00] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/query_owners.php] Database connection SUCCESS.
+[2025-09-17 12:09:43] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/manage_owner.php] Database connection SUCCESS.
+[2025-09-17 12:09:43] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/query_owners.php] Database connection SUCCESS.
+[2025-09-17 12:12:05] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/manage_owner.php] Database connection SUCCESS.
+[2025-09-17 12:12:05] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/query_owners.php] Database connection SUCCESS.
+[2025-09-17 12:12:47] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/manage_owner.php] Database connection SUCCESS.
+[2025-09-17 12:12:48] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/query_owners.php] Database connection SUCCESS.
+[2025-09-17 12:13:16] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/manage_owner.php] Database connection SUCCESS.
+[2025-09-17 12:13:17] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/query_owners.php] Database connection SUCCESS.
+[2025-09-17 12:13:23] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 12:13:23] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by elbren (Administrator)
+[2025-09-17 12:13:25] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/manage_owner.php] Database connection SUCCESS.
+[2025-09-17 12:13:25] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/owner_management/query_owners.php] Database connection SUCCESS.
+[2025-09-17 12:13:27] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 12:13:27] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by elbren (Administrator)
+[2025-09-17 12:27:47] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/user_account.php] Database connection SUCCESS.
+[2025-09-17 12:27:47] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/user_account/query_account.php] Database connection SUCCESS.
+[2025-09-17 12:27:51] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] Database connection SUCCESS.
+[2025-09-17 12:27:51] [IP:::1] [URI:/lakesebutourism_cpanel/admin_dashboard/dashboard_admin.php] ADMIN DASHBOARD: accessed by elbren (Administrator)
+[2025-09-17 12:27:53] [IP:::1] [URI:/lakesebutourism_cpanel/index.php] Database connection SUCCESS.
+[2025-09-17 12:28:03] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-17 12:28:03] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] LOGIN ATTEMPT: user='centro', type_id=2
+[2025-09-17 12:28:03] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] LOGIN SUCCESS: user='centro', role='Establishment Owner'
+[2025-09-17 12:30:33] [IP:::1] [URI:/lakesebutourism_cpanel/index.php] Database connection SUCCESS.
+[2025-09-17 12:30:34] [IP:::1] [URI:/lakesebutourism_cpanel/index.php] Database connection SUCCESS.
+[2025-09-17 12:30:43] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-17 12:30:43] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] LOGIN ATTEMPT: user='centro', type_id=2
+[2025-09-17 12:30:43] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] LOGIN SUCCESS: user='centro', role='Owner'
+[2025-09-17 12:31:24] [IP:::1] [URI:/lakesebutourism_cpanel/index.php] Database connection SUCCESS.
+[2025-09-17 12:31:25] [IP:::1] [URI:/lakesebutourism_cpanel/index.php] Database connection SUCCESS.
+[2025-09-17 12:31:37] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] Database connection SUCCESS.
+[2025-09-17 12:31:37] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] LOGIN ATTEMPT: user='centro', type_id=2
+[2025-09-17 12:31:37] [IP:::1] [URI:/lakesebutourism_cpanel/modules/auth/login.php] LOGIN SUCCESS: user='centro', role='Owner'
+[2025-09-17 12:31:38] [IP:::1] [URI:/lakesebutourism_cpanel/owner_dashboard/dashboard_owner.php] Database connection SUCCESS.
+[2025-09-17 12:33:08] [IP:::1] [URI:/lakesebutourism_cpanel/owner_dashboard/dashboard_owner.php] Database connection SUCCESS.
+[2025-09-17 12:49:31] [IP:::1] [URI:/lakesebutourism_cpanel/owner_dashboard/dashboard_owner.php] Database connection SUCCESS.

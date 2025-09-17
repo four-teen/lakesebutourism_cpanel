@@ -47,7 +47,7 @@ $_SESSION['ayid'] = $rowsettings['ayid'];
   </style>
 </head>
 
-<body onload="load_account();get_ay()">
+<body onload="loading_owners()">
 
 <?php include '../header.php'; ?>
 
@@ -97,7 +97,6 @@ $_SESSION['ayid'] = $rowsettings['ayid'];
               </button>
             </div>
           </div>
-<!-- <div id="test">test</div> -->
             <div id="main_data">
               <div id="loader" class="text-center" style="display: none;">
                 <img src="../../loader.gif" alt="Loading..." width="10%">
@@ -198,133 +197,40 @@ $_SESSION['ayid'] = $rowsettings['ayid'];
 
 <script>
 
-$('#btnAdd').click(function(){
-  $('#modal_account').modal('show');
-  $('#acc_id').val('');
-  $('#owner_id').val('');
-  $('#acc_username').val('');
-  $('#acc_password').val('');
-  $('#acc_email').val('');
-  $('#acc_type_id').val('2');
-  $('#acc_status').val('Active');
-});
-
-
-  // Save (Insert or Update)
-function save_account(){
-  var acc_id       = $('#acc_id').val();
-  var owner_id   = $('#owner_id').val();
-  var acc_username = $('#acc_username').val();
-  var acc_password = $('#acc_password').val();
-  var acc_email    = $('#acc_email').val();
-  var acc_type_id  = $('#acc_type_id').val();
-  var acc_status   = $('#acc_status').val();
-
-  alert(owner_id);
-
-  $.ajax({
-    type: "POST",
-    url: "query_account.php",
-    data: {
-      "save_account": "1",
-      "acc_id": acc_id,
-      "owner_id": owner_id,
-      "acc_username": acc_username,
-      "acc_password": acc_password,
-      "acc_email": acc_email,
-      "acc_type_id": acc_type_id,
-      "acc_status": acc_status
-    },
-    success: function(response){
-      $('#modal_account').modal('hide');
-      load_account();
-    }
-  });
-}
-
-  // Edit
-function edit_account(acc_id){
-  $.ajax({
-    type: "POST",
-    url: "query_account.php",
-    data: { "get_account":"1", "acc_id":acc_id },
-    success: function(response){
-      var data = JSON.parse(response);
-      $('#acc_id').val(data.acc_id);
-      $('#owner_id').val(data.owner_id ? data.owner_id : '');
-      $('#acc_username').val(data.acc_username || '');
-      $('#acc_password').val('');
-      $('#acc_email').val(data.acc_email || '');
-      $('#acc_type_id').val(data.acc_type_id || '2');
-      $('#acc_status').val(data.acc_status || 'Active');
-      $('#modal_account').modal('show');
-    }
-  });
-}
-
-  // Delete
-  function delete_account(acc_id){
-    Swal.fire({
-      title: "Are you sure?",
-      text: "This account will be deleted.",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
-    }).then((result)=>{
-      if(result.isConfirmed){
-        $.ajax({
-          type: "POST",
-          url: "query_account.php",
-          data: { "delete_account":"1", "acc_id":acc_id },
-          success: function(){
-            load_account();
-          }
-        });
-      }
-    });
-  }
-
-  // Show modal
-  $('#btnAdd').click(function(){
-    $('#modal_account').modal('show');
-    $('#acc_id').val('');
-    $('#acc_username,#acc_password,#acc_fullname,#acc_email').val('');
-    $('#acc_type_id').val('2');
-    $('#acc_status').val('Active');
-  });
-
-
-    function load_account() {
-        $('#loader').show(); // Show the loader
-        $('#content_area').hide(); // Hide the content while loading
-        
-        $.ajax({
-            type: "POST",
-            url: "query_account.php",
-            data: { 
-            "loading_account": '1'
-          },
-          success: function(response) {
+function loading_owners() {
+    $('#loader').show(); 
+    $('#content_area').hide();
+    
+    $.ajax({
+        type: "POST",
+        url: "query_owners.php",
+        data: { "loading_owner": '1' },
+        success: function(response) {
+            // Inject the table HTML into the content area
             $('#content_area').html(response);
-            // initialize here if needed
-            if ($.fn.DataTable.isDataTable('#tblAccounts')) {
-              $('#tblAccounts').DataTable().destroy();
-            }
-            $('#tblAccounts').DataTable({ pageLength: 10, lengthChange: false, order: [[2,'asc'],[3,'asc']] });
-          },
-            error: function(xhr, status, error) {
-                $('#content_area').html('<p class="text-danger">Error loading data.</p>');
-            },
-            complete: function() {
-                setTimeout(() => {
-                    $('#loader').hide(); // Hide the loader
-                    $('#content_area').show(); // Show the main content
-                }, 500); // Delay ensures a smooth transition
-            }
-        });
-    }
+            
+            // Now, initialize the DataTable
+            // You can simplify this since we know it's a fresh table
+            $('#tblAccounts').DataTable({ 
+                pageLength: 10, 
+                lengthChange: false, 
+                // Only use these if the columns are in the correct order
+                // order: [[2,'asc'],[3,'asc']] 
+            });
+        },
+        error: function(xhr, status, error) {
+            // Display an error message if the AJAX call fails
+            $('#content_area').html('<p class="text-danger">Error loading data.</p>');
+        },
+        complete: function() {
+            // This runs whether the request succeeded or failed
+            setTimeout(() => {
+                $('#loader').hide();
+                $('#content_area').show();
+            }, 500); 
+        }
+    });
+}
 
  
 </script>

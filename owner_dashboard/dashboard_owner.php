@@ -1,11 +1,11 @@
 <?php
   session_start();
   require_once __DIR__ . '/../modules/auth/session_guard.php';
-  require_role(['Administrator']); // only admins can access
+  require_role(['Owner']); // only admins can access
 
   include_once __DIR__ . '/../db.php';
-  include_once __DIR__ . '/../logger.php';
-  log_event("ADMIN DASHBOARD: accessed by {$_SESSION['USERNAME']} ({$_SESSION['TYPE']})");
+  // include_once __DIR__ . '/../logger.php';
+  // log_event("ADMIN DASHBOARD: accessed by {$_SESSION['USERNAME']} ({$_SESSION['TYPE']})");
 
 
   $settings = "SELECT * FROM `tblsettings`
@@ -208,29 +208,261 @@
             <div class="col-12">
               <div class="card">
 
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
-
                 <div class="card-body">
                   <h5 class="card-title">Reports</h5>
-<div class="d-flex justify-content-end mb-2">
-  <label class="me-2">AY</label>
-  <select id="ayFilter" class="form-select form-select-sm" style="min-width:180px"></select>
-</div>
                   <div id="main_data"></div>
                       
- <div id="enrolmentChart"></div>
+ 
+<!-- VISITOR RECORDING FORM -->
+<div class="container-fluid">
+  <form id="visitorForm" class="needs-validation" novalidate>
+    <!-- Header -->
+    <div class="row align-items-center mb-3">
+      <div class="col">
+        <h4 class="mb-0">New Visitor / Check-In</h4>
+        <small class="text-muted">Lake Sebu Establishments IMS</small>
+      </div>
+      <div class="col-auto">
+        <span class="badge badge-pill badge-primary px-3 py-2">Step 1–4</span>
+      </div>
+    </div>
+
+    <!-- Step 1: Booking Details -->
+    <div class="card shadow-sm mb-3">
+      <div class="card-header bg-primary text-white">
+        <strong>1) Booking Details</strong>
+      </div>
+      <div class="card-body">
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="establishment_id">Establishment</label>
+            <select class="form-control" id="establishment_id" name="establishment_id" required>
+              <option value="">Select establishment…</option>
+              <!-- fill from DB -->
+            </select>
+            <div class="invalid-feedback">Please select an establishment.</div>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="purpose">Purpose of Visit</label>
+            <select class="form-control" id="purpose" name="purpose" required>
+              <option value="">Select…</option>
+              <option>Leisure</option><option>Business</option>
+              <option>Event</option><option>LGU/Official</option>
+              <option>Others</option>
+            </select>
+            <div class="invalid-feedback">Required.</div>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="source">Booking Source</label>
+            <select class="form-control" id="source" name="source">
+              <option>Walk-in</option><option>Phone</option>
+              <option>Facebook</option><option>OTA</option>
+              <option>Referral</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-3">
+            <label for="check_in">Check-in</label>
+            <input type="datetime-local" class="form-control" id="check_in" name="check_in" required>
+            <div class="invalid-feedback">Required.</div>
+          </div>
+          <div class="form-group col-md-3">
+            <label for="check_out">Check-out</label>
+            <input type="datetime-local" class="form-control" id="check_out" name="check_out" required>
+            <div class="invalid-feedback">Required.</div>
+          </div>
+          <div class="form-group col-md-2">
+            <label for="adults">Adults</label>
+            <input type="number" min="1" class="form-control" id="adults" name="adults" value="1" required>
+          </div>
+          <div class="form-group col-md-2">
+            <label for="children">Children</label>
+            <input type="number" min="0" class="form-control" id="children" name="children" value="0">
+          </div>
+          <div class="form-group col-md-2">
+            <label>Nights</label>
+            <input type="text" class="form-control" id="nights" readonly value="0">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="origin_city">Origin (City/Province)</label>
+            <input type="text" class="form-control" id="origin_city" name="origin_city" placeholder="e.g., GenSan, South Cotabato">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="origin_country">Country</label>
+            <input type="text" class="form-control" id="origin_country" name="origin_country" value="Philippines">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="vehicle">Vehicle Plate (optional)</label>
+            <input type="text" class="form-control" id="vehicle" name="vehicle">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2: Guest Details -->
+    <div class="card shadow-sm mb-3">
+      <div class="card-header bg-success text-white">
+        <strong>2) Primary Guest</strong>
+      </div>
+      <div class="card-body">
+        <div class="form-row">
+          <div class="form-group col-md-3">
+            <label for="first_name">First Name</label>
+            <input type="text" class="form-control" id="first_name" name="first_name" required>
+            <div class="invalid-feedback">Required.</div>
+          </div>
+          <div class="form-group col-md-3">
+            <label for="last_name">Last Name</label>
+            <input type="text" class="form-control" id="last_name" name="last_name" required>
+            <div class="invalid-feedback">Required.</div>
+          </div>
+          <div class="form-group col-md-2">
+            <label for="sex">Sex</label>
+            <select class="form-control" id="sex" name="sex">
+              <option value="">Select…</option><option>M</option><option>F</option><option>X</option>
+            </select>
+          </div>
+          <div class="form-group col-md-2">
+            <label for="birthdate">Birthdate</label>
+            <input type="date" class="form-control" id="birthdate" name="birthdate">
+          </div>
+          <div class="form-group col-md-2">
+            <label for="nationality">Nationality</label>
+            <input type="text" class="form-control" id="nationality" name="nationality" value="Filipino">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="id_type">ID Type</label>
+            <select class="form-control" id="id_type" name="id_type">
+              <option value="">Select…</option>
+              <option>Passport</option><option>Driver’s License</option>
+              <option>UMID</option><option>National ID</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="id_number">ID Number</label>
+            <input type="text" class="form-control" id="id_number" name="id_number">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="email">Email (optional)</label>
+            <input type="email" class="form-control" id="email" name="email">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="phone">Mobile</label>
+            <input type="text" class="form-control" id="phone" name="phone" required>
+            <div class="invalid-feedback">Mobile is required.</div>
+          </div>
+          <div class="form-group col-md-8">
+            <label for="address_text">Address</label>
+            <input type="text" class="form-control" id="address_text" name="address_text" placeholder="House/Street, Barangay, City/Province">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3: Room Assignment -->
+    <div class="card shadow-sm mb-3">
+      <div class="card-header bg-info text-white">
+        <strong>3) Room Assignment</strong>
+      </div>
+      <div class="card-body">
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="room_id">Room</label>
+            <select class="form-control" id="room_id" name="room_id" required>
+              <option value="">Select available room…</option>
+              <!-- populate by AJAX based on establishment & dates -->
+            </select>
+            <div class="invalid-feedback">Select a room.</div>
+          </div>
+          <div class="form-group col-md-3">
+            <label for="room_type">Room Type</label>
+            <input type="text" class="form-control" id="room_type" name="room_type" readonly>
+          </div>
+          <div class="form-group col-md-2">
+            <label for="capacity">Capacity</label>
+            <input type="text" class="form-control" id="capacity" name="capacity" readonly>
+          </div>
+          <div class="form-group col-md-3">
+            <label for="rate_per_night">Rate / Night (₱)</label>
+            <input type="number" min="0" step="0.01" class="form-control" id="rate_per_night" name="rate_per_night" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-3">
+            <label for="tax">Tax/Fees (₱)</label>
+            <input type="number" min="0" step="0.01" class="form-control" id="tax" name="tax" value="0">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="discount">Discount (₱)</label>
+            <input type="number" min="0" step="0.01" class="form-control" id="discount" name="discount" value="0">
+          </div>
+          <div class="form-group col-md-3">
+            <label>Guest-Nights</label>
+            <input type="text" class="form-control" id="guest_nights" readonly value="0">
+          </div>
+          <div class="form-group col-md-3">
+            <label>Est. Bill (₱)</label>
+            <input type="text" class="form-control font-weight-bold" id="estimated_bill" readonly value="0.00">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 4: Payment & Consent -->
+    <div class="card shadow-sm mb-4">
+      <div class="card-header bg-warning">
+        <strong>4) Payment & Consent</strong>
+      </div>
+      <div class="card-body">
+        <div class="form-row">
+          <div class="form-group col-md-3">
+            <label for="payment_method">Payment Method</label>
+            <select class="form-control" id="payment_method" name="payment_method">
+              <option>Cash</option><option>GCash</option><option>Card</option><option>Bank</option>
+            </select>
+          </div>
+          <div class="form-group col-md-3">
+            <label for="payment_ref">Reference No. (if any)</label>
+            <input type="text" class="form-control" id="payment_ref" name="payment_ref">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="amount_paid">Amount Paid (₱)</label>
+            <input type="number" min="0" step="0.01" class="form-control" id="amount_paid" name="amount_paid" value="0">
+          </div>
+          <div class="form-group col-md-3">
+            <label>Balance (₱)</label>
+            <input type="text" class="form-control" id="balance" readonly value="0.00">
+          </div>
+        </div>
+
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="privacy_consent" name="privacy_consent" required checked>
+          <label class="custom-control-label" for="privacy_consent">
+            I agree to the Privacy Notice and consent to the collection and processing of my data.
+          </label>
+          <div class="invalid-feedback d-block">Consent is required to proceed.</div>
+        </div>
+      </div>
+      <div class="card-footer text-right">
+        <button type="reset" class="btn btn-outline-secondary">Clear</button>
+        <button type="submit" class="btn btn-primary">Save & Check-In</button>
+      </div>
+    </div>
+  </form>
+</div>
+ 
 
 
                 </div>
